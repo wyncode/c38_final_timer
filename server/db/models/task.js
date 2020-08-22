@@ -29,7 +29,7 @@ const taskSchema = new mongoose.Schema(
   }
 );
 userSchema.virtual('sessions', {
-  ref: Session,
+  ref: 'Session',
   localField: '_id',
   foreignField: 'owner'
 });
