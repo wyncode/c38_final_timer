@@ -7,8 +7,13 @@ const sessionSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
+    taskId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Task'
+    },
     sessionType: {
-      type: String
+      type: String,
+      enum: ['pomo', 'default', 'custom']
     },
     activeSession: {
       type: Boolean,
@@ -20,10 +25,6 @@ const sessionSchema = new mongoose.Schema(
     timeSpent: {
       type: Number,
       default: 60
-    },
-    owner: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
     }
   },
   {
