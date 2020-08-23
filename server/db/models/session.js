@@ -31,6 +31,15 @@ const sessionSchema = new mongoose.Schema(
     timestamps: true
   }
 );
+// Converts dates to readable format
+sessionSchema.methods.toJSON = function () {
+  const session = this;
+  const sessionObject = session.toObject();
+  if (sessionObject.dueDate) {
+    sessionObject.dueDate = moment(sessionObject.dueDate).format('YYYY-MM-DD');
+  }
+  return sessionObject;
+};
 
 const Session = mongoose.model('Session', sessionSchema);
 

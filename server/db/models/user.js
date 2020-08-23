@@ -33,6 +33,17 @@ const userSchema = new mongoose.Schema(
           throw new Error('password must be at least 6 characters long.');
         }
       }
+    },
+    tokens: [
+      {
+        token: {
+          type: String,
+          required: true
+        }
+      }
+    ],
+    avatar: {
+      type: String
     }
   },
   {
@@ -40,6 +51,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// creates relatonship between user and task
 userSchema.virtual('tasks', {
   ref: 'Task',
   localField: '_id',

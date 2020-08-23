@@ -28,12 +28,14 @@ const taskSchema = new mongoose.Schema(
     timestamps: true
   }
 );
-userSchema.virtual('sessions', {
+// creates relatonship between user and session
+taskSchema.virtual('sessions', {
   ref: 'Session',
   localField: '_id',
   foreignField: 'owner'
 });
 
+// Converts dates to readable format
 taskSchema.methods.toJSON = function () {
   const task = this;
   const taskObject = task.toObject();
