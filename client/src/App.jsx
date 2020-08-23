@@ -8,18 +8,20 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Tasks from './pages/Tasks';
 import Stats from './pages/Stats';
+
 //import { AppContextProvider } from './context/AppContext';
 
 function App() {
   return (
-    <MDBContainer>
+    <MDBContainer fluid>
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/tasks" component={Tasks} />
-          <Route exact path="/tasks" component={Stats} />
+          <Route exact path="/stats" component={Stats} />
+        
         </Switch>
       </BrowserRouter>
     </MDBContainer>
