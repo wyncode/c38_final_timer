@@ -16,6 +16,7 @@ const Navigation = () => {
         </MDBNavItem>
     <MDBNavItem>
           <MDBNavLink className="white-text" to="/faqs">FAQs</MDBNavLink>
+
         </MDBNavItem>
       </MDBNav>
     </BrowserRouter>
