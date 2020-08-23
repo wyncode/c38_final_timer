@@ -1,6 +1,8 @@
 const mongoose = require('mongoose'),
-  Task = require('./task');
-validator = require('validator');
+  Task = require('./task'),
+  validator = require('validator'),
+  bcrypt = require('bcryptjs'),
+  jwt = require('jsonwebtoken');
 
 const userSchema = new mongoose.Schema(
   {
@@ -33,7 +35,15 @@ const userSchema = new mongoose.Schema(
           throw new Error('password must be at least 6 characters long.');
         }
       }
-    }
+    },
+    tokens: [
+      {
+        token: {
+          type: String,
+          required: true
+        }
+      }
+    ]
   },
   {
     timestamps: true
