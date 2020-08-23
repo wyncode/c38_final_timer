@@ -28,7 +28,7 @@ const taskSchema = new mongoose.Schema(
     timestamps: true
   }
 );
-userSchema.virtual('sessions', {
+taskSchema.virtual('sessions', {
   ref: 'Session',
   localField: '_id',
   foreignField: 'owner'
