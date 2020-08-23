@@ -5,7 +5,7 @@ import { MDBNav, MDBNavItem, MDBNavLink } from 'mdbreact';
 const Navigation = () => {
   return (
     <BrowserRouter>
-      <MDBNav color="blue-gradient" className="expand-lg justify-content-center font-weight-bold">
+      <MDBNav color="blue-gradient" className="expand-lg fixed-top justify-content-center font-weight-bold">
         <MDBNavItem>
           <MDBNavLink className="white-text" active to="/login">
             Login
