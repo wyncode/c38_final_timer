@@ -2,6 +2,7 @@ const router = require('express').Router(),
   mongoose = require('mongoose'),
   Task = require('../../db/models/task');
 
+// Get all tasks
 router.get('/api/tasks', async (req, res) => {
   const match = {},
     sort = {};
@@ -64,7 +65,7 @@ router.post('/api/tasks', async (req, res) => {
 // Update a task
 router.patch('/api/tasks/:id', async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['description', 'completed', 'dueDate'];
+  const allowedUpdates = ['numOfSessions', 'completed'];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );

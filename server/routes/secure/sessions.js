@@ -3,35 +3,23 @@ const router = require('express').Router(),
   Session = require('../../db/models/session');
 
 // Get all sessions associated with a Task
-router.get('/api/sessions', async (req, res) => {
-  const match = {},
-    sort = {};
+router.get('/api/sessions/:taskId', async (req, res) => {
   try {
-    await req.tasks
-      .populate({
-        path: 'sessions',
-        match,
-        options: {
-          limit: parseInt(req.query.limit),
-          skip: parseInt(req.query.skip),
-          sort
-        }
-      })
-      .execPopulate();
-    res.json(req.tasks.sessions);
+    const session = await Session.find({ taskId: req.params.taskId });
+    res.json(session);
   } catch (e) {
     res.status(500).send();
   }
 });
 
 // Get a specific session
-router.get('/api/sessions/:id', async (req, res) => {
+router.get('/api/session/:id', async (req, res) => {
   const _id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(400).send('Not a valid session id');
 
   try {
-    const session = await Session.findOne({ _id, owner: req.task._id });
+    const session = await Session.find({ _id });
     if (!session) return res.status(404).send();
 
     res.json(session);
@@ -41,10 +29,10 @@ router.get('/api/sessions/:id', async (req, res) => {
 });
 
 // Create a session
-router.post('/api/sessions', async (req, res) => {
+router.post('/api/session', async (req, res) => {
   const session = await new Session({
     ...req.body,
-    owner: req.user._id
+    taskId: req.params.taskId
   });
   try {
     session.save();
@@ -54,12 +42,11 @@ router.post('/api/sessions', async (req, res) => {
   }
 });
 
-// Delete a task
-router.delete('/api/sessions/:id', async (req, res) => {
+// Delete a session
+router.delete('/api/session/:id', async (req, res) => {
   try {
     const session = await Session.findOneAndDelete({
-      _id: req.params.id,
-      owner: req.user._id
+      _id: req.params.id
     });
     if (!session) return res.status(404).send();
     res.json(session);

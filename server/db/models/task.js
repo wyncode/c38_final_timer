@@ -29,7 +29,7 @@ const taskSchema = new mongoose.Schema(
     timestamps: true
   }
 );
-// creates relatonship between user and session
+// creates relatonship between task and session
 taskSchema.virtual('sessions', {
   ref: 'Session',
   localField: '_id',
@@ -50,7 +50,7 @@ taskSchema.methods.toJSON = function () {
 taskSchema.pre('remove', async function (next) {
   const task = this;
   await Session.deleteMany({
-    owner: task._id
+    taskId: task._id
   });
   next();
 });
