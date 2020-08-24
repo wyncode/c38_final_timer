@@ -10,7 +10,7 @@ import Tasks from './pages/Tasks';
 import Stats from './pages/Stats';
 import FAQs from './pages/FAQs';
 import ForgotPassword from './pages/ForgotPassword';
-
+import Navigation from './components/Navigation';
 
 //import { AppContextProvider } from './context/AppContext';
 
@@ -18,6 +18,7 @@ function App() {
   return (
     <MDBContainer fluid>
       <BrowserRouter>
+        <Navigation />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />

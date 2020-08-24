@@ -1,15 +1,21 @@
-import React from "react";
-import Navigation from '../components/Navigation';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
+import React from 'react';
+// import Navigation from '../components/Navigation';
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBInput,
+  MDBBtn,
+  MDBCard,
+  MDBCardBody
+} from 'mdbreact';
 
 const SignUp = () => {
   return (
     <MDBContainer className="justify-content-center" fluid>
-         <Navigation />
-    <MDBRow className="py-4 mt-5">
-    </MDBRow>
+      <MDBRow className="py-4 mt-5"></MDBRow>
       <MDBRow className="no-gutters">
-      <MDBCol></MDBCol>
+        <MDBCol></MDBCol>
         <MDBCol>
           <MDBCard className="py-2">
             <MDBCardBody>
