@@ -19,7 +19,7 @@ router.post('/api/users/logout', async (req, res) => {
     res.clearCookie('jwt');
     res.json({ message: 'Logged out!' });
   } catch (e) {
-    res.status(500).send();
+    res.status(500).json({ error: e.toString() });
   }
 });
 
@@ -32,7 +32,7 @@ router.post('/api/users/logoutAll', async (req, res) => {
     res.clearCookie('jwt');
     res.sendStatus(200);
   } catch (e) {
-    res.status(500).send();
+    res.status(500).json({ error: e.toString() });
   }
 });
 // Get current user
@@ -55,7 +55,7 @@ router.patch('/api/users/me', async (req, res) => {
     await req.user.save();
     res.json(req.user);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).json({ error: e.toString() });
   }
 });
 
@@ -67,7 +67,7 @@ router.delete('/api/users/me', async (req, res) => {
     res.clearCookie('jwt');
     res.json(req.user);
   } catch (e) {
-    res.sendStatus(500);
+    res.sendStatus(500).json({ error: e.toString() });
   }
 });
 

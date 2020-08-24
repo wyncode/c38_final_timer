@@ -28,7 +28,7 @@ router.get('/api/tasks', async (req, res) => {
       .execPopulate();
     res.json(req.user.tasks);
   } catch (e) {
-    res.status(500).send();
+    res.status(500).json({ error: e.toString() });
   }
 });
 
@@ -44,7 +44,7 @@ router.get('/api/tasks/:id', async (req, res) => {
 
     res.json(task);
   } catch (e) {
-    res.status(500).send();
+    res.status(500).json({ error: e.toString() });
   }
 });
 
@@ -58,7 +58,7 @@ router.post('/api/tasks', async (req, res) => {
     task.save();
     res.status(201).json(task);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).json({ error: e.toString() });
   }
 });
 
@@ -82,7 +82,7 @@ router.patch('/api/tasks/:id', async (req, res) => {
     await task.save();
     res.json(task);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).json({ error: e.toString() });
   }
 });
 
@@ -96,7 +96,7 @@ router.delete('/api/tasks/:id', async (req, res) => {
     if (!task) return res.status(404).send();
     res.json(task);
   } catch (e) {
-    res.status(500).send();
+    res.status(500).json({ error: e.toString() });
   }
 });
 
