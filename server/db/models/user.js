@@ -43,13 +43,17 @@ const userSchema = new mongoose.Schema(
           required: true
         }
       }
-    ]
+    ],
+    avatar: {
+      type: String
+    }
   },
   {
     timestamps: true
   }
 );
 
+// creates relatonship between user and task
 userSchema.virtual('tasks', {
   ref: 'Task',
   localField: '_id',
