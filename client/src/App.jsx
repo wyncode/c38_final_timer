@@ -8,7 +8,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Tasks from './pages/Tasks';
 import Stats from './pages/Stats';
-
+import ForgotPassword from './pages/ForgotPassword';
 
 //import { AppContextProvider } from './context/AppContext';
 
@@ -22,6 +22,7 @@ function App() {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/tasks" component={Tasks} />
           <Route exact path="/stats" component={Stats} />
+          <Route exact path="/forgotpassword" component={ForgotPassword} />
         </Switch>
       </BrowserRouter>
     </MDBContainer>

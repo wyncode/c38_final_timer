@@ -9,14 +9,14 @@ import {
   MDBCardBody
 } from 'mdbreact';
 
-const Login = () => {
+const ForgotPassword = () => {
   return (
     <MDBContainer className="d-flex justify-content-center m-4">
       <MDBCol md="6">
         <MDBCard>
           <MDBCardBody>
             <form>
-              <p className="h4 text-center py-4">Login</p>
+              <p className="h4 text-center py-4">Forgot Password?</p>
               <div className="grey-text">
                 <MDBInput
                   label="Your email"
@@ -27,22 +27,15 @@ const Login = () => {
                   error="wrong"
                   success="right"
                 />
-                <MDBInput
-                  label="Your password"
-                  icon="lock"
-                  group
-                  type="password"
-                  validate
-                />
               </div>
               <div className="text-center py-4 mt-3">
                 <MDBBtn gradient="blue" type="submit">
-                  Login
+                  Email Password
                 </MDBBtn>
                 <div>
                   <p>
                     {' '}
-                    Don't have an account? <Link to="/Signup"> Sign up.</Link>
+                    <Link to="/Login">Login</Link>
                   </p>
                 </div>
               </div>
@@ -54,4 +47,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;
