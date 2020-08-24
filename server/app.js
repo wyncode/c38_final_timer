@@ -7,6 +7,7 @@ const express = require('express'),
   cookieParser = require('cookie-parser'),
   userRouter = require('./routes/secure/users'),
   taskRouter = require('./routes/secure/tasks'),
+  sessionRouter = require('./routes/secure/sessions'),
   app = express();
 
 //Middleware
@@ -29,6 +30,7 @@ app.use(
 // Any authentication middleware and related routing would be here.
 app.use(userRouter);
 app.use(taskRouter);
+app.use(sessionRouter);
 
 // Handle React routing, return all requests to React app
 if (process.env.NODE_ENV === 'production') {

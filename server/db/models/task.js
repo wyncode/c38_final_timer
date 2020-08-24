@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Session = require('./session');
 moment = require('moment');
 
 const taskSchema = new mongoose.Schema(
@@ -44,6 +45,16 @@ taskSchema.methods.toJSON = function () {
   }
   return taskObject;
 };
+
+// Delete user sessions when a task is removed.
+taskSchema.pre('remove', async function (next) {
+  const task = this;
+  await Session.deleteMany({
+    owner: task._id
+  });
+  next();
+});
+
 const Task = mongoose.model('Task', taskSchema);
 
 module.exports = Task;
