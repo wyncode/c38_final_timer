@@ -4,7 +4,7 @@ const router = require('express').Router(),
   bcrypt = require('bcryptjs');
 
 // Login a user
-router.post('/users/login', async (req, res) => {
+router.post('/api/users/login', async (req, res) => {
   try {
     const user = await User.findByCredentials(
       req.body.email,
@@ -42,7 +42,7 @@ router.post('/api/users', async (req, res) => {
 
 // Reset Password
 
-router.get('/users/password/reset', async (req, res) => {
+router.get('/api/users/password/reset', async (req, res) => {
   const newPassword = await bcrypt.hash(req.query.password, 8);
   const update = { password: newPassword };
   const filter = { email: req.query.email };
@@ -65,7 +65,7 @@ router.get('/users/password/reset', async (req, res) => {
 });
 
 //Redirect to password reset page
-router.get('/password/:token', (req, res) => {
+router.get('/api/password/:token', (req, res) => {
   const { token } = req.params;
   try {
     jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {

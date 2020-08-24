@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Session = require('./session');
 moment = require('moment');
 
 const taskSchema = new mongoose.Schema(
@@ -28,7 +29,7 @@ const taskSchema = new mongoose.Schema(
     timestamps: true
   }
 );
-// creates relatonship between user and session
+// creates relatonship between task and session
 taskSchema.virtual('sessions', {
   ref: 'Session',
   localField: '_id',
@@ -44,6 +45,16 @@ taskSchema.methods.toJSON = function () {
   }
   return taskObject;
 };
+
+// Delete user sessions when a task is removed.
+taskSchema.pre('remove', async function (next) {
+  const task = this;
+  await Session.deleteMany({
+    taskId: task._id
+  });
+  next();
+});
+
 const Task = mongoose.model('Task', taskSchema);
 
 module.exports = Task;
