@@ -1,9 +1,7 @@
 const router = require('express').Router(),
+  { sendWelcomeEmail, forgotPasswordEmail } = require('../../emails/index'),
   User = require('../../db/models/user'),
-  bcrypt = require('bcryptjs'),
-  { sendWelcomeEmail, forgotPasswordEmail } = require('../../emails/index');
-
-// JUST FOR DEMO PURPOSES, PUT YOUR ACTUAL API CODE HERE
+  bcrypt = require('bcryptjs');
 
 // Login a user
 router.post('/users/login', async (req, res) => {
@@ -25,11 +23,11 @@ router.post('/users/login', async (req, res) => {
 });
 
 // Create a user
-router.post('/users', async (req, res) => {
-  console.log('server', req.body);
+router.post('/api/users', async (req, res) => {
   const user = new User(req.body);
   try {
-    await user.save(), sendWelcomeEmail(user.email, user.name);
+    await user.save();
+    sendWelcomeEmail(user.email, user.name);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, {
       httpOnly: true,
@@ -38,14 +36,14 @@ router.post('/users', async (req, res) => {
     });
     res.json(user);
   } catch (e) {
-    res.status(201).json({ error: e.toString() });
+    res.status(201).status(400).send(e);
   }
 });
 
 // Reset Password
 
 router.get('/users/password/reset', async (req, res) => {
-  let newPassword = await bcrypt.hash(req.query.password, 8);
+  const newPassword = await bcrypt.hash(req.query.password, 8);
   const update = { password: newPassword };
   const filter = { email: req.query.email };
 

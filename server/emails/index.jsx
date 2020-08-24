@@ -1,8 +1,3 @@
-//yarn add @sendgrid/mail
-//add SENDGRID_API_KEY in .env
-//Todo: integration in the routes
-//Integrate SENDGRID API
-
 const sgMail = require('@sendgrid/mail');
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 
