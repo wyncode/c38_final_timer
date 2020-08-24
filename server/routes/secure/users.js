@@ -3,7 +3,7 @@ const express = require('express'),
   User = require('../../db/models/user'),
   multer = require('multer'),
   sharp = require('sharp'),
-  { sendCancellationEmail } = require('../../emails/index');
+  { sendCancellationEmail } = require('../../emails');
 
 // Login Check
 router.post('/api/loginCheck', async (req, res) => res.sendStatus(200));
