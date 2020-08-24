@@ -57,7 +57,7 @@ const SignUp = () => {
                 </div>
                 <div className="text-center py-2 mt-3">
                   <MDBBtn gradient="blue" type="submit">
-                    Register
+                    <strong>Wyn it!</strong>
                   </MDBBtn>
                 </div>
               </form>
