@@ -10,6 +10,7 @@ import Tasks from './pages/Tasks';
 import Stats from './pages/Stats';
 import FAQs from './pages/FAQs'
 
+
 //import { AppContextProvider } from './context/AppContext';
 
 function App() {
@@ -22,8 +23,11 @@ function App() {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/tasks" component={Tasks} />
           <Route exact path="/stats" component={Stats} />
+<<<<<<< HEAD
           <Route exact path="/faqs" component={FAQs} />
         
+=======
+>>>>>>> 97c065d213f20a0b4cd84ac5ec7163f78ae0a182
         </Switch>
       </BrowserRouter>
     </MDBContainer>
