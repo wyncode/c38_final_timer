@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { MDBContainer } from 'mdbreact';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -11,6 +11,7 @@ import Stats from './pages/Stats';
 import FAQs from './pages/FAQs';
 import ForgotPassword from './pages/ForgotPassword';
 import Navigation from './components/Navigation';
+import { Line } from 'react-chartjs-2';
 
 //import { AppContextProvider } from './context/AppContext';
 
