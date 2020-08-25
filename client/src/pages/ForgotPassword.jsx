@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   MDBContainer,
   MDBCol,
+  MDBRow,
   MDBInput,
   MDBBtn,
   MDBCard,
@@ -12,12 +12,13 @@ import {
 
 const ForgotPassword = () => {
   return (
-    <MDBContainer className="d-flex justify-content-center m-4">
-      <MDBCol md="6">
+    <MDBContainer className="d-flex justify-content-center">
+      <MDBCol md="5">
+        <MDBRow className="py-4 mt-5"></MDBRow>
         <MDBCard>
           <MDBCardBody>
             <form>
-              <p className="h4 text-center py-4">Forgot Password?</p>
+              <p className="h1 text-center py-4 blue-text">Forgot Password?</p>
               <div className="grey-text">
                 <MDBInput
                   label="Your email"
@@ -33,12 +34,7 @@ const ForgotPassword = () => {
                 <MDBBtn gradient="blue" type="submit">
                   Email Password
                 </MDBBtn>
-                <div>
-                  <p>
-                    {' '}
-                    <Link to="/Login">Login</Link>
-                  </p>
-                </div>
+                <div></div>
               </div>
             </form>
           </MDBCardBody>
