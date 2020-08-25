@@ -36,7 +36,7 @@ router.post('/api/users', async (req, res) => {
     });
     res.json(user);
   } catch (e) {
-    res.status(201).status(400).send(e);
+    res.status(201).status(400).json({ error: e.toString() });
   }
 });
 

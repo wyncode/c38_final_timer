@@ -8,7 +8,7 @@ router.get('/api/sessions/:taskId', async (req, res) => {
     const session = await Session.find({ taskId: req.params.taskId });
     res.json(session);
   } catch (e) {
-    res.status(500).send();
+    res.status(500).json({ error: e.toString() });
   }
 });
 
@@ -24,7 +24,7 @@ router.get('/api/session/:id', async (req, res) => {
 
     res.json(session);
   } catch (e) {
-    res.status(500).send();
+    res.status(500).json({ error: e.toString() });
   }
 });
 
@@ -38,7 +38,7 @@ router.post('/api/session', async (req, res) => {
     session.save();
     res.status(201).json(session);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).json({ error: e.toString() });
   }
 });
 
@@ -51,7 +51,7 @@ router.delete('/api/session/:id', async (req, res) => {
     if (!session) return res.status(404).send();
     res.json(session);
   } catch (e) {
-    res.status(500).send();
+    res.status(500).json({ error: e.toString() });
   }
 });
 
