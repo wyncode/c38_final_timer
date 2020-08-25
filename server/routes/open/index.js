@@ -25,6 +25,7 @@ router.post('/api/users/login', async (req, res) => {
 // Create a user
 router.post('/api/users', async (req, res) => {
   const user = new User(req.body);
+  console.log(req.body);
   try {
     await user.save();
     sendWelcomeEmail(user.email, user.name);
