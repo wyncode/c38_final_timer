@@ -5,15 +5,15 @@ const Navigation = () => {
   return (
     <MDBNav
       color="blue-gradient"
-      className="expand-lg fixed-top justify-content-center font-weight-bold"
+      className="expand-lg fixed-top justify-content-center"
     >
       <MDBNavItem>
-        <MDBNavLink className="white-text" to="/login">
+        <MDBNavLink className="white-text font-weight-bold" to="/login">
           Login
         </MDBNavLink>
       </MDBNavItem>
       <MDBNavItem>
-        <MDBNavLink className="white-text" to="/signup">
+        <MDBNavLink className="white-text font-weight-bold" to="/signup">
           Sign Up
         </MDBNavLink>
       </MDBNavItem>
