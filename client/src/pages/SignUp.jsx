@@ -6,7 +6,8 @@ import {
   MDBInput,
   MDBBtn,
   MDBCard,
-  MDBCardBody
+  MDBCardBody,
+  MDBAnimation
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
@@ -50,68 +51,70 @@ const SignUp = ({ history }) => {
       <MDBRow className="no-gutters">
         <MDBCol></MDBCol>
         <MDBCol>
-          <MDBCard className="py-2">
-            <MDBCardBody>
-              <form onSubmit={handleSignUp}>
-                <p className="h1 text-center py-3 blue-text">Sign up</p>
-                <div className="grey-text">
-                  <MDBInput
-                    label="Name"
-                    name="name"
-                    icon="user"
-                    size="sm"
-                    group
-                    type="text"
-                    onChange={handleChange}
-                  />
-                  <MDBInput
-                    label="Email"
-                    name="email"
-                    icon="envelope"
-                    size="sm"
-                    group
-                    type="email"
-                    validate
-                    error="wrong"
-                    success="right"
-                    onChange={handleChange}
-                  />
-                  <MDBInput
-                    label="Confirm your email"
-                    icon="exclamation-triangle"
-                    size="sm"
-                    group
-                    type="text"
-                    validate
-                    error="wrong"
-                    success="right"
-                  />
-                  <MDBInput
-                    label="New password"
-                    name="password"
-                    icon="lock"
-                    size="sm"
-                    group
-                    type="password"
-                    validate
-                    onChange={handleChange}
-                  />
-                  <GoogleLogin
+          <MDBAnimation type="bounceInDown" duration="600ms">
+            <MDBCard className="py-2">
+              <MDBCardBody>
+                <form onSubmit={handleSignUp}>
+                  <p className="h1 text-center py-3 blue-text">Sign up</p>
+                  <div className="grey-text">
+                    <MDBInput
+                      label="Name"
+                      name="name"
+                      icon="user"
+                      size="sm"
+                      group
+                      type="text"
+                      onChange={handleChange}
+                    />
+                    <MDBInput
+                      label="Email"
+                      name="email"
+                      icon="envelope"
+                      size="sm"
+                      group
+                      type="email"
+                      validate
+                      error="wrong"
+                      success="right"
+                      onChange={handleChange}
+                    />
+                    <MDBInput
+                      label="Confirm your email"
+                      icon="exclamation-triangle"
+                      size="sm"
+                      group
+                      type="text"
+                      validate
+                      error="wrong"
+                      success="right"
+                    />
+                    <MDBInput
+                      label="New password"
+                      name="password"
+                      icon="lock"
+                      size="sm"
+                      group
+                      type="password"
+                      validate
+                      onChange={handleChange}
+                    />
+                    <GoogleLogin
                     clientId="33101661602-9id17jok8tt69u06d8kme2r7s9r6s2em.apps.googleusercontent.com"
                     buttonText="Login"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={'single_host_origin'}
                   />
-                </div>
-                <div className="text-center py-2 mt-3">
-                  <MDBBtn gradient="blue" type="submit">
-                    <strong>Wyn it!</strong>
-                  </MDBBtn>
-                </div>
-              </form>
-            </MDBCardBody>
-          </MDBCard>
+                  </div>
+                  <div className="text-center py-2 mt-3">
+                    <MDBBtn gradient="blue" type="submit">
+                      <strong>Wyn it!</strong>
+                    </MDBBtn>
+                  </div>
+                </form>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBAnimation>
         </MDBCol>
         <MDBCol></MDBCol>
       </MDBRow>

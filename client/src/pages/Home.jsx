@@ -8,9 +8,24 @@ const Home = () => {
       <MDBRow></MDBRow>
       <h1>Hi</h1>
       <MDBRow>
-        <MDBCol md="3">HOME</MDBCol>
-        <MDBCol md="6">HOME</MDBCol>
-        <MDBCol md="3">HOME</MDBCol>
+        <MDBCol
+          md="3"
+          className="block-example border border-info border-weight rounded mb-0"
+        >
+          HOME
+        </MDBCol>
+        <MDBCol
+          md="6"
+          className="block-example border border-info rounded mb-0"
+        >
+          HOME
+        </MDBCol>
+        <MDBCol
+          md="3"
+          className="block-example border border-info rounded mb-0"
+        >
+          HOME
+        </MDBCol>
       </MDBRow>
     </MDBContainer>
   );
