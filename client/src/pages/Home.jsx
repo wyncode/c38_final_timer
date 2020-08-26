@@ -1,33 +1,80 @@
 import React from 'react';
-//import Navigation from '../components/Navigation';
-import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import {
+  MDBContainer,
+  MDBView,
+  MDBBtn,
+  MDBRow,
+  MDBCol,
+  MDBTypography
+} from 'mdbreact';
+import './Home.css';
 
 const Home = () => {
   return (
-    <MDBContainer fluid>
-      <MDBRow></MDBRow>
-      <h1>Hi</h1>
-      <MDBRow>
-        <MDBCol
-          md="3"
-          className="block-example border border-info border-weight rounded mb-0"
+    <div>
+      <MDBView>
+        <MDBContainer
+          style={{ height: '100%', width: '100%' }}
+          className="d-flex justify-content-center black-text align-items-center"
         >
-          HOME
-        </MDBCol>
-        <MDBCol
-          md="6"
-          className="block-example border border-info rounded mb-0"
-        >
-          HOME
-        </MDBCol>
-        <MDBCol
-          md="3"
-          className="block-example border border-info rounded mb-0"
-        >
-          HOME
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+          <MDBRow style={{ width: '85%' }}>
+            <MDBCol
+              style={{ paddingBottom: '20px', paddingTop: '40px' }}
+              className="text-center text-md-center"
+            >
+              <MDBTypography
+                className="font-weight-bold mt-sm-5 text-center blue-text"
+                tag="h3"
+                variant="display-3"
+              >
+                WynIt.
+              </MDBTypography>
+
+              <MDBBtn outline color="blue" size="sm">
+                Download
+              </MDBBtn>
+              <MDBBtn outline color="orange" size="sm">
+                Learn More
+              </MDBBtn>
+            </MDBCol>
+            <MDBRow style={{ paddingBottom: '20px', paddingTop: '40px' }}>
+              <MDBCol>
+                <img
+                  src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png"
+                  alt=""
+                  className="img-fluid"
+                />
+              </MDBCol>
+              <MDBCol>
+                <img
+                  src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png"
+                  alt=""
+                  className="img-fluid"
+                />
+              </MDBCol>
+              <MDBCol>
+                <img
+                  src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png"
+                  alt=""
+                  className="img-fluid"
+                />
+              </MDBCol>
+            </MDBRow>
+          </MDBRow>
+        </MDBContainer>
+      </MDBView>
+
+      <MDBContainer style={{ width: '50%' }}>
+        <MDBRow className="py-5">
+          <MDBCol md="12" className="text-center">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+            </p>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </div>
   );
 };
 
