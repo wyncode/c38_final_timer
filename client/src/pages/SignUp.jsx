@@ -32,17 +32,18 @@ const SignUp = ({ history }) => {
     } catch (error) {
       console.log('SignUp Error: ', error);
     }
-
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [url, setUrl] = useState('');
-
-    const responseGoogle = (res) => {
-      setName(res.profileObj.name);
-      setEmail(res.profileObj.email);
-      setUrl(res.profileObj.imageUrl);
-    };
   };
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [url, setUrl] = useState('');
+
+  const responseGoogle = (res) => {
+    setName(res.profileObj.name);
+    setEmail(res.profileObj.email);
+    setUrl(res.profileObj.imageUrl);
+  };
+
   return (
     <MDBContainer className="justify-content-center" fluid>
       <MDBRow className="py-4 mt-5"></MDBRow>
