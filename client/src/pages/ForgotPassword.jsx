@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   MDBContainer,
   MDBCol,
@@ -8,9 +8,22 @@ import {
   MDBCard,
   MDBCardBody
 } from 'mdbreact';
+import axios from 'axios';
 //import Navigation from '../components/Navigation';
 
 const ForgotPassword = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .get(`/api/password?email=${email}`)
+      .then((response) => {
+        alert('Password email sent');
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <MDBContainer className="d-flex justify-content-center">
       <MDBCol md="5">
@@ -23,15 +36,12 @@ const ForgotPassword = () => {
                 <MDBInput
                   label="Your email"
                   icon="envelope"
-                  group
                   type="email"
-                  validate
-                  error="wrong"
-                  success="right"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="text-center py-4 mt-3">
-                <MDBBtn gradient="blue" type="submit">
+                <MDBBtn gradient="blue" type="submit" onClick={handleSubmit}>
                   Email Password
                 </MDBBtn>
                 <div></div>

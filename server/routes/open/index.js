@@ -1,6 +1,7 @@
 const router = require('express').Router(),
-  { sendWelcomeEmail, forgotPasswordEmail } = require('../../emails/index'),
+  { sendWelcomeEmail, forgotPasswordEmail } = require('../../emails/'),
   User = require('../../db/models/user'),
+  jwt = require('jsonwebtoken'),
   bcrypt = require('bcryptjs');
 
 // Login a user
@@ -28,38 +29,35 @@ router.post('/api/users', async (req, res) => {
   console.log(req.body);
   try {
     await user.save();
-    sendWelcomeEmail(user.email, user.name);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, {
       httpOnly: true,
       sameSite: 'Strict',
       secure: process.env.NODE_ENV !== 'production' ? false : true
     });
+    sendWelcomeEmail(user.email, user.name);
     res.json(user);
   } catch (e) {
     res.status(201).status(400).json({ error: e.toString() });
   }
 });
 
-// Reset Password
+// Reset Password- This sends you the reset password email
 
-router.get('/api/users/password/reset', async (req, res) => {
-  const newPassword = await bcrypt.hash(req.query.password, 8);
-  const update = { password: newPassword };
-  const filter = { email: req.query.email };
-
-  const user = await User.findOne({
-    email: req.query.email
-  });
-
+router.get('/api/password', async (req, res) => {
   try {
-    if (user.tokens[0].token !== req.query.token) {
-      throw new Error();
-    }
-
-    await User.findOneAndUpdate(filter, update);
+    const { email } = req.query,
+      user = await User.findOne({ email });
+    if (!user) throw new Error('No account associated with Email');
+    const token = jwt.sign(
+      { _id: user._id.toString(), name: user.name },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: '10m'
+      }
+    );
     forgotPasswordEmail(email, token);
-    res.redirect('/');
+    res.json({ message: 'reset password link sent to email' });
   } catch (e) {
     res.status(400).json({ error: e.toString() });
   }
@@ -77,7 +75,7 @@ router.get('/api/password/:token', (req, res) => {
       maxAge: 6000000,
       sameSite: 'Strict'
     });
-    res.redirect(process.env.URL + '/update-password');
+    res.redirect(process.env.URL + '/updatepassword');
   } catch (e) {
     res.json({ error: e.toString() });
   }
