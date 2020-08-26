@@ -10,7 +10,8 @@ import {
   MDBInput,
   MDBBtn,
   MDBCard,
-  MDBCardBody
+  MDBCardBody,
+  MDBAnimation
 } from 'mdbreact';
 
 const Login = ({ history }) => {
@@ -36,47 +37,49 @@ const Login = ({ history }) => {
     <MDBContainer className="d-flex justify-content-center">
       <MDBCol md="5">
         <MDBRow className="py-4 mt-5"></MDBRow>
-        <MDBCard>
-          <MDBCardBody>
-            <form onSubmit={handleSubmit}>
-              <p className="h1 text-center py-4 blue-text">Login</p>
-              <div className="grey-text">
-                <MDBInput
-                  label="Your email"
-                  icon="envelope"
-                  group
-                  type="email"
-                  name="email"
-                  validate
-                  error="wrong"
-                  success="right"
-                  onChange={handleChange}
-                />
-                <MDBInput
-                  label="Your password"
-                  icon="lock"
-                  group
-                  type="password"
-                  name="password"
-                  validate
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="text-center py-4 mt-3">
-                <MDBBtn className="mb-3" gradient="blue" type="submit">
-                  Login
-                </MDBBtn>
-                <div>
-                  <p>
-                    {' '}
-                    Don't have an account? <Link to="/Signup">Sign up.</Link>
-                  </p>
-                  <Link to="/forgotpassword"> Forgot password?</Link>
+        <MDBAnimation type="bounceInDown" duration="600ms">
+          <MDBCard>
+            <MDBCardBody>
+              <form onSubmit={handleSubmit}>
+                <p className="h1 text-center py-4 blue-text">Login</p>
+                <div className="grey-text">
+                  <MDBInput
+                    label="Your email"
+                    icon="envelope"
+                    group
+                    type="email"
+                    name="email"
+                    validate
+                    error="wrong"
+                    success="right"
+                    onChange={handleChange}
+                  />
+                  <MDBInput
+                    label="Your password"
+                    icon="lock"
+                    group
+                    type="password"
+                    name="password"
+                    validate
+                    onChange={handleChange}
+                  />
                 </div>
-              </div>
-            </form>
-          </MDBCardBody>
-        </MDBCard>
+                <div className="text-center py-4 mt-3">
+                  <MDBBtn className="mb-3" gradient="blue" type="submit">
+                    Login
+                  </MDBBtn>
+                  <div>
+                    <p>
+                      {' '}
+                      Don't have an account? <Link to="/Signup">Sign up.</Link>
+                    </p>
+                    <Link to="/forgotpassword"> Forgot password?</Link>
+                  </div>
+                </div>
+              </form>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBAnimation>
       </MDBCol>
     </MDBContainer>
   );
