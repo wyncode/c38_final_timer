@@ -1,6 +1,7 @@
 const router = require('express').Router(),
   { sendWelcomeEmail, forgotPasswordEmail } = require('../../emails/'),
   User = require('../../db/models/user'),
+  passport = require('passport'),
   jwt = require('jsonwebtoken'),
   bcrypt = require('bcryptjs');
 

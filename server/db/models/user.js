@@ -49,6 +49,14 @@ const userSchema = new mongoose.Schema(
     }
   },
   {
+    google: {
+      token: String,
+      id: String,
+      email: String,
+      displayName: String
+    }
+  },
+  {
     timestamps: true
   }
 );
