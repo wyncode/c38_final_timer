@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-// import { AppContext } from '../context/AppContext';
+import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 
 import {
@@ -14,9 +14,8 @@ import {
 } from 'mdbreact';
 
 const Login = ({ history }) => {
-  //setting these here for now but we can change once we flesh out the AppContext file
   const [formData, setFormData] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
+  const { setCurrentUser } = useContext(AppContext);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -39,7 +38,7 @@ const Login = ({ history }) => {
         <MDBRow className="py-4 mt-5"></MDBRow>
         <MDBCard>
           <MDBCardBody>
-            <form>
+            <form onSubmit={handleSubmit}>
               <p className="h1 text-center py-4 blue-text">Login</p>
               <div className="grey-text">
                 <MDBInput
@@ -64,12 +63,7 @@ const Login = ({ history }) => {
                 />
               </div>
               <div className="text-center py-4 mt-3">
-                <MDBBtn
-                  onSubmit={handleSubmit}
-                  className="mb-3"
-                  gradient="blue"
-                  type="submit"
-                >
+                <MDBBtn className="mb-3" gradient="blue" type="submit">
                   Login
                 </MDBBtn>
                 <div>
