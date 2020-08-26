@@ -10,6 +10,7 @@ import {
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import { GoogleLogin } from 'react-google-login';
 
 const SignUp = ({ history }) => {
   const { setCurrentUser } = useContext(AppContext);
@@ -31,6 +32,16 @@ const SignUp = ({ history }) => {
     } catch (error) {
       console.log('SignUp Error: ', error);
     }
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [url, setUrl] = useState('');
+
+    const responseGoogle = (res) => {
+      setName(res.profileObj.name);
+      setEmail(res.profileObj.email);
+      setUrl(res.profileObj.imageUrl);
+    };
   };
   return (
     <MDBContainer className="justify-content-center" fluid>
@@ -83,6 +94,13 @@ const SignUp = ({ history }) => {
                     type="password"
                     validate
                     onChange={handleChange}
+                  />
+                  <GoogleLogin
+                    clientId="33101661602-9id17jok8tt69u06d8kme2r7s9r6s2em.apps.googleusercontent.com"
+                    buttonText="Login"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
                   />
                 </div>
                 <div className="text-center py-2 mt-3">
