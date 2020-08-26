@@ -8,6 +8,7 @@ import {
   MDBCard,
   MDBCardBody
 } from 'mdbreact';
+import axios from 'axios';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');

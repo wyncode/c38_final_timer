@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBInput,
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBAnimation
+} from 'mdbreact';
 import axios from 'axios';
 
 const UpdatePassword = ({ history }) => {
@@ -28,30 +37,45 @@ const UpdatePassword = ({ history }) => {
       .catch((error) => console.log(error));
   };
   return (
-    <Container>
-      <h1>Update Password</h1>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>New Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="confirmPassword"
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Button type="submit">Update Password</Button>
-        </Form.Group>
-      </Form>
-    </Container>
+    <MDBContainer className="d-flex justify-content-center">
+      <MDBCol md="5">
+        <MDBRow className="py-4 mt-5"></MDBRow>
+        <MDBAnimation type="bounceInDown" duration="600ms">
+          <MDBCard>
+            <MDBCardBody>
+              <form onSubmit={handleSubmit}>
+                <p className="h1 text-center py-4 blue-text">Update Password</p>
+                <div className="grey-text">
+                  <MDBInput
+                    label="New password"
+                    name="password"
+                    icon="user"
+                    size="sm"
+                    group
+                    type="password"
+                    onChange={handleChange}
+                  />
+                  <MDBInput
+                    label="Confirm new password"
+                    name="password"
+                    icon="user"
+                    size="sm"
+                    group
+                    type="password"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="text-center py-2 mt-3">
+                  <MDBBtn gradient="blue" type="submit">
+                    <strong>Update Password!</strong>
+                  </MDBBtn>
+                </div>
+              </form>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBAnimation>
+      </MDBCol>
+    </MDBContainer>
   );
 };
 
