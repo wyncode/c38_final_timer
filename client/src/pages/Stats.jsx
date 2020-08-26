@@ -1,7 +1,13 @@
-import React from 'react';
-// import { Line } from 'react-chartjs-2';
+import React, { useState } from 'react';
+import { Line } from 'react-chartjs-2';
 
 const Stats = () => {
+  const [chartData, setChartData] = useState({});
+
+  const chart = () => {
+    setChartData({});
+  };
+
   return (
     <div style={{ position: 'relative', width: 600, height: 550 }}>
       <h1>You've been productive lately!</h1>
