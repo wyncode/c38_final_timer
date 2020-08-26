@@ -5,9 +5,12 @@ import {
   MDBBtn,
   MDBRow,
   MDBCol,
-  MDBTypography
+  MDBTypography,
+  MDBAnimation,
+  MDBIcon
 } from 'mdbreact';
 import './Home.css';
+import { timerClock } from '../components/TimerClock';
 
 const Home = () => {
   return (
@@ -29,13 +32,15 @@ const Home = () => {
               >
                 WynIt.
               </MDBTypography>
+              <MDBAnimation type="pulse" count={4} duration="300ms">
+                <MDBBtn outline color="blue" size="sm">
+                  <MDBIcon icon="play" />
+                </MDBBtn>
 
-              <MDBBtn outline color="blue" size="sm">
-                Download
-              </MDBBtn>
-              <MDBBtn outline color="orange" size="sm">
-                Learn More
-              </MDBBtn>
+                <MDBBtn outline color="orange" size="sm">
+                  <MDBIcon icon="stop" />
+                </MDBBtn>
+              </MDBAnimation>
             </MDBCol>
             <MDBRow style={{ paddingBottom: '20px', paddingTop: '40px' }}>
               <MDBCol>
@@ -45,13 +50,11 @@ const Home = () => {
                   className="img-fluid"
                 />
               </MDBCol>
+
               <MDBCol>
-                <img
-                  src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png"
-                  alt=""
-                  className="img-fluid"
-                />
+                <timerClock />
               </MDBCol>
+
               <MDBCol>
                 <img
                   src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png"
