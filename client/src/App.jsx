@@ -14,6 +14,8 @@ import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import Navigation from './components/Navigation';
 // import { Line } from 'react-chartjs-2';
+import Calendar from './components/Calendar';
+
 
 //import { AppContextProvider } from './context/AppContext';
 
@@ -30,6 +32,7 @@ function App() {
             <Route exact path="/tasks" component={Tasks} />
             <Route exact path="/stats" component={Stats} />
             <Route exact path="/faqs" component={FAQs} />
+            <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/forgotpassword" component={ForgotPassword} />
             <Route exact path="/updatepassword" component={UpdatePassword} />
           </Switch>
