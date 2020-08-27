@@ -9,6 +9,7 @@ import {
   MDBAnimation,
   MDBIcon
 } from 'mdbreact';
+
 import { timerClock } from '../components/TimerClock';
 
 const Home = () => {
