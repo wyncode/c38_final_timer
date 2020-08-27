@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { MDBContainer } from 'mdbreact';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
