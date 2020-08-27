@@ -7,12 +7,8 @@
     "@sendgrid/mail": "^7.2.4",
     "axios": "^0.20.0",
     "bcryptjs": "^2.4.3",
-<<<<<<< HEAD
-    "chart.js": "^2.9.3",
-=======
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.2",
->>>>>>> 919ad58dda182d3ff586ce7abf0d817340f81d6d
     "concurrently": "^5.2.0",
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
@@ -27,13 +23,9 @@
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
-<<<<<<< HEAD
-    "react-chartjs-2": "^2.10.0",
-=======
     "react-bootstrap": "^1.3.0",
     "react-countdown-circle-timer": "^2.3.7",
     "react-google-login": "^5.1.21",
->>>>>>> 919ad58dda182d3ff586ce7abf0d817340f81d6d
     "sharp": "^0.25.4",
     "validator": "^13.1.1"
   },
