@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import { GoogleLogin } from 'react-google-login';
 
 import {
   MDBContainer,
@@ -33,6 +34,7 @@ const Login = ({ history }) => {
       })
       .catch((error) => console.log(error));
   };
+
   return (
     <MDBContainer className="d-flex justify-content-center">
       <MDBCol md="5">

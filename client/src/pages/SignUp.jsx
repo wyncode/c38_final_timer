@@ -45,6 +45,20 @@ const SignUp = ({ history }) => {
     setUrl(res.profileObj.imageUrl);
   };
 
+  const googleSignUp = async (e) => {
+    e.preventDefault();
+    console.log('Made it');
+    try {
+      const response = await axios.post('/auth/google', formData);
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+      setCurrentUser(response.data.user);
+      history.push('/');
+    } catch (error) {
+      console.log('SignUp Error: ', error);
+    }
+  };
+
   return (
     <MDBContainer className="justify-content-center" fluid>
       <MDBRow className="py-4 mt-5"></MDBRow>
@@ -100,7 +114,8 @@ const SignUp = ({ history }) => {
                     />
                     <GoogleLogin
                     clientId="33101661602-9id17jok8tt69u06d8kme2r7s9r6s2em.apps.googleusercontent.com"
-                    buttonText="Login"
+                    buttonText="Sign-Up!"
+                    onSubmit={googleSignUp}
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={'single_host_origin'}
