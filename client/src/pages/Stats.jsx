@@ -14,7 +14,7 @@ const Stats = () => {
             label: "Your Progress!",
             data: 'insert session hours',
             backgroundColor: [
-              'rgba( 75, 192, 192, 0.6'
+              'rgba( 75, 192, 192, 0.6)'
             ],
             borderWidth: 4
           }
