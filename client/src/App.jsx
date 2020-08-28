@@ -13,12 +13,7 @@ import FAQs from './pages/FAQs';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import Navigation from './components/Navigation';
-<<<<<<< HEAD
-// import { Line } from 'react-chartjs-2';
-=======
 import Calendar from './components/Calendar';
->>>>>>> 2585fcc8aac58abc9619dc1f0eb864bd81173a73
-
 //import { AppContextProvider } from './context/AppContext';
 
 function App() {
