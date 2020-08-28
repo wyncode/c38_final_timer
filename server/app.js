@@ -3,6 +3,7 @@ require('./db/config');
 const express = require('express'),
   path = require('path'),
   openRoutes = require('./routes/open'),
+  googleRoutes = require('./routes/open/google-route'),
   passport = require('./middleware/authentication/'),
   cookieParser = require('cookie-parser'),
   userRouter = require('./routes/secure/users'),
@@ -67,6 +68,7 @@ app.get('/logout', (req, res) => {
 
 // Unauthenticated routes
 app.use(openRoutes);
+app.use(googleRoutes);
 app.use(cookieParser());
 
 // Serve any static files

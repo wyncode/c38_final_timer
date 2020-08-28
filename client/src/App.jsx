@@ -14,7 +14,6 @@ import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import Navigation from './components/Navigation';
 import Calendar from './components/Calendar';
-
 //import { AppContextProvider } from './context/AppContext';
 
 function App() {

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Session = require('./session');
-moment = require('moment');
+const moment = require('moment');
 
 const taskSchema = new mongoose.Schema(
   {
