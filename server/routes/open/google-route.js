@@ -1,4 +1,5 @@
 const passport = require('passport'),
+  router = require('express')(),
   GoogleStrategy = require('passport-google-oauth20').Strategy;
 //Google sign in
 passport.serializeUser(function (user, done) {
@@ -10,7 +11,7 @@ passport.deserializeUser(function (id, done) {
     done(err, user);
   });
 });
-
+console.log(process.env.GOOGLE_CLIENT_ID)
 passport.use(
   new GoogleStrategy(
     {
