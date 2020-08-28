@@ -19,7 +19,7 @@ var data = JSON.stringify({"name":"Cal","email":"calvin.m9233@gmail.com","passwo
 
 var config = {
   method: 'get',
-  url: 'http://localhost:8080/api/tasks',
+  url: '/api/tasks',
   headers: { 
     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjQ0MTBjMDZmMWEzODE3Njg1MjJiMmIiLCJuYW1lIjoiSkQyMDIwIiwiaWF0IjoxNTk4Mjk3NzQ3LCJleHAiOjE1OTgzODQxNDd9.wRZ4cu-ONganCdTi7zN9cLQGqVoQxVPM1REia6CPAdg', 
     'Content-Type': 'application/json', 
@@ -48,7 +48,7 @@ axios(config)
               label: "Your Progress!",
               data: timeSpent,
               backgroundColor: [
-                'rgba( 75, 192, 192, 0.6)'
+                'rgba( 75, 192, 192, 0.6 )'
               ],
               borderWidth: 4
             }
