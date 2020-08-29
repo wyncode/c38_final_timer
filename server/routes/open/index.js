@@ -1,9 +1,7 @@
 const router = require('express').Router(),
   { sendWelcomeEmail, forgotPasswordEmail } = require('../../emails/'),
   User = require('../../db/models/user'),
-  passport = require('passport'),
-  jwt = require('jsonwebtoken'),
-  bcrypt = require('bcryptjs');
+  jwt = require('jsonwebtoken');
 
 // Login a user
 router.post('/api/users/login', async (req, res) => {

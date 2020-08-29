@@ -1,8 +1,5 @@
 const express = require('express'),
   router = new express.Router(),
-  User = require('../../db/models/user'),
-  multer = require('multer'),
-  sharp = require('sharp'),
   { sendCancellationEmail } = require('../../emails/index');
 
 // Login Check
