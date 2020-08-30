@@ -11,6 +11,7 @@ import {
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import Nav from '../components/Nav';
 import { GoogleLogin } from 'react-google-login';
 
 const SignUp = ({ history }) => {
@@ -47,11 +48,12 @@ const SignUp = ({ history }) => {
 
   return (
     <MDBContainer className="justify-content-center" fluid>
+      <Nav />
       <MDBRow className="py-4 mt-5"></MDBRow>
       <MDBRow className="no-gutters">
         <MDBCol></MDBCol>
         <MDBCol>
-          <MDBAnimation type="bounceInDown" duration="600ms">
+          <MDBAnimation type="bounceInDown" duration="700ms">
             <MDBCard className="py-2">
               <MDBCardBody>
                 <form onSubmit={handleSignUp}>
@@ -98,15 +100,17 @@ const SignUp = ({ history }) => {
                       validate
                       onChange={handleChange}
                     />
-                    <GoogleLogin
-                    clientId="33101661602-9id17jok8tt69u06d8kme2r7s9r6s2em.apps.googleusercontent.com"
-                    buttonText="Login"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    cookiePolicy={'single_host_origin'}
-                  />
+                    <div className="text-center py-1 mt-3">
+                      <GoogleLogin
+                        clientId="33101661602-9id17jok8tt69u06d8kme2r7s9r6s2em.apps.googleusercontent.com"
+                        buttonText="Login"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                      />
+                    </div>
                   </div>
-                  <div className="text-center py-2 mt-3">
+                  <div className="text-center py-2 mt-2">
                     <MDBBtn gradient="blue" type="submit">
                       <strong>Wyn it!</strong>
                     </MDBBtn>
