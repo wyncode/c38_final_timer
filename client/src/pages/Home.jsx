@@ -9,22 +9,23 @@ import {
   MDBAnimation,
   MDBIcon
 } from 'mdbreact';
-import { timerClock } from '../components/TimerClock';
 import Nav from '../components/Nav';
-
-
+import TimerClock from '../components/TimerClock';
 const Home = () => {
   return (
     <div>
       <MDBView>
+        <Nav />
         <MDBContainer
           fluid
-          style={{ background: '#0A1045' }}
-          className="d-flex justify-content-center fixed-bottom align-items-center"
+          style={{ background: '#0A1045', height: '100%', width: '100%' }}
+          className="d-flex justify-content-center no-gutters align-items-center"
         >
-          <Nav />
-          <MDBRow style={{ width: '85%' }}>
-            <MDBCol className="text-center text-md-center">
+          <MDBRow style={{ width: '100%' }}>
+            <MDBCol
+              style={{ paddingBottom: '20px', paddingTop: '40px' }}
+              className="text-center text-md-center"
+            >
               <MDBTypography
                 className="font-weight-bold mt-sm-5 text-center blue-text"
                 tag="h3"
@@ -32,22 +33,18 @@ const Home = () => {
               >
                 WynIt.
               </MDBTypography>
-              <MDBAnimation type="pulse" count={4} duration="400ms">
-                <MDBBtn
-                  className="rounded-circle"
-                  style={{ height: '40px' }}
-                  outline
-                  color="blue"
-                  size="sm"
-                >
+              <MDBAnimation type="pulse" count={4} duration="300ms">
+                <MDBBtn outline color="blue" size="sm">
                   <MDBIcon icon="play" />
+                  <span></span>
+                  <MDBIcon icon="pause" />
                 </MDBBtn>
                 <MDBBtn outline color="orange" size="sm">
                   <MDBIcon icon="stop" />
                 </MDBBtn>
               </MDBAnimation>
             </MDBCol>
-            <MDBRow style={{ paddingBottom: '20px', paddingTop: '40px' }}>
+            <MDBRow style={{ paddingBottom: '20px', paddingTop: '10px' }}>
               <MDBCol>
                 <img
                   src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png"
@@ -55,7 +52,6 @@ const Home = () => {
                   className="img-fluid"
                 />
               </MDBCol>
-
               <MDBCol>
                 <TimerClock />
               </MDBCol>
@@ -70,9 +66,9 @@ const Home = () => {
           </MDBRow>
         </MDBContainer>
       </MDBView>
-      <MDBContainer className="fixed-bottom" style={{ width: '50%' }}>
-        <MDBRow className="py-1">
-          <MDBCol className="text-center white-text">
+      <MDBContainer style={{ width: '50%' }}>
+        <MDBRow className="py-5">
+          <MDBCol md="12" className="text-center">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -83,5 +79,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;
