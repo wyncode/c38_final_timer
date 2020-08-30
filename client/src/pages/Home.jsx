@@ -9,13 +9,15 @@ import {
   MDBAnimation,
   MDBIcon
 } from 'mdbreact';
+import { timerClock } from '../components/TimerClock';
+import Nav from '../components/Nav';
 
-import TimerClock from '../components/TimerClock';
 
 const Home = () => {
   return (
     <div>
       <MDBView>
+        <Nav />
         <MDBContainer
           style={{ height: '100%', width: '100%' }}
           className="d-flex justify-content-center black-text align-items-center"
@@ -33,10 +35,15 @@ const Home = () => {
                 WynIt.
               </MDBTypography>
               <MDBAnimation type="pulse" count={4} duration="300ms">
-                <MDBBtn outline color="blue" size="sm">
+                <MDBBtn
+                  className="rounded-circle"
+                  style={{ height: '40px' }}
+                  outline
+                  color="blue"
+                  size="sm"
+                >
                   <MDBIcon icon="play" />
                 </MDBBtn>
-
                 <MDBBtn outline color="orange" size="sm">
                   <MDBIcon icon="stop" />
                 </MDBBtn>
