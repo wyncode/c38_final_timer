@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
+import Calender from '../components/Calendar';
 
 const Stats = () => {
   const [lineChart, setLineChart] = useState({});
@@ -30,7 +31,10 @@ const Stats = () => {
   }, []);
 
   return (
-    <div style={{ position: 'relative', width: 600, height: 550 }}>
+    <div
+      className="mt-5"
+      style={{ position: 'relative', width: 600, height: 550 }}
+    >
       <h1>You've been productive lately!</h1>
       <h3>Heres your progress!</h3>
       <div className="d-flex, justify-content-center, width: 85%">
@@ -63,6 +67,7 @@ const Stats = () => {
           }}
         />
       </div>
+      <Calender className="d-flex" />
     </div>
   );
 };
