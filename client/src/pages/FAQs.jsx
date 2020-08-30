@@ -5,7 +5,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn } from 'mdbreact';
 const FAQs = () => {
   return (
     <MDBContainer fluid>
-      <section className="my-5">
+      <section className="mt-5">
         <h2 className="h1-responsive font-weight-bold text-center my-4 blue-text">
           Ready to Wyn it?
         </h2>
