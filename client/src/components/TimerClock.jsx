@@ -1,7 +1,5 @@
 import React from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-// import axios from 'axios';
-// import { AppContext } from '../context/AppContext';
 
 const timerClock = () => (
   <CountdownCircleTimer
