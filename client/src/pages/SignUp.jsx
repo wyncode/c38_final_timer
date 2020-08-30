@@ -11,6 +11,7 @@ import {
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import Navigation from '../components/Navigation';
 import { GoogleLogin } from 'react-google-login';
 
 const SignUp = ({ history }) => {
@@ -47,6 +48,7 @@ const SignUp = ({ history }) => {
 
   return (
     <MDBContainer className="justify-content-center" fluid>
+      <Navigation />
       <MDBRow className="py-4 mt-5"></MDBRow>
       <MDBRow className="no-gutters">
         <MDBCol></MDBCol>
@@ -99,14 +101,14 @@ const SignUp = ({ history }) => {
                       onChange={handleChange}
                     />
                     <div className="text-center py-1 mt-3">
-                    <GoogleLogin
-                    clientId="33101661602-9id17jok8tt69u06d8kme2r7s9r6s2em.apps.googleusercontent.com"
-                    buttonText="Login"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    cookiePolicy={'single_host_origin'}
-                  />
-                  </div>
+                      <GoogleLogin
+                        clientId="33101661602-9id17jok8tt69u06d8kme2r7s9r6s2em.apps.googleusercontent.com"
+                        buttonText="Login"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                      />
+                    </div>
                   </div>
                   <div className="text-center py-2 mt-2">
                     <MDBBtn gradient="blue" type="submit">

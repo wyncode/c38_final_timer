@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import Navigation from '../components/Navigation';
 
 import {
   MDBContainer,
@@ -35,6 +36,7 @@ const Login = ({ history }) => {
   };
   return (
     <MDBContainer className="d-flex justify-content-center">
+      <Navigation />
       <MDBCol md="5">
         <MDBRow className="py-4 mt-5"></MDBRow>
         <MDBAnimation type="bounceInUp" duration="700ms">
