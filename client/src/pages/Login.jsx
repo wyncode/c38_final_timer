@@ -37,7 +37,7 @@ const Login = ({ history }) => {
     <MDBContainer className="d-flex justify-content-center">
       <MDBCol md="5">
         <MDBRow className="py-4 mt-5"></MDBRow>
-        <MDBAnimation type="bounceInDown" duration="600ms">
+        <MDBAnimation type="bounceInUp" duration="700ms">
           <MDBCard>
             <MDBCardBody>
               <form onSubmit={handleSubmit}>

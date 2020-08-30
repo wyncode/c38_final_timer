@@ -51,7 +51,7 @@ const SignUp = ({ history }) => {
       <MDBRow className="no-gutters">
         <MDBCol></MDBCol>
         <MDBCol>
-          <MDBAnimation type="bounceInDown" duration="600ms">
+          <MDBAnimation type="bounceInDown" duration="700ms">
             <MDBCard className="py-2">
               <MDBCardBody>
                 <form onSubmit={handleSignUp}>
@@ -98,6 +98,7 @@ const SignUp = ({ history }) => {
                       validate
                       onChange={handleChange}
                     />
+                    <div className="text-center py-1 mt-3">
                     <GoogleLogin
                     clientId="33101661602-9id17jok8tt69u06d8kme2r7s9r6s2em.apps.googleusercontent.com"
                     buttonText="Login"
@@ -106,7 +107,8 @@ const SignUp = ({ history }) => {
                     cookiePolicy={'single_host_origin'}
                   />
                   </div>
-                  <div className="text-center py-2 mt-3">
+                  </div>
+                  <div className="text-center py-2 mt-2">
                     <MDBBtn gradient="blue" type="submit">
                       <strong>Wyn it!</strong>
                     </MDBBtn>
