@@ -3,7 +3,8 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { MDBContainer } from 'mdbreact';
+import { MDBContainer, MDBView } from 'mdbreact';
+import UsersNav from './UsersNav';
 
 const Calendar = () => {
   const [eventID, setEventID] = useState(1);
@@ -37,28 +38,34 @@ const Calendar = () => {
   };
 
   return (
-    <MDBContainer className="mt-5">
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        headerToolbar={{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        }}
-        initialView="dayGridMonth"
-        editable={true}
-        selectable={true}
-        selectMirror={true}
-        dayMaxEvents={true}
-        select={handleDateSelect}
-        eventClick={handleEventClick}
-        // eventsSet={handleEvents}
-        //-- these will communicate with Database
-        // eventAdd={function () {}}
-        // eventChange={function () {}}
-        // eventRemove={function () {}}
-      />
-    </MDBContainer>
+    <MDBView>
+      <UsersNav />
+      <MDBContainer
+        className="mt-5"
+        style={{ width: '70%', paddingTop: '40px' }}
+      >
+        <FullCalendar
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          headerToolbar={{
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          }}
+          initialView="dayGridMonth"
+          editable={true}
+          selectable={true}
+          selectMirror={true}
+          dayMaxEvents={true}
+          select={handleDateSelect}
+          eventClick={handleEventClick}
+          // eventsSet={handleEvents}
+          //-- these will communicate with Database
+          // eventAdd={function () {}}
+          // eventChange={function () {}}
+          // eventRemove={function () {}}
+        />
+      </MDBContainer>
+    </MDBView>
   );
 };
 

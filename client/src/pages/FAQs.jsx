@@ -1,11 +1,11 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn } from 'mdbreact';
-import Navigation from '../components/Navigation';
+import Nav from '../components/Nav';
 
 const FAQs = () => {
   return (
     <MDBContainer fluid>
-      <Navigation />
+      <Nav />
       <section className="my-5">
         <h2
           className="h1-responsive font-weight-bold text-center my-4 blue-text"

@@ -11,7 +11,7 @@ import {
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-import Navigation from '../components/Navigation';
+import Nav from '../components/Nav';
 import { GoogleLogin } from 'react-google-login';
 
 const SignUp = ({ history }) => {
@@ -48,7 +48,7 @@ const SignUp = ({ history }) => {
 
   return (
     <MDBContainer className="justify-content-center" fluid>
-      <Navigation />
+      <Nav />
       <MDBRow className="py-4 mt-5"></MDBRow>
       <MDBRow className="no-gutters">
         <MDBCol></MDBCol>

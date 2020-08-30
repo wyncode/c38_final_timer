@@ -10,13 +10,13 @@ import {
   MDBIcon
 } from 'mdbreact';
 import { timerClock } from '../components/TimerClock';
-import Navigation from '../components/Navigation';
+import Nav from '../components/Nav';
 
 const Home = () => {
   return (
     <div>
       <MDBView>
-        <Navigation />
+        <Nav />
         <MDBContainer
           style={{ height: '100%', width: '100%' }}
           className="d-flex justify-content-center black-text align-items-center"
