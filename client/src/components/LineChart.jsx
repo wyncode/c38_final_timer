@@ -7,7 +7,7 @@ useEffect(() => {
   const graph = async () => {
     let sessionDate = [];
     let timeSpent = [];
-    // let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjQ4NDliNDUzOWYyYmEyMTYxYmYxYTIiLCJuYW1lIjoiQ2FsIiwiaWF0IjoxNTk4NTczMDE3LCJleHAiOjE1OTg2NTk0MTd9.ii3tJq-dLWL6BkuwwOzTYm4Kf05im6HxRej0Xr1LXN4'
+
     var axios = require('axios');
     var data = JSON.stringify({
       name: 'Cal',
@@ -22,7 +22,6 @@ useEffect(() => {
         Authorization:
           'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjQ0MTBjMDZmMWEzODE3Njg1MjJiMmIiLCJuYW1lIjoiSkQyMDIwIiwiaWF0IjoxNTk4Mjk3NzQ3LCJleHAiOjE1OTgzODQxNDd9.wRZ4cu-ONganCdTi7zN9cLQGqVoQxVPM1REia6CPAdg',
         'Content-Type': 'application/json'
-        // 'Cookie': 'jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjQ4NDliNDUzOWYyYmEyMTYxYmYxYTIiLCJuYW1lIjoiQ2FsIiwiaWF0IjoxNTk4NTczMDE3LCJleHAiOjE1OTg2NTk0MTd9.ii3tJq-dLWL6BkuwwOzTYm4Kf05im6HxRej0Xr1LXN4'
       },
       data: data
     };
@@ -35,11 +34,7 @@ useEffect(() => {
       .catch(function (error) {
         console.log(error);
       });
-    // axios
-    // .get('/api/tasks', {}, { headers: {Authorization: 'Bearer ' + token } })
-    // .then(response => console.log(response.data))
-    // .then((data) => console.log(data))
-    // .catch((error) => console.log(error.toString()));
+
     setLineChart({
       labels: sessionDate,
       datasets: [
