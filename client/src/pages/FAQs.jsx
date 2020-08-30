@@ -4,11 +4,11 @@ import Nav from '../components/Nav';
 
 const FAQs = () => {
   return (
-    <MDBContainer fluid>
+    <MDBContainer fluid className="fixed-bottom ">
       <Nav />
-      <section className="my-5">
+      <section className="my-1">
         <h2
-          className="h1-responsive font-weight-bold text-center my-4 blue-text"
+          className="h1-responsive font-weight-bold text-center my-2 blue-text"
           style={{ paddingTop: '40px' }}
         >
           Ready to Wyn it?
