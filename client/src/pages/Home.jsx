@@ -12,6 +12,7 @@ import {
 import { timerClock } from '../components/TimerClock';
 import Nav from '../components/Nav';
 
+
 const Home = () => {
   return (
     <div>
@@ -56,7 +57,7 @@ const Home = () => {
               </MDBCol>
 
               <MDBCol>
-                <timerClock />
+                <TimerClock />
               </MDBCol>
               <MDBCol>
                 <img
