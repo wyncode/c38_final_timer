@@ -10,7 +10,7 @@ import {
   MDBIcon
 } from 'mdbreact';
 
-import { timerClock } from '../components/TimerClock';
+import TimerClock from '../components/TimerClock';
 
 const Home = () => {
   return (
@@ -52,7 +52,7 @@ const Home = () => {
               </MDBCol>
 
               <MDBCol>
-                <timerClock />
+                <TimerClock />
               </MDBCol>
 
               <MDBCol>
