@@ -12,7 +12,6 @@ import Stats from './pages/Stats';
 import FAQs from './pages/FAQs';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
-import Navigation from './components/Navigation';
 import Calendar from './components/Calendar';
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
     <AppContextProvider>
       <MDBContainer fluid>
         <BrowserRouter>
-          <Navigation />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />

@@ -28,12 +28,12 @@ const ForgotPassword = () => {
     <MDBContainer className="d-flex justify-content-center">
       <MDBCol md="5">
         <MDBRow className="py-4 mt-5"></MDBRow>
-        <MDBAnimation type="bounceInDown" duration="600ms">
+        <MDBAnimation type="bounceInDown" duration="700ms">
           <MDBCard>
             <MDBCardBody>
               <form>
-                <p className="h1 text-center py-4 blue-text">
-                  Forgot Password?
+                <p className="h3 text-center py-4 blue-text">
+                  Forgot your password?
                 </p>
                 <div className="grey-text">
                   <MDBInput

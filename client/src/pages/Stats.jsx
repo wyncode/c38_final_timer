@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
+import ChartPage from '../components/ChartPage';
 import axios from 'axios';
 import Calender from '../components/Calendar';
 

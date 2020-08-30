@@ -11,6 +11,8 @@ import {
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import Nav from '../components/Nav';
+
 
 const SignUp = ({ history }) => {
   const { setCurrentUser } = useContext(AppContext);
@@ -36,11 +38,12 @@ const SignUp = ({ history }) => {
 
   return (
     <MDBContainer className="justify-content-center" fluid>
+      <Nav />
       <MDBRow className="py-4 mt-5"></MDBRow>
       <MDBRow className="no-gutters">
         <MDBCol></MDBCol>
         <MDBCol>
-          <MDBAnimation type="bounceInDown" duration="600ms">
+          <MDBAnimation type="bounceInDown" duration="700ms">
             <MDBCard className="py-2">
               <MDBCardBody>
                 <form onSubmit={handleSignUp}>
@@ -88,7 +91,7 @@ const SignUp = ({ history }) => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="text-center py-2 mt-3">
+                  <div className="text-center py-2 mt-2">
                     <MDBBtn gradient="blue" type="submit">
                       <strong>Wyn it!</strong>
                     </MDBBtn>
