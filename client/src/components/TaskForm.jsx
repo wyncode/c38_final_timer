@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { MDBContainer } from 'mdbreact';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBInput } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 
-const TaskForm = () => {
+const TaskFormV2 = () => {
   const [taskData, setTaskData] = useState(null);
   const { setLoading } = useContext(AppContext);
 
@@ -29,31 +28,40 @@ const TaskForm = () => {
 
   return (
     <MDBContainer>
-      <Form onSubmit={handleTaskSubmission}>
-        <Form.Group>
-          <Form.Label htmlFor="description">Description</Form.Label>
-          <Form.Control
-            id="description"
-            type="text"
-            name="description"
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="dueDate">Due Date</Form.Label>
-          <Form.Control
-            id="dueDate"
-            type="date"
-            name="dueDate"
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Button type="submit">Add Task</Button>
-        </Form.Group>
-      </Form>
+      <MDBRow>
+        <MDBCol>
+          <form onSubmit={handleTaskSubmission} style={{ width: '50%' }}>
+            <p className="h4 text-center mb-4">New Task</p>
+            <label htmlFor="description" className="grey-text">
+              Description
+            </label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              className="form-control"
+              onChange={handleChange}
+            />
+            <br />
+            <label htmlFor="dueDate" className="grey-text">
+              Due Date
+            </label>
+            <input
+              type="date"
+              id="dueDate"
+              name="dueDate"
+              className="form-control"
+              onChange={handleChange}
+            />
+            <div className="text-center mt-4">
+              <MDBBtn color="blue" type="submit">
+                Add Task!
+              </MDBBtn>
+            </div>
+          </form>
+        </MDBCol>
+      </MDBRow>
     </MDBContainer>
   );
 };
-
-export default TaskForm;
+export default TaskFormV2;

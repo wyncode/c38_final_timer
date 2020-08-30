@@ -77,7 +77,11 @@ class ChartsPage extends React.Component {
               <MDBBox size="sm" tag="p" mb={0} className="bq-title">
                 You've been Productive lately!
               </MDBBox>
-              <p>Feel free to play around with your preferences!</p>
+              <p>
+                {' '}
+                Play around with your preferences, explore your different tasks
+                and map your progress!
+              </p>
             </MDBTypography>
             <Line data={this.state.dataLine} options={{ responsive: true }} />
           </MDBCol>

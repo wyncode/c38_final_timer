@@ -8,15 +8,12 @@ const Tasks = () => {
     <div>
       <MDBView>
         <UsersNav />
-        <MDBContainer
-          style={{ height: '100%', width: '85%' }}
-          className="d-flex justify-content-center black-text align-items-center"
-        >
-          <MDBRow style={{ width: '85%' }}>
+        <MDBContainer style={{ marginTop: '100px' }} fluid>
+          <MDBRow>
+            <MDBCol>This will be where the task list renders</MDBCol>
             <MDBCol>
-              <h1>Tasks go here in list</h1>
+              <TaskForm />
             </MDBCol>
-            <MDBRow></MDBRow>
           </MDBRow>
         </MDBContainer>
       </MDBView>
