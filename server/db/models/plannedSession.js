@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const sessionSchema = new mongoose.Schema(
+const plannedSessionSchema = new mongoose.Schema(
   {
     description: {
       type: String,
@@ -39,16 +39,18 @@ const sessionSchema = new mongoose.Schema(
   }
 );
 // Converts dates to readable format
-sessionSchema.methods.toJSON = function () {
-  const session = this;
-  const sessionObject = session.toObject();
-  if (sessionObject.start) {
-    sessionObject.start = moment(sessionObject.dueDate).format('LLL');
+plannedSessionSchema.methods.toJSON = function () {
+  const plannedSession = this;
+  const plannedSessionObject = session.toObject();
+  if (plannedSessionObject.start) {
+    plannedSessionObject.start = moment(plannedSessionObject.start).format(
+      'LLL'
+    );
   }
-  if (sessionObject.end) {
-    sessionObject.end = moment(sessionObject.end).format('LLL');
+  if (plannedSessionObject.end) {
+    plannedSessionObject.end = moment(plannedSessionObject.end).format('LLL');
   }
 };
-const Session = mongoose.model('Session', sessionSchema);
+const PlannedSession = mongoose.model('PlannedSession', plannedSessionSchema);
 
-module.exports = Session;
+module.exports = PlannedSession;

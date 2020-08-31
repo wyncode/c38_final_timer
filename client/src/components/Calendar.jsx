@@ -1,31 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { MDBContainer, MDBView } from 'mdbreact';
 import UsersNav from './UsersNav';
+import axios from 'axios';
+import { AppContext } from '../context/AppContext';
+import PlannedSessionAdder from './PlannedSessionAdd';
 
 const Calendar = () => {
   const [eventID, setEventID] = useState(1);
-
-  const handleDateSelect = (selectInfo) => {
-    let title = prompt('Please enter a new title for your event');
-    let calendarApi = selectInfo.view.calendar;
-
-    calendarApi.unselect(); // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        id: eventID,
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay
-      });
-      setEventID(eventID + 1);
-    }
-  };
+  const [plannedSessionData, setPlannedSessionData] = useState(null);
+  const { tasks, setLoading } = useContext(AppContext);
 
   const handleEventClick = (clickInfo) => {
     if (
@@ -51,12 +38,13 @@ const Calendar = () => {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           }}
+          events={[{}]}
           initialView="dayGridMonth"
           editable={true}
           selectable={true}
           selectMirror={true}
           dayMaxEvents={true}
-          select={handleDateSelect}
+          // select={handleDateSelect}
           eventClick={handleEventClick}
           // eventsSet={handleEvents}
           //-- these will communicate with Database
@@ -65,6 +53,7 @@ const Calendar = () => {
           // eventRemove={function () {}}
         />
       </MDBContainer>
+      <PlannedSessionAdder />
     </MDBView>
   );
 };

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Session = require('./session');
+const PlannedSession = require('./plannedSession');
 const moment = require('moment');
 
 const taskSchema = new mongoose.Schema(
@@ -7,7 +8,8 @@ const taskSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      unique: true
     },
     completed: {
       type: Boolean,
@@ -17,7 +19,7 @@ const taskSchema = new mongoose.Schema(
       type: Number,
       default: 1
     },
-    startDate: {
+    dueDate: {
       type: Date
     },
     owner: {
@@ -32,8 +34,15 @@ const taskSchema = new mongoose.Schema(
 // creates relatonship between task and session
 taskSchema.virtual('sessions', {
   ref: 'Session',
-  localField: '_id',
-  foreignField: 'owner'
+  localField: 'name',
+  foreignField: 'taskID'
+});
+
+// creates relatonship between task and plannedSession
+taskSchema.virtual('plannedSessions', {
+  ref: 'PlannedSession',
+  localField: 'name',
+  foreignField: 'taskID'
 });
 
 // Converts dates to readable format
@@ -51,6 +60,15 @@ taskSchema.pre('remove', async function (next) {
   const task = this;
   await Session.deleteMany({
     taskId: task._id
+  });
+  next();
+});
+
+// Delete user sessions when a task is removed.
+taskSchema.pre('remove', async function (next) {
+  const task = this;
+  await PlannedSession.deleteMany({
+    taskId: task.name
   });
   next();
 });

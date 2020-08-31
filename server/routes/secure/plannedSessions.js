@@ -1,11 +1,13 @@
 const router = require('express').Router(),
   mongoose = require('mongoose'),
-  Session = require('../../db/models/session');
+  PlannedSession = require('../../db/models/plannedSession');
 
 // Get all sessions associated with a Task
-router.get('/api/sessions/:taskName', async (req, res) => {
+router.get('/api/plannedSessions/:taskName', async (req, res) => {
   try {
-    const session = await Session.find({ taskName: req.params.taskName });
+    const session = await PlannedSession.find({
+      taskName: req.params.taskName
+    });
     res.json(session);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
@@ -13,24 +15,24 @@ router.get('/api/sessions/:taskName', async (req, res) => {
 });
 
 // Get a specific session
-router.get('/api/session/:id', async (req, res) => {
+router.get('/api/plannedSession/:id', async (req, res) => {
   const _id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(400).send('Not a valid session id');
 
   try {
-    const session = await Session.find({ _id });
-    if (!session) return res.status(404).send();
+    const plannedSession = await PlannedSession.find({ _id });
+    if (!plannedSession) return res.status(404).send();
 
-    res.json(session);
+    res.json(plannedSession);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }
 });
 
 // Create a session
-router.post('/api/session', async (req, res) => {
-  const session = await new Session({
+router.post('/api/plannedSession', async (req, res) => {
+  const session = await new PlannedSession({
     ...req.body,
     taskId: req.params.taskId
   });
@@ -43,13 +45,13 @@ router.post('/api/session', async (req, res) => {
 });
 
 // Delete a session
-router.delete('/api/session/:id', async (req, res) => {
+router.delete('/api/plannedSession/:id', async (req, res) => {
   try {
-    const session = await Session.findOneAndDelete({
+    const plannedSession = await PlannedSession.findOneAndDelete({
       _id: req.params.id
     });
-    if (!session) return res.status(404).send();
-    res.json(session);
+    if (!plannedSession) return res.status(404).send();
+    res.json(plannedSession);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }
