@@ -77,6 +77,34 @@ const TimerClock = () => {
 
   return (
     <div className="App">
+      <div id="pomodoro-timer" style={{ marginBottom: '20px' }}>
+        {' '}
+        <CountdownCircleTimer
+          onComplete={() => {
+            return [true]; // repeat animation in 1.5 seconds
+          }}
+          isPlaying
+          duration={counter}
+          colors={[
+            ['#8FC93A', 0.33],
+            ['#FFC914', 0.2],
+            ['#CC5803', 0.2],
+            ['#D62828', 0.2]
+          ]}
+        >
+          {renderTime}
+        </CountdownCircleTimer>
+      </div>
+      <MDBAnimation type="pulse" count={7} duration="300ms">
+        <MDBBtn outline color="blue" size="md" onClick={toggle}>
+          <MDBIcon icon="play" />
+          <span></span>
+          <MDBIcon icon="pause" />
+        </MDBBtn>
+        <MDBBtn outline color="orange" size="md" onclick={reset}>
+          <MDBIcon icon="stop" />
+        </MDBBtn>
+      </MDBAnimation>
       <MDBContainer style={{ width: '40%' }}>
         <form onSubmit={handleBreakTime}>
           <MDBInput
@@ -86,7 +114,7 @@ const TimerClock = () => {
             name="break"
             outline
           ></MDBInput>
-          <MDBBtn gradient="blue" className="breaktime" size="sm">
+          <MDBBtn gradient="blue" size="sm" waves-effect>
             {' '}
             BREAK{' '}
           </MDBBtn>
@@ -101,12 +129,11 @@ const TimerClock = () => {
             onChange={handleChange}
             outline
           ></MDBInput>
-          <MDBBtn gradient="blue" className="worktime" size="sm">
+          <MDBBtn gradient="blue" size="sm" waves-effect>
             POMODORO
           </MDBBtn>
         </form>
       </MDBContainer>
-
       <div>
         <h1>{counter}</h1>
       </div>
@@ -122,29 +149,6 @@ const TimerClock = () => {
             outline
           />
         </div>
-        <div id="pomodoro-timer">
-          {' '}
-          <CountdownCircleTimer
-            onComplete={() => {
-              return [true]; // repeat animation in 1.5 seconds
-            }}
-            isPlaying
-            duration={counter}
-            colors={[['#4e89ae', 0.33], ['#43658b', 0.33], ['#ed6663']]}
-          >
-            {renderTime}
-          </CountdownCircleTimer>
-        </div>
-        <MDBAnimation type="pulse" count={7} duration="300ms">
-          <MDBBtn outline color="blue" size="sm" onClick={toggle}>
-            <MDBIcon icon="play" />
-            <span></span>
-            <MDBIcon icon="pause" />
-          </MDBBtn>
-          <MDBBtn outline color="orange" size="sm" onclick={reset}>
-            <MDBIcon icon="stop" />
-          </MDBBtn>
-        </MDBAnimation>
       </div>
     </div>
   );

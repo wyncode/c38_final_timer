@@ -33,16 +33,6 @@ const Home = () => {
               >
                 WynIt.
               </MDBTypography>
-              <MDBAnimation type="pulse" count={4} duration="300ms">
-                <MDBBtn outline color="blue" size="sm">
-                  <MDBIcon icon="play" />
-                  <span></span>
-                  <MDBIcon icon="pause" />
-                </MDBBtn>
-                <MDBBtn outline color="orange" size="sm">
-                  <MDBIcon icon="stop" />
-                </MDBBtn>
-              </MDBAnimation>
             </MDBCol>
             <MDBRow style={{ paddingBottom: '20px', paddingTop: '10px' }}>
               <MDBCol>
