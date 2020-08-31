@@ -85,6 +85,8 @@ const TimerClock = () => {
           }}
           isPlaying
           duration={counter}
+          strokeWidth="22"
+          size="350"
           colors={[
             ['#8FC93A', 0.33],
             ['#FFC914', 0.2],
@@ -134,21 +136,17 @@ const TimerClock = () => {
           </MDBBtn>
         </form>
       </MDBContainer>
+
       <div>
-        <h1>{counter}</h1>
-      </div>
-      <div>
-        <div>
-          <MDBInput
-            label="Session Name"
-            onChange={handleChange}
-            type="text"
-            id="pomodoro-clock-task"
-            name="sessionName"
-            placeholder="Enter your task..."
-            outline
-          />
-        </div>
+        <MDBInput
+          label="Session Name"
+          onChange={handleChange}
+          type="text"
+          id="pomodoro-clock-task"
+          name="sessionName"
+          placeholder="Enter your task..."
+          outline
+        />
       </div>
     </div>
   );

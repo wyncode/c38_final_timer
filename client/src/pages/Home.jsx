@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  MDBContainer,
-  MDBView,
-  MDBBtn,
-  MDBRow,
-  MDBCol,
-  MDBTypography,
-  MDBAnimation,
-  MDBIcon
-} from 'mdbreact';
+import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
 import Nav from '../components/Nav';
 import TimerClock from '../components/TimerClock';
 const Home = () => {
@@ -23,7 +14,7 @@ const Home = () => {
         >
           <MDBRow style={{ width: '100%' }}>
             <MDBCol
-              style={{ paddingBottom: '20px', paddingTop: '40px' }}
+              style={{ paddingBottom: '20px', paddingTop: '60px' }}
               className="text-center text-md-center"
             >
               <MDBTypography
