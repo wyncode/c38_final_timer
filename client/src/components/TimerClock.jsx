@@ -1,31 +1,33 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import "./timer.css";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { MDBInput, MDBBtn, MDBContainer } from "mdbreact";
 
 const TimerClock = () => {
-  const [formData, setFormData] = React.useState(null);
-  const [counter, setCounter] = React.useState(25);
-  const [breaktime, setBreakTime] = React.useState(5);
-  const [worktime, setWorkTime] = React.useState(25);
-  const [isActive, setIsActive] = React.useState(true);
+  const [formData, setFormData] = useState(null);
+  const [counter, setCounter] = useState(25);
+  const [breaktime, setBreakTime] = useState(5);
+  const [worktime, setWorkTime] = useState(25);
+  const [isActive, setIsActive] = useState(true);
+  const [key, setKey] = useState(0);
   //const [currentSession, setCurrentSession] = React.useState('New Task')
 
+  
+  //sets the session to active 
   const toggle = () => {
     setIsActive(!isActive);
   };
 
+  //resets count to 0
   const reset = () => {
     setCounter(0);
     setIsActive(false);
+    setKey(prevKey => prevKey + 1);
   };
-
-  //
 
   //records data from inputs
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData);
   };
 
   //sets breaktime
@@ -33,7 +35,7 @@ const TimerClock = () => {
     event.preventDefault();
     setBreakTime(event.target.break.value);
     setCounter(breaktime);
-    console.log(breaktime);
+    setKey(prevKey => prevKey + 1);
   };
 
   //sets worktime
@@ -41,7 +43,7 @@ const TimerClock = () => {
     event.preventDefault();
     setWorkTime(event.target.work.value);
     setCounter(worktime);
-    console.log(worktime);
+    setKey(prevKey => prevKey + 1);
   };
 
   // make this into a new component
@@ -59,7 +61,7 @@ const TimerClock = () => {
     );
   };
 
-  React.useEffect(() => {
+    useEffect(() => {
     if (isActive) {
       const timer =
         counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -74,22 +76,20 @@ const TimerClock = () => {
       <MDBContainer>
       <form onSubmit={handleBreakTime}>
         <MDBInput label="Break Time" type="text" onChange={handleChange} name="break" outline></MDBInput>
-        <button gradient="blue" className="breaktime"> BREAK </button>
+        <button gradient="blue" className="breaktime" valueDefault={breaktime}> BREAK  </button>
       </form>
       </MDBContainer>
       <MDBContainer>
       <form onSubmit={handleWorkTime}>
         <MDBInput label="Work Time" type="text" name="work" onChange={handleChange} outline></MDBInput>
-        <button gradient="blue" className="worktime">POMODORO</button>
+        <button gradient="blue" className="worktime" valueDefault={worktime}>POMODORO</button>
       </form>
       </MDBContainer>
       <div id="pomodoro-timer">
         {" "}
         <CountdownCircleTimer
-          onComplete={() => {
-            return [true]; // repeat animation in 1.5 seconds
-          }}
-          isPlaying
+          key={key}
+          isPlaying={isActive}
           duration={counter}
           colors={[["#4e89ae", 0.33], ["#43658b", 0.33], ["#ed6663"]]}
         >
