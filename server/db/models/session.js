@@ -46,11 +46,12 @@ sessionSchema.methods.toJSON = function () {
   const session = this;
   const sessionObject = session.toObject();
   if (sessionObject.start) {
-    sessionObject.start = moment(sessionObject.dueDate).format('LLL');
+    sessionObject.start = moment(sessionObject.start).format('LLL');
   }
   if (sessionObject.end) {
     sessionObject.end = moment(sessionObject.end).format('LLL');
   }
+  return sessionObject;
 };
 const Session = mongoose.model('Session', sessionSchema);
 

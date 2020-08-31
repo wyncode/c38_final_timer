@@ -6,7 +6,7 @@ const router = require('express').Router(),
 // Get all sessions
 router.get('/api/sessions', async (req, res) => {
   try {
-    const sessions = await Session.find({});
+    const sessions = await Session.find();
     console.log('SESSIONS :', sessions, sessions.length);
     res.json(sessions);
   } catch (e) {
@@ -51,7 +51,8 @@ router.post('/api/session/', async (req, res) => {
     const newSession = await session.save();
     task.sessions.push(newSession._id);
     await task.save();
-    res.status(201).json(session);
+    console.log('SESSION: ', newSession);
+    res.json({ data: newSession });
   } catch (e) {
     res.status(400).json({ error: e.toString() });
   }

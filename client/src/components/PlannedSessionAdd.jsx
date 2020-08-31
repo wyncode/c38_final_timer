@@ -26,7 +26,7 @@ const PlannedSessionAdder = () => {
     setNewSession({ ...newSession, [e.target.name]: e.target.value });
   };
 
-  console.log({ ...newSession, taskName });
+  // console.log({ ...newSession, taskName });
 
   const handleNewSessionSubmit = async (e) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ const PlannedSessionAdder = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         setNewSession(null);
       })
       .catch((error) => console.log(error));

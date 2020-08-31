@@ -18,10 +18,19 @@ const Calendar = () => {
     axios
       .get('/api/sessions', { withCredentials: true })
       .then((response) => {
-        //setSessionsData(response.data);
-        console.log(response);
+        let eventData = [];
+        response.data.map((session) => {
+          return eventData.push({
+            id: session._id,
+            title: session.description,
+            start: session.start,
+            end: session.end
+          });
+        });
+        setSessionsData(eventData);
+        console.log(eventData);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.toString()));
   }, []);
 
   const handleEventClick = (clickInfo) => {
@@ -55,15 +64,7 @@ const Calendar = () => {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           }}
-          // events={sessionsData.map((session) => {
-          //   [
-          //     {
-          //       title: `${session.name}-${session.taskName}`,
-          //       start: session.start,
-          //       end: session.end
-          //     }
-          //   ];
-          // })}
+          events={sessionData}
           initialView="dayGridMonth"
           editable={true}
           selectable={true}
