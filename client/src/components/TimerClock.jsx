@@ -1,7 +1,13 @@
-import React from "react";
-import "./timer.css";
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { MDBInput, MDBBtn, MDBContainer } from "mdbreact";
+import React from 'react';
+import './timer.css';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import {
+  MDBInput,
+  MDBBtn,
+  MDBContainer,
+  MDBIcon,
+  MDBAnimation
+} from 'mdbreact';
 
 const TimerClock = () => {
   const [formData, setFormData] = React.useState(null);
@@ -71,47 +77,74 @@ const TimerClock = () => {
 
   return (
     <div className="App">
-      <MDBContainer>
-      <form onSubmit={handleBreakTime}>
-        <MDBInput label="Break Time" type="text" onChange={handleChange} name="break" outline></MDBInput>
-        <button gradient="blue" className="breaktime"> BREAK </button>
-      </form>
+      <MDBContainer style={{ width: '40%' }}>
+        <form onSubmit={handleBreakTime}>
+          <MDBInput
+            label="Break Time"
+            type="text"
+            onChange={handleChange}
+            name="break"
+            outline
+          ></MDBInput>
+          <MDBBtn gradient="blue" className="breaktime" size="sm">
+            {' '}
+            BREAK{' '}
+          </MDBBtn>
+        </form>
       </MDBContainer>
-      <MDBContainer>
-      <form onSubmit={handleWorkTime}>
-        <MDBInput label="Work Time" type="text" name="work" onChange={handleChange} outline></MDBInput>
-        <button gradient="blue" className="worktime">POMODORO</button>
-      </form>
+      <MDBContainer style={{ width: '40%' }}>
+        <form onSubmit={handleWorkTime}>
+          <MDBInput
+            label="Work Time"
+            type="text"
+            name="work"
+            onChange={handleChange}
+            outline
+          ></MDBInput>
+          <MDBBtn gradient="blue" className="worktime" size="sm">
+            POMODORO
+          </MDBBtn>
+        </form>
       </MDBContainer>
-      <div id="pomodoro-timer">
-        {" "}
-        <CountdownCircleTimer
-          onComplete={() => {
-            return [true]; // repeat animation in 1.5 seconds
-          }}
-          isPlaying
-          duration={counter}
-          colors={[["#4e89ae", 0.33], ["#43658b", 0.33], ["#ed6663"]]}
-        >
-          {renderTime}
-        </CountdownCircleTimer>
-      </div>
+
       <div>
         <h1>{counter}</h1>
       </div>
       <div>
         <div>
-          <MDBInput label="Session Name"
+          <MDBInput
+            label="Session Name"
             onChange={handleChange}
             type="text"
             id="pomodoro-clock-task"
             name="sessionName"
             placeholder="Enter your task..."
-          outline 
+            outline
           />
         </div>
-        <MDBBtn gradient="blue" onClick={toggle}> START/ PAUSE </MDBBtn>
-        <MDBBtn gradient="blue" onClick={reset}> RESET </MDBBtn>
+        <div id="pomodoro-timer">
+          {' '}
+          <CountdownCircleTimer
+            onComplete={() => {
+              return [true]; // repeat animation in 1.5 seconds
+            }}
+            isPlaying
+            duration={counter}
+            colors={[['#4e89ae', 0.33], ['#43658b', 0.33], ['#ed6663']]}
+          >
+            {renderTime}
+          </CountdownCircleTimer>
+        </div>
+        <MDBAnimation type="pulse" count={7} duration="300ms">
+          <MDBBtn outline color="blue" size="sm" onClick={toggle}>
+            <MDBIcon icon="play" />
+            <span></span>
+            <MDBIcon icon="pause" />
+          </MDBBtn>
+          <MDBBtn outline color="orange" size="sm" onclick={reset}>
+            <MDBIcon icon="stop" />
+          </MDBBtn>
+        </MDBAnimation>
       </div>
     </div>
   );
