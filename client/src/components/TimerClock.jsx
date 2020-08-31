@@ -78,40 +78,7 @@ const TimerClock = () => {
 
   return (
     <div className="App">
-      <MDBContainer>
-        <form onSubmit={handleBreakTime}>
-          <MDBInput
-            label="Break Time"
-            type="text"
-            onChange={handleChange}
-            name="break"
-            outline
-          ></MDBInput>
-          <button
-            gradient="blue"
-            className="breaktime"
-            valueDefault={breaktime}
-          >
-            {' '}
-            BREAK{' '}
-          </button>
-        </form>
-      </MDBContainer>
-      <MDBContainer>
-        <form onSubmit={handleWorkTime}>
-          <MDBInput
-            label="Work Time"
-            type="text"
-            name="work"
-            onChange={handleChange}
-            outline
-          ></MDBInput>
-          <button gradient="blue" className="worktime" valueDefault={worktime}>
-            POMODORO
-          </button>
-        </form>
-      </MDBContainer>
-      <div id="pomodoro-timer">
+      <div id="pomodoro-timer" style={{ marginBottom: '20px' }}>
         {' '}
         <CountdownCircleTimer
           key={key}
@@ -139,6 +106,7 @@ const TimerClock = () => {
           <MDBIcon icon="stop" />
         </MDBBtn>
       </MDBAnimation>
+
       <MDBContainer style={{ width: '40%' }}>
         <form onSubmit={handleBreakTime}>
           <MDBInput
@@ -148,8 +116,13 @@ const TimerClock = () => {
             name="break"
             outline
           ></MDBInput>
-          <MDBBtn gradient="blue" size="sm" waves-effect>
-            BREAK
+          <MDBBtn
+            gradient="blue"
+            size="sm"
+            waves-effect
+            valueDefault={breaktime}
+          >
+            Break
           </MDBBtn>
         </form>
       </MDBContainer>
@@ -162,7 +135,12 @@ const TimerClock = () => {
             onChange={handleChange}
             outline
           ></MDBInput>
-          <MDBBtn gradient="blue" size="sm" waves-effect>
+          <MDBBtn
+            gradient="blue"
+            size="sm"
+            waves-effect
+            valueDefault={worktime}
+          >
             POMODORO
           </MDBBtn>
         </form>
