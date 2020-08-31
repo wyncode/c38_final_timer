@@ -6,6 +6,7 @@ const AppContext = createContext();
 const AppContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [tasks, setTasks] = useState([]);
+  const [session, setSession] = useState([]);
   const [loading, setLoading] = useState(false);
   const user = sessionStorage.getItem('user');
 
@@ -13,7 +14,7 @@ const AppContextProvider = ({ children }) => {
     // incase user refreshes local session is cleared.
     if (user && !currentUser) {
       axios
-        .get(`/api/users/me`, {
+        .get('/api/users/me', {
           withCredentials: true
         })
         .then(({ data }) => {
@@ -31,7 +32,9 @@ const AppContextProvider = ({ children }) => {
         loading,
         setLoading,
         tasks,
-        setTasks
+        setTasks,
+        session,
+        setSession
       }}
     >
       {children}

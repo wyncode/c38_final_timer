@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDBNav, MDBNavItem, MDBNavLink } from 'mdbreact';
 
-const Navigation = () => {
+const Nav = () => {
   return (
     <MDBNav
       color="blue-gradient"
@@ -34,4 +34,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Nav;
