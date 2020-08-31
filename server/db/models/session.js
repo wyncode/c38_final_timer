@@ -17,7 +17,7 @@ const sessionSchema = new mongoose.Schema(
     },
     sessionType: {
       type: String,
-      enum: ['pomo', 'default', 'custom']
+      enum: ['pomo', 'default', 'custom', 'planned']
     },
     start: {
       type: [Date]

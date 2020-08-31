@@ -6,6 +6,7 @@ const AppContext = createContext();
 const AppContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [tasks, setTasks] = useState([]);
+  const [taskName, setTaskName] = useState([]);
   const [session, setSession] = useState([]);
   const [loading, setLoading] = useState(false);
   const user = sessionStorage.getItem('user');
@@ -33,6 +34,8 @@ const AppContextProvider = ({ children }) => {
         setLoading,
         tasks,
         setTasks,
+        taskName,
+        setTaskName,
         session,
         setSession
       }}

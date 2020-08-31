@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   MDBContainer,
   MDBBtn,
@@ -6,36 +6,35 @@ import {
   MDBModalBody,
   MDBModalHeader,
   MDBModalFooter,
-  MDBInput,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem
+  MDBInput
 } from 'mdbreact';
 import { Form } from 'react-bootstrap';
 import axios from 'axios';
+import TaskSelector from './TaskSelector';
+import { AppContext } from '../context/AppContext';
 
 const PlannedSessionAdder = () => {
   const [modal, setModal] = useState(false);
   const [newSession, setNewSession] = useState(null);
+  const { taskName } = useContext(AppContext);
 
   const modalToggle = () => {
     setModal(!modal);
   };
-  // const handleChange = (e) => {
-  //   setNewSession({ ...newSession, [e.target.name]: e.target.value });
-  // };
+  const handleChange = (e) => {
+    setNewSession({ ...newSession, [e.target.name]: e.target.value });
+  };
 
-  // const handleNewSessionSubmit = async (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post('/api/plannedSession', newSession, { withCredentials: true })
-  //     .then((res) => {
-  //       console.log(res);
-  //       setNewSession(null);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
+  const handleNewSessionSubmit = async (e) => {
+    e.preventDefault();
+    axios
+      .post('/api/plannedSession', newSession, { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        setNewSession(null);
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <MDBContainer className="container d-flex flex-column align-items-center justify-content-center">
@@ -45,40 +44,36 @@ const PlannedSessionAdder = () => {
           Add a Productivity Session
         </MDBModalHeader>
         <MDBModalBody>
-          <form>
+          <form onSubmit={handleNewSessionSubmit}>
             <div className="grey-text">
               <MDBInput
                 label="Session Title"
-                name="Session Title"
+                name="description"
                 type="text"
                 validate
                 error="wrong"
                 success="right"
+                onChange={handleChange}
               />
-              <MDBDropdown dropright className="mb-5">
-                <MDBDropdownToggle caret color="primary">
-                  Associated Task
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <MDBDropdownItem>Studying</MDBDropdownItem>
-                  <MDBDropdownItem>Exercise</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
+              <TaskSelector />
               <label>Start Date</label>
-              <MDBInput name="StartDate" type="datetime-local" />
+              <MDBInput
+                name="start"
+                type="datetime-local"
+                onChange={handleChange}
+              />
               <label>End Date</label>
-              <MDBInput name="EndDate" type="datetime-local" />
+              <MDBInput
+                name="end"
+                type="datetime-local"
+                onChange={handleChange}
+              />
             </div>
+            <MDBBtn color="primary" type="submit">
+              Create
+            </MDBBtn>
           </form>
         </MDBModalBody>
-        <MDBModalFooter>
-          <MDBBtn color="secondary" onClick={modalToggle}>
-            Close
-          </MDBBtn>
-          <MDBBtn color="primary" type="submit">
-            Create
-          </MDBBtn>
-        </MDBModalFooter>
       </MDBModal>
     </MDBContainer>
   );
