@@ -1,12 +1,12 @@
 import React from 'react';
 import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
-import Nav from '../components/Nav';
+import UsersNav from '../components/UsersNav';
 import TimerClock from '../components/TimerClock';
 const Home = () => {
   return (
     <div>
       <MDBView>
-        <Nav />
+        <UsersNav />
         <MDBContainer
           fluid
           style={{ background: '#0A1045', height: '100%', width: '100%' }}

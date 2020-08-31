@@ -117,8 +117,7 @@ const TimerClock = () => {
             outline
           ></MDBInput>
           <MDBBtn gradient="blue" size="sm" waves-effect>
-            {' '}
-            BREAK{' '}
+            BREAK
           </MDBBtn>
         </form>
       </MDBContainer>
