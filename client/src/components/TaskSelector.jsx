@@ -8,7 +8,7 @@ import {
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 
-const TaskSelector = () => {
+const TaskSelector = ({ setTaskId }) => {
   const { tasks, setTasks, setTaskName, taskName } = useContext(AppContext);
 
   useEffect(() => {
@@ -29,13 +29,17 @@ const TaskSelector = () => {
       <MDBDropdownMenu>
         {tasks.map((task) => (
           <MDBDropdownItem
-            onClick={() => setTaskName(task.name)}
+            onClick={() => {
+              setTaskName(task.name);
+              setTaskId(task._id);
+            }}
             key={task.name}
           >
             {task.name}
           </MDBDropdownItem>
         ))}
       </MDBDropdownMenu>
+      {<label>{taskName}</label>}
     </MDBDropdown>
   );
   console.log(taskName);

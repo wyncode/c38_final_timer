@@ -24,18 +24,24 @@ const taskSchema = new mongoose.Schema(
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
-    }
+    },
+    sessions: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Session'
+      }
+    ]
   },
   {
     timestamps: true
   }
 );
-// creates relatonship between task and session
-taskSchema.virtual('sessions', {
-  ref: 'Session',
-  localField: 'name',
-  foreignField: 'taskID'
-});
+// // creates relatonship between task and session
+// taskSchema.virtual('sessions', {
+//   ref: 'Session',
+//   localField: 'name',
+//   foreignField: 'taskId'
+// });
 
 // Converts dates to readable format
 taskSchema.methods.toJSON = function () {

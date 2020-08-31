@@ -1,6 +1,18 @@
 const router = require('express').Router(),
   mongoose = require('mongoose'),
-  Session = require('../../db/models/session');
+  Session = require('../../db/models/session'),
+  Task = require('../../db/models/task');
+
+// Get all sessions
+router.get('/api/sessions', async (req, res) => {
+  try {
+    const sessions = await Session.find({});
+    console.log('SESSIONS :', sessions, sessions.length);
+    res.json(sessions);
+  } catch (e) {
+    res.status(500).json({ error: e.toString() });
+  }
+});
 
 // Get all sessions associated with a Task
 router.get('/api/sessions/:taskName', async (req, res) => {
@@ -29,13 +41,16 @@ router.get('/api/session/:id', async (req, res) => {
 });
 
 // Create a session
-router.post('/api/session', async (req, res) => {
+router.post('/api/session/', async (req, res) => {
   const session = await new Session({
     ...req.body,
-    taskId: req.params.taskId
+    taskId: req.body.taskId
   });
   try {
-    session.save();
+    const task = await Task.findById(req.body.taskId);
+    const newSession = await session.save();
+    task.sessions.push(newSession._id);
+    await task.save();
     res.status(201).json(session);
   } catch (e) {
     res.status(400).json({ error: e.toString() });

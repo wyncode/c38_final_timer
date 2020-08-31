@@ -8,7 +8,6 @@ import {
   MDBModalFooter,
   MDBInput
 } from 'mdbreact';
-import { Form } from 'react-bootstrap';
 import axios from 'axios';
 import TaskSelector from './TaskSelector';
 import { AppContext } from '../context/AppContext';
@@ -16,19 +15,27 @@ import { AppContext } from '../context/AppContext';
 const PlannedSessionAdder = () => {
   const [modal, setModal] = useState(false);
   const [newSession, setNewSession] = useState(null);
-  const { taskName } = useContext(AppContext);
+  const [taskId, setTaskId] = useState(null);
+  const { taskName, setTaskName } = useContext(AppContext);
 
   const modalToggle = () => {
     setModal(!modal);
+    setTaskName(null);
   };
   const handleChange = (e) => {
     setNewSession({ ...newSession, [e.target.name]: e.target.value });
   };
 
+  console.log({ ...newSession, taskName });
+
   const handleNewSessionSubmit = async (e) => {
     e.preventDefault();
     axios
-      .post('/api/plannedSession', newSession, { withCredentials: true })
+      .post(
+        '/api/session',
+        { ...newSession, taskName, taskId },
+        { withCredentials: true }
+      )
       .then((res) => {
         console.log(res);
         setNewSession(null);
@@ -55,7 +62,7 @@ const PlannedSessionAdder = () => {
                 success="right"
                 onChange={handleChange}
               />
-              <TaskSelector />
+              <TaskSelector setTaskId={setTaskId} />
               <label>Start Date</label>
               <MDBInput
                 name="start"

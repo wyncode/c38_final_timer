@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -11,8 +11,18 @@ import PlannedSessionAdder from './PlannedSessionAdd';
 
 const Calendar = () => {
   const [eventID, setEventID] = useState(1);
-  const [plannedSessionData, setPlannedSessionData] = useState(null);
+  const [sessionData, setSessionsData] = useState([]);
   const { tasks, setLoading } = useContext(AppContext);
+
+  useEffect(() => {
+    axios
+      .get('/api/sessions', { withCredentials: true })
+      .then((response) => {
+        //setSessionsData(response.data);
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleEventClick = (clickInfo) => {
     if (
@@ -21,14 +31,21 @@ const Calendar = () => {
       )
     ) {
       clickInfo.event.remove();
+      axios
+        .delete('/api/session/:id', { withCredentials: true })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => console.log(error));
     }
   };
+  // console.log(sessionData);
 
   return (
     <MDBView>
       <UsersNav />
       <MDBContainer
-        className="mt-5"
+        className="mt-1"
         style={{ width: '70%', paddingTop: '40px' }}
       >
         <FullCalendar
@@ -38,7 +55,15 @@ const Calendar = () => {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           }}
-          events={[{}]}
+          // events={sessionsData.map((session) => {
+          //   [
+          //     {
+          //       title: `${session.name}-${session.taskName}`,
+          //       start: session.start,
+          //       end: session.end
+          //     }
+          //   ];
+          // })}
           initialView="dayGridMonth"
           editable={true}
           selectable={true}

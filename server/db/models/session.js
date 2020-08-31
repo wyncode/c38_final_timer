@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const sessionSchema = new mongoose.Schema(
   {
@@ -20,10 +21,12 @@ const sessionSchema = new mongoose.Schema(
       enum: ['pomo', 'default', 'custom', 'planned']
     },
     start: {
-      type: [Date]
+      type: [Date],
+      required: true
     },
     end: {
-      type: [Date]
+      type: [Date],
+      required: true
     },
     allDay: {
       type: Boolean,
