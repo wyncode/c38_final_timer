@@ -17,7 +17,7 @@ const PlannedSessionAdder = () => {
   const [modal, setModal] = useState(false);
   const [newSession, setNewSession] = useState(null);
   const [taskId, setTaskId] = useState(null);
-  const { taskName, setTaskName } = useContext(AppContext);
+  const { taskName, setTaskName, setLoading } = useContext(AppContext);
 
   const modalToggle = () => {
     setModal(!modal);
@@ -26,11 +26,9 @@ const PlannedSessionAdder = () => {
   const handleChange = (e) => {
     setNewSession({ ...newSession, [e.target.name]: e.target.value });
   };
-
-  // console.log({ ...newSession, taskName });
-
   const handleNewSessionSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     axios
       .post(
         '/api/session',
@@ -41,6 +39,7 @@ const PlannedSessionAdder = () => {
         console.log(res.data);
         setNewSession(null);
         setModal(!modal);
+        setLoading(false);
       })
       .catch((error) => console.log(error));
   };
