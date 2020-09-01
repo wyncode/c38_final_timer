@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import FullCalendar from '@fullcalendar/react';
+import FullCalendar, { CalendarApi } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -11,27 +11,17 @@ import PlannedSessionAdder from './PlannedSessionAdd';
 
 const Calendar = () => {
   const [eventID, setEventID] = useState(1);
-  const [sessionData, setSessionsData] = useState([]);
-  const { tasks, setLoading } = useContext(AppContext);
+  const { tasks, setLoading, sessions, setSessions } = useContext(AppContext);
 
   useEffect(() => {
+    //this doesnt work yet
     axios
       .get('/api/sessions', { withCredentials: true })
       .then((response) => {
-        let eventData = [];
-        response.data.map((session) => {
-          return eventData.push({
-            id: session._id,
-            title: session.description,
-            start: session.start,
-            end: session.end
-          });
-        });
-        setSessionsData(eventData);
-        console.log(eventData);
+        setSessions(response.data);
       })
       .catch((error) => console.log(error.toString()));
-  }, []);
+  }, [setSessions]);
 
   const handleEventClick = (clickInfo) => {
     if (
@@ -48,7 +38,7 @@ const Calendar = () => {
         .catch((error) => console.log(error));
     }
   };
-  // console.log(sessionData);
+  console.log(sessions);
 
   return (
     <MDBView>
@@ -64,19 +54,23 @@ const Calendar = () => {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           }}
-          events={sessionData}
+          // events={sessions.map((session) => {
+          //   [
+          //     {
+          //       title: session.description,
+          //       id: session._id,
+          //       start: session.start,
+          //       end: session.end,
+          //       allDay: session.allDay
+          //     }
+          //   ];
+          // })}
           initialView="dayGridMonth"
           editable={true}
           selectable={true}
           selectMirror={true}
           dayMaxEvents={true}
-          // select={handleDateSelect}
           eventClick={handleEventClick}
-          // eventsSet={handleEvents}
-          //-- these will communicate with Database
-          // eventAdd={function () {}}
-          // eventChange={function () {}}
-          // eventRemove={function () {}}
         />
       </MDBContainer>
       <PlannedSessionAdder />

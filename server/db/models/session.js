@@ -18,7 +18,7 @@ const sessionSchema = new mongoose.Schema(
     },
     sessionType: {
       type: String,
-      enum: ['pomo', 'default', 'custom', 'planned']
+      enum: ['spontaneous', 'planned']
     },
     start: {
       type: [Date],
@@ -33,24 +33,17 @@ const sessionSchema = new mongoose.Schema(
       default: false
     },
     duration: {
-      type: Number,
-      default: 60
+      type: Number
     }
   },
   {
     timestamps: true
   }
 );
-// Converts dates to readable format
+
 sessionSchema.methods.toJSON = function () {
   const session = this;
   const sessionObject = session.toObject();
-  if (sessionObject.start) {
-    sessionObject.start = moment(sessionObject.start).format('LLL');
-  }
-  if (sessionObject.end) {
-    sessionObject.end = moment(sessionObject.end).format('LLL');
-  }
   return sessionObject;
 };
 const Session = mongoose.model('Session', sessionSchema);

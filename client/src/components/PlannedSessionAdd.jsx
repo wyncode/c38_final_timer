@@ -11,6 +11,7 @@ import {
 import axios from 'axios';
 import TaskSelector from './TaskSelector';
 import { AppContext } from '../context/AppContext';
+import { Modal } from 'react-bootstrap';
 
 const PlannedSessionAdder = () => {
   const [modal, setModal] = useState(false);
@@ -33,12 +34,13 @@ const PlannedSessionAdder = () => {
     axios
       .post(
         '/api/session',
-        { ...newSession, taskName, taskId },
+        { ...newSession, taskName, taskId, sessionType: 'planned' },
         { withCredentials: true }
       )
       .then((res) => {
         console.log(res.data);
         setNewSession(null);
+        setModal(!modal);
       })
       .catch((error) => console.log(error));
   };
