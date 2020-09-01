@@ -6,32 +6,30 @@ import { MDBContainer, MDBRow, MDBCol, MDBTypography, MDBBox } from 'mdbreact';
 
 const LineChart = () => {
   const [lineChart, setLineChart] = useState({});
-  const [sessionDates, setSessionDates] = useState([]);
-  const [timeSpent, setTimeSpent] = useState([]);
+  const [end, setEnd] = useState([]);
+  const [duration, setDuration] = useState([]);
 
   useEffect(() => {
-    let sessionTempArray = [];
-    let timeSpentTempArray = [];
+    let dateTempArray = [];
+    let durationTempArray = [];
 
     axios
-      .get('/linechart/5f4d3b936ebd6258a651bff5')
+      .get('/api/session', { withCredentials: true })
       .then((response) => {
         console.log(response.data);
         response.data.forEach((item) => {
-          sessionTempArray.push(
-            moment(item.sessionDates[0]).format('MMM Do YY')
-          );
-          timeSpentTempArray.push(item.timeSpent);
+          dateTempArray.push(moment(item.end[0]).format('MMM Do YY'));
+          durationTempArray.push(item.durationSpent);
         });
-        setSessionDates(sessionTempArray);
-        setTimeSpent(timeSpentTempArray);
+        setEnd(dateTempArray);
+        setDuration(durationTempArray);
       })
       .catch(function (error) {
         console.log(error);
       });
-
+    console.log(dateTempArray);
     setLineChart({
-      labels: sessionTempArray,
+      labels: dateTempArray,
       datasets: [
         {
           label: 'Task1 Name',
@@ -51,7 +49,7 @@ const LineChart = () => {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: timeSpentTempArray
+          data: durationTempArray
         }
       ]
     });

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const sessionSchema = new mongoose.Schema(
   {
@@ -7,40 +8,44 @@ const sessionSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
+    taskName: {
+      type: String,
+      required: true
+    },
     taskId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Task'
     },
     sessionType: {
       type: String,
-      enum: ['pomo', 'default', 'custom']
+      enum: ['spontaneous', 'planned']
     },
-    activeSession: {
+    start: {
+      type: [Date],
+      required: true
+    },
+    end: {
+      type: [Date],
+      required: true
+    },
+    allDay: {
       type: Boolean,
       default: false
     },
-    sessionDates: {
-      type: [Date]
-    },
-    timeSpent: {
-      type: Number,
-      default: 60
+    duration: {
+      type: Number
     }
   },
   {
     timestamps: true
   }
 );
-// Converts dates to readable format
+
 sessionSchema.methods.toJSON = function () {
   const session = this;
   const sessionObject = session.toObject();
-  if (sessionObject.dueDate) {
-    sessionObject.dueDate = moment(sessionObject.dueDate).format('YYYY-MM-DD');
-  }
   return sessionObject;
 };
-
 const Session = mongoose.model('Session', sessionSchema);
 
 module.exports = Session;
