@@ -12,6 +12,7 @@ import axios from 'axios';
 import TaskSelector from './TaskSelector';
 import { AppContext } from '../context/AppContext';
 import { Modal } from 'react-bootstrap';
+import { session } from 'passport';
 
 const PlannedSessionAdder = () => {
   const [modal, setModal] = useState(false);
@@ -28,11 +29,22 @@ const PlannedSessionAdder = () => {
   };
   const handleNewSessionSubmit = async (e) => {
     e.preventDefault();
+    let sessionStart = Date.parse(newSession.start);
+    let sessionEnd = Date.parse(newSession.end);
+    let durationInMilliseconds = Math.abs(sessionStart - sessionEnd);
+    let durationInMins = durationInMilliseconds / 60000;
+    console.log(durationInMins);
     setLoading(true);
     axios
       .post(
         '/api/session',
-        { ...newSession, taskName, taskId, sessionType: 'planned' },
+        {
+          ...newSession,
+          taskName,
+          taskId,
+          sessionType: 'planned',
+          duration: durationInMins
+        },
         { withCredentials: true }
       )
       .then((res) => {
