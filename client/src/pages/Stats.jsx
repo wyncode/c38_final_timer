@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ChartPage from '../components/ChartPage';
+// import ChartPage from '../components/ChartPage';
 import axios from 'axios';
 import LineChart from '../components/LineChart';
-
 import UsersNav from '../components/UsersNav';
 import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
 // import { fetchTask } from '../api';
