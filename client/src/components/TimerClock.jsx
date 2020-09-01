@@ -1,7 +1,13 @@
-import React, { useEffect, useState} from "react";
-import "./timer.css";
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { MDBInput, MDBBtn, MDBContainer } from "mdbreact";
+import React, { useEffect, useState } from 'react';
+import './timer.css';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import {
+  MDBInput,
+  MDBBtn,
+  MDBContainer,
+  MDBIcon,
+  MDBAnimation
+} from 'mdbreact';
 
 const TimerClock = () => {
   const [formData, setFormData] = useState(null);
@@ -12,8 +18,7 @@ const TimerClock = () => {
   const [key, setKey] = useState(0);
   //const [currentSession, setCurrentSession] = React.useState('New Task')
 
-  
-  //sets the session to active 
+  //sets the session to active
   const toggle = () => {
     setIsActive(!isActive);
   };
@@ -22,7 +27,7 @@ const TimerClock = () => {
   const reset = () => {
     setCounter(0);
     setIsActive(false);
-    setKey(prevKey => prevKey + 1);
+    setKey((prevKey) => prevKey + 1);
   };
 
   //records data from inputs
@@ -35,7 +40,7 @@ const TimerClock = () => {
     event.preventDefault();
     setBreakTime(event.target.break.value);
     setCounter(breaktime);
-    setKey(prevKey => prevKey + 1);
+    setKey((prevKey) => prevKey + 1);
   };
 
   //sets worktime
@@ -43,7 +48,7 @@ const TimerClock = () => {
     event.preventDefault();
     setWorkTime(event.target.work.value);
     setCounter(worktime);
-    setKey(prevKey => prevKey + 1);
+    setKey((prevKey) => prevKey + 1);
   };
 
   // make this into a new component
@@ -61,7 +66,7 @@ const TimerClock = () => {
     );
   };
 
-    useEffect(() => {
+  useEffect(() => {
     if (isActive) {
       const timer =
         counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -73,45 +78,84 @@ const TimerClock = () => {
 
   return (
     <div className="App">
-      <MDBContainer>
-      <form onSubmit={handleBreakTime}>
-        <MDBInput label="Break Time" type="text" onChange={handleChange} name="break" outline></MDBInput>
-        <button gradient="blue" className="breaktime" valueDefault={breaktime}> BREAK  </button>
-      </form>
-      </MDBContainer>
-      <MDBContainer>
-      <form onSubmit={handleWorkTime}>
-        <MDBInput label="Work Time" type="text" name="work" onChange={handleChange} outline></MDBInput>
-        <button gradient="blue" className="worktime" valueDefault={worktime}>POMODORO</button>
-      </form>
-      </MDBContainer>
-      <div id="pomodoro-timer">
-        {" "}
+      <div id="pomodoro-timer" style={{ marginBottom: '20px' }}>
+        {' '}
         <CountdownCircleTimer
           key={key}
           isPlaying={isActive}
           duration={counter}
-          colors={[["#4e89ae", 0.33], ["#43658b", 0.33], ["#ed6663"]]}
+          strokeWidth="22"
+          size="350"
+          colors={[
+            ['#8FC93A', 0.33],
+            ['#FFC914', 0.2],
+            ['#CC5803', 0.2],
+            ['#D62828', 0.2]
+          ]}
         >
           {renderTime}
         </CountdownCircleTimer>
       </div>
-      <div>
-        <h1>{counter}</h1>
-      </div>
-      <div>
-        <div>
-          <MDBInput label="Session Name"
-            onChange={handleChange}
+      <MDBAnimation type="pulse" count={7} duration="300ms">
+        <MDBBtn outline color="blue" size="md" onClick={toggle}>
+          <MDBIcon icon="play" />
+          <span></span>
+          <MDBIcon icon="pause" />
+        </MDBBtn>
+        <MDBBtn outline color="orange" size="md" onclick={reset}>
+          <MDBIcon icon="stop" />
+        </MDBBtn>
+      </MDBAnimation>
+
+      <MDBContainer style={{ width: '40%' }}>
+        <form onSubmit={handleBreakTime}>
+          <MDBInput
+            label="Break Time"
             type="text"
-            id="pomodoro-clock-task"
-            name="sessionName"
-            placeholder="Enter your task..."
-          outline 
-          />
-        </div>
-        <MDBBtn gradient="blue" onClick={toggle}> START/ PAUSE </MDBBtn>
-        <MDBBtn gradient="blue" onClick={reset}> RESET </MDBBtn>
+            onChange={handleChange}
+            name="break"
+            outline
+          ></MDBInput>
+          <MDBBtn
+            gradient="blue"
+            size="sm"
+            waves-effect
+            valueDefault={breaktime}
+          >
+            Break
+          </MDBBtn>
+        </form>
+      </MDBContainer>
+      <MDBContainer style={{ width: '40%' }}>
+        <form onSubmit={handleWorkTime}>
+          <MDBInput
+            label="Work Time"
+            type="text"
+            name="work"
+            onChange={handleChange}
+            outline
+          ></MDBInput>
+          <MDBBtn
+            gradient="blue"
+            size="sm"
+            waves-effect
+            valueDefault={worktime}
+          >
+            POMODORO
+          </MDBBtn>
+        </form>
+      </MDBContainer>
+
+      <div>
+        <MDBInput
+          label="Session Name"
+          onChange={handleChange}
+          type="text"
+          id="pomodoro-clock-task"
+          name="sessionName"
+          placeholder="Enter your task..."
+          outline
+        />
       </div>
     </div>
   );

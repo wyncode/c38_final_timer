@@ -1,21 +1,12 @@
 import React from 'react';
-import {
-  MDBContainer,
-  MDBView,
-  MDBBtn,
-  MDBRow,
-  MDBCol,
-  MDBTypography,
-  MDBAnimation,
-  MDBIcon
-} from 'mdbreact';
-import Nav from '../components/Nav';
+import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
+import UsersNav from '../components/UsersNav';
 import TimerClock from '../components/TimerClock';
 const Home = () => {
   return (
     <div>
       <MDBView>
-        <Nav />
+        <UsersNav />
         <MDBContainer
           fluid
           style={{ background: '#0A1045', height: '100%', width: '100%' }}
@@ -23,7 +14,7 @@ const Home = () => {
         >
           <MDBRow style={{ width: '100%' }}>
             <MDBCol
-              style={{ paddingBottom: '20px', paddingTop: '40px' }}
+              style={{ paddingBottom: '20px', paddingTop: '60px' }}
               className="text-center text-md-center"
             >
               <MDBTypography
@@ -33,16 +24,6 @@ const Home = () => {
               >
                 WynIt.
               </MDBTypography>
-              <MDBAnimation type="pulse" count={4} duration="300ms">
-                <MDBBtn outline color="blue" size="sm">
-                  <MDBIcon icon="play" />
-                  <span></span>
-                  <MDBIcon icon="pause" />
-                </MDBBtn>
-                <MDBBtn outline color="orange" size="sm">
-                  <MDBIcon icon="stop" />
-                </MDBBtn>
-              </MDBAnimation>
             </MDBCol>
             <MDBRow style={{ paddingBottom: '20px', paddingTop: '10px' }}>
               <MDBCol>
