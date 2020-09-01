@@ -38,7 +38,7 @@ const TaskFormV2 = () => {
             <input
               type="text"
               id="description"
-              name="description"
+              name="name"
               className="form-control"
               onChange={handleChange}
             />

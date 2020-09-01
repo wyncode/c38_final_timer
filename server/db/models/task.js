@@ -7,34 +7,37 @@ const taskSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      unique: true
     },
     completed: {
       type: Boolean,
       default: false
     },
-    numOfSessions: {
-      type: Number,
-      default: 1
-    },
-    startDate: {
+    dueDate: {
       type: Date
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
-    }
+    },
+    sessions: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Session'
+      }
+    ]
   },
   {
     timestamps: true
   }
 );
-// creates relatonship between task and session
-taskSchema.virtual('sessions', {
-  ref: 'Session',
-  localField: '_id',
-  foreignField: 'owner'
-});
+// // creates relatonship between task and session
+// taskSchema.virtual('sessions', {
+//   ref: 'Session',
+//   localField: 'name',
+//   foreignField: 'taskId'
+// });
 
 // Converts dates to readable format
 taskSchema.methods.toJSON = function () {
