@@ -7,7 +7,6 @@ const router = require('express').Router(),
 router.get('/api/sessions', async (req, res) => {
   try {
     const sessions = await Session.find();
-    // console.log('SESSIONS :', sessions, sessions.length);
     res.json(sessions);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
