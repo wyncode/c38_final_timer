@@ -14,10 +14,6 @@ const taskSchema = new mongoose.Schema(
       type: Boolean,
       default: false
     },
-    numOfSessions: {
-      type: Number,
-      default: 1
-    },
     dueDate: {
       type: Date
     },
