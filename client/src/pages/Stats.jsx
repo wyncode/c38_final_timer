@@ -1,6 +1,5 @@
 import React from 'react';
-import ChartPage from '../components/ChartPage';
-
+import LineChart from '../components/LineChart';
 import UsersNav from '../components/UsersNav';
 import { MDBContainer, MDBView, MDBRow, MDBCol } from 'mdbreact';
 // import { fetchTask } from '../api';
@@ -16,7 +15,7 @@ const Stats = () => {
         >
           <MDBRow style={{ width: '85%' }}>
             <MDBCol>
-              <ChartPage />
+              <LineChart />
             </MDBCol>
           </MDBRow>
         </MDBContainer>

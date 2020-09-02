@@ -39,10 +39,8 @@ const UsersNav = () => {
           </MDBDropdownToggle>
           <MDBDropdownMenu className="dropdown-default">
             <MDBDropdownItem href="#!">My Profile</MDBDropdownItem>
-            <MDBDropdownItem href="/logout">
-              {' '}
-              <Link to="/login">Logout</Link>
-            </MDBDropdownItem>
+            <MDBDropdownItem href="/logout"> logout</MDBDropdownItem>
+            <MDBDropdownItem href="/login"> login</MDBDropdownItem>
           </MDBDropdownMenu>
         </MDBDropdown>
       </MDBNavItem>
