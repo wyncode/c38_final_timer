@@ -10,22 +10,14 @@ const Tasks = () => {
     <div>
       <MDBView>
         <UsersNav />
-        <MDBContainer style={{ marginTop: '80px' }} fluid>
-          <MDBRow classname="no-gutters">
-            <MDBCol md="3" style={{ marginLeft: '100px', marginTop: '110px' }}>
+        <MDBContainer style={{ marginTop: '5%' }} fluid>
+          <MDBRow className="d-flex justify-content-center">
+            <MDBCol md="3" style={{ marginTop: '10%' }}>
               <MDBRow>
                 <TaskForm />
               </MDBRow>
-              <MDBRow
-                classname="justify-items-center"
-                style={{ marginTop: '30px' }}
-              >
-                <p className="h4 text-center mb-4">
-                  2. Schedule a Work Session
-                </p>
-                <MDBRow style={{ marginTop: '-20px', marginLeft: '55px' }}>
-                  <PlannedSessionAdder />
-                </MDBRow>
+              <MDBRow style={{ marginTop: '10%' }}>
+                <PlannedSessionAdder />
               </MDBRow>
             </MDBCol>
             <MDBCol

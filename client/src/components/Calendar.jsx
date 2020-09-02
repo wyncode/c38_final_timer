@@ -66,7 +66,6 @@ const Calendar = () => {
 
   return (
     <MDBView>
-      <UsersNav />
       <MDBContainer style={{ paddingTop: '40px' }}>
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
