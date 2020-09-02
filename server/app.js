@@ -8,6 +8,7 @@ const express = require('express'),
   userRouter = require('./routes/secure/users'),
   taskRouter = require('./routes/secure/tasks'),
   sessionRouter = require('./routes/secure/sessions'),
+  chartRouter = require('./routes/secure/charts'),
   cors = require('cors');
 app = express();
 
@@ -35,6 +36,7 @@ app.use(
 app.use(userRouter);
 app.use(taskRouter);
 app.use(sessionRouter);
+app.use(chartRouter);
 
 if (process.env.NODE_ENV === 'production') {
   // Handle React routing, return all requests to React app
