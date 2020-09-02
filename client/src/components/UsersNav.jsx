@@ -18,6 +18,11 @@ const UsersNav = () => {
       className="expand-lg fixed-top justify-content-end"
     >
       <MDBNavItem>
+        <MDBNavLink className="white-text" to="/">
+          Home
+        </MDBNavLink>
+      </MDBNavItem>
+      <MDBNavItem>
         <MDBNavLink className="white-text font-weight-bold" to="/tasks">
           My Tasks
         </MDBNavLink>

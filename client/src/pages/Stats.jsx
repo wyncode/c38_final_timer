@@ -2,7 +2,6 @@ import React from 'react';
 import LineChart from '../components/LineChart';
 import UsersNav from '../components/UsersNav';
 import { MDBContainer, MDBView, MDBRow, MDBCol } from 'mdbreact';
-// import { fetchTask } from '../api';
 
 const Stats = () => {
   return (
