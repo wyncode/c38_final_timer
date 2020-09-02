@@ -1,22 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 import moment from 'moment';
 import { MDBContainer, MDBRow, MDBCol, MDBTypography, MDBBox } from 'mdbreact';
+import { AppContext } from '../context/AppContext';
 
 const LineChart = () => {
   const [lineChart, setLineChart] = useState({});
   const [end, setEnd] = useState([]);
   const [duration, setDuration] = useState([]);
+  const { sessions, setSessions } = useContext(AppContext);
+  const processSessions = (sessions) => {
+    let filteredSessions = sessions.filter(
+      (session) => session.end.length !== 0
+    );
+    let diffHours = filteredSessions.map((session) => {
+      let end = moment(session.end[0]),
+        start = moment(session.start[0]);
+      return end.diff(start, 'h');
+    });
+    console.log(diffHours);
+    setSessions(diffHours);
+  };
 
   useEffect(() => {
     let dateTempArray = [];
     let durationTempArray = [];
 
     axios
-      .get('/api/session', { withCredentials: true })
+      .get('/api/sessions', { withCredentials: true })
       .then((response) => {
         console.log(response.data);
+        processSessions(response.data);
         response.data.forEach((item) => {
           dateTempArray.push(moment(item.end[0]).format('MMM Do YY'));
           durationTempArray.push(item.durationSpent);
