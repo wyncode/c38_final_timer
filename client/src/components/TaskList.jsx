@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { Container, Table } from 'react-bootstrap';
 import Task from './Task';
 import axios from 'axios';
-import Search from './Search';
+import Search from './TaskSearch';
 import { AppContext } from '../context/AppContext';
 
 const TaskList = () => {

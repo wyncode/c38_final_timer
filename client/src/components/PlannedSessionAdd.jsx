@@ -58,7 +58,14 @@ const PlannedSessionAdder = () => {
 
   return (
     <MDBContainer className="container d-flex flex-column align-items-center justify-content-center">
-      <MDBBtn onClick={modalToggle}>Add Productivity Session</MDBBtn>
+      <MDBBtn
+        onClick={modalToggle}
+        size="md"
+        style={{ marginTop: '30px' }}
+        color="info"
+      >
+        Add Work Session
+      </MDBBtn>
       <MDBModal isOpen={modal === true} toggle={modalToggle} centered>
         <MDBModalHeader toggle={modalToggle}>
           Add a Productivity Session
@@ -89,7 +96,7 @@ const PlannedSessionAdder = () => {
                 onChange={handleChange}
               />
             </div>
-            <MDBBtn color="primary" type="submit">
+            <MDBBtn color="blue" type="submit">
               Create
             </MDBBtn>
           </form>

@@ -4,13 +4,13 @@ import UsersNav from '../components/UsersNav';
 import TimerClock from '../components/TimerClock';
 const Home = () => {
   return (
-    <div>
+    <div style={{ background: '#0A1045' }}>
       <MDBView>
         <UsersNav />
         <MDBContainer
           fluid
           style={{ background: '#0A1045', height: '100%', width: '100%' }}
-          className="d-flex justify-content-center no-gutters align-items-center"
+          className="d-flex justify-content-center align-items-center"
         >
           <MDBRow style={{ width: '100%' }}>
             <MDBCol
@@ -44,19 +44,19 @@ const Home = () => {
                 />
               </MDBCol>
             </MDBRow>
+            <MDBContainer style={{ width: '50%' }}>
+              <MDBRow className="py-5">
+                <MDBCol md="12" className="white-text text-center">
+                  <MDBContainer fluid>
+                    &copy; {new Date().getFullYear()} Copyright:{' '}
+                    <a href="https://www.Wynit.com"> WynIt.com </a>
+                  </MDBContainer>
+                </MDBCol>
+              </MDBRow>
+            </MDBContainer>
           </MDBRow>
         </MDBContainer>
       </MDBView>
-      <MDBContainer style={{ width: '50%' }}>
-        <MDBRow className="py-5">
-          <MDBCol md="12" className="text-center">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            </p>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
     </div>
   );
 };

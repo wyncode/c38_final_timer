@@ -78,7 +78,6 @@ class ChartsPage extends React.Component {
                 You've been Productive lately!
               </MDBBox>
               <p>
-                {' '}
                 Play around with your preferences, explore your different tasks
                 and map your progress!
               </p>

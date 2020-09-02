@@ -7,7 +7,6 @@ import { MDBContainer, MDBView } from 'mdbreact';
 import UsersNav from './UsersNav';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
-import PlannedSessionAdder from './PlannedSessionAdd';
 
 const Calendar = () => {
   const { loading, sessions, setSessions } = useContext(AppContext);
@@ -68,10 +67,7 @@ const Calendar = () => {
   return (
     <MDBView>
       <UsersNav />
-      <MDBContainer
-        className="mt-1"
-        style={{ width: '70%', paddingTop: '40px' }}
-      >
+      <MDBContainer style={{ paddingTop: '40px' }}>
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           headerToolbar={{
@@ -88,7 +84,6 @@ const Calendar = () => {
           eventClick={handleEventClick}
         />
       </MDBContainer>
-      <PlannedSessionAdder />
     </MDBView>
   );
 };
