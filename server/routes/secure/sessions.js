@@ -12,7 +12,7 @@ router.get('/api/sessions', async (req, res) => {
       })
       .execPopulate();
     res.json(req.user.sessions);
-    res.json(session);
+    // res.json(session);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }
