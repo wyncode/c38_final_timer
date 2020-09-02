@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBInput } from 'mdbreact';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 

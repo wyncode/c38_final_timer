@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ChartPage from '../components/ChartPage';
-import axios from 'axios';
 
 import UsersNav from '../components/UsersNav';
-import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
+import { MDBContainer, MDBView, MDBRow, MDBCol } from 'mdbreact';
 // import { fetchTask } from '../api';
 
 const Stats = () => {
