@@ -48,7 +48,7 @@ const LineChart = () => {
       datasets: [
         {
           label: 'Task1 Name',
-          fill: false,
+          fill: true,
           lineTension: 0.4,
           borderColor: '#0A1045',
           borderCapStyle: 'butt',

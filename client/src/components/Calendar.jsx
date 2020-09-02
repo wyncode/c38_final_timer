@@ -10,7 +10,7 @@ import { AppContext } from '../context/AppContext';
 import PlannedSessionAdder from './PlannedSessionAdd';
 
 const Calendar = () => {
-  const { setLoading, sessions, setSessions } = useContext(AppContext);
+  const { loading, sessions, setSessions } = useContext(AppContext);
   const [sessionArray, setSessionArray] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Calendar = () => {
         setSessions(response.data);
       })
       .catch((error) => console.log(error.toString()));
-  }, [setLoading, sessions]);
+  }, [loading]);
 
   //populates calendar with sessions
   useEffect(() => {
@@ -51,7 +51,6 @@ const Calendar = () => {
 
   //deletes sessions on Calendar by interaction (interpolated value is the ID)
   const handleEventClick = (clickInfo) => {
-    console.log(clickInfo);
     if (
       window.confirm(
         `Are you sure you want to delete the event '${clickInfo.event.title}'`
