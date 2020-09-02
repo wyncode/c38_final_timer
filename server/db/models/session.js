@@ -16,6 +16,10 @@ const sessionSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Task'
     },
+    ownerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
     sessionType: {
       type: String,
       enum: ['spontaneous', 'planned']
