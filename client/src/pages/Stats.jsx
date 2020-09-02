@@ -1,5 +1,4 @@
 import React from 'react';
-// import ChartPage from '../components/ChartPage';
 import LineChart from '../components/LineChart';
 import UsersNav from '../components/UsersNav';
 import { MDBContainer, MDBView, MDBRow, MDBCol } from 'mdbreact';
