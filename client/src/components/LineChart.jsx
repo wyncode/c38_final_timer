@@ -68,7 +68,7 @@ const LineChart = () => {
         }
       ]
     });
-  }, []);
+  }, [sessions]);
 
   return (
     <MDBContainer
