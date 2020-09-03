@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { Container, Table } from 'react-bootstrap';
+import { MDBContainer, MDBTable, MDBTableHead } from 'mdbreact';
 import Task from './Task';
 import axios from 'axios';
 import Search from './TaskSearch';
@@ -26,21 +27,21 @@ const TaskList = () => {
   }, [setTasks, setFilteredTasks, search, loading]);
 
   return (
-    <Container>
+    <MDBContainer>
       <Search />
-      <Table>
-        <thead>
+      <MDBTable>
+        <MDBTableHead>
           <tr>
             <th>Desciption</th>
             <th>Due</th>
             <th></th>
           </tr>
-        </thead>
+        </MDBTableHead>
         <tbody>
           <Task tasks={filteredTasks} />
         </tbody>
-      </Table>
-    </Container>
+      </MDBTable>
+    </MDBContainer>
   );
 };
 
