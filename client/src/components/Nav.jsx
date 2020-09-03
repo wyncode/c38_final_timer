@@ -17,14 +17,6 @@ const Nav = () => {
         <MDBNavLink className="white-text font-weight-bold" to="/signup">
           Sign Up
         </MDBNavLink>
-        <MDBNavItem>
-          <MDBNavLink
-            className="white-text d-flex font-weight-bold"
-            to="/stats"
-          >
-            Stats
-          </MDBNavLink>
-        </MDBNavItem>
       </MDBNavItem>
       <MDBNavItem>
         <MDBNavLink className="white-text" to="/faqs">

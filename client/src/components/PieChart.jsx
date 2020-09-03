@@ -4,8 +4,9 @@ import axios from 'axios';
 import moment from 'moment';
 import { MDBContainer, MDBRow, MDBCol, MDBTypography, MDBBox } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
+import { render } from 'react-dom';
 
-const LineChart = () => {
+const PieChart = () => {
   const [lineChart, setLineChart] = useState({});
   const [end, setEnd] = useState([]);
   const [duration, setDuration] = useState(false);
@@ -106,4 +107,4 @@ const LineChart = () => {
   );
 };
 
-export default LineChart;
+export default PieChart;

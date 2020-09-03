@@ -77,7 +77,7 @@ const TimerClock2 = () => {
       <MDBAnimation type="pulse" count={7} duration="300ms">
         <MDBBtn outline color="blue" size="md" onClick={toggle}>
           <MDBIcon icon="play" />
-          <span></span>
+          <span>{'  '}</span>
           <MDBIcon icon="pause" />
         </MDBBtn>
         <MDBBtn outline color="orange" size="md" onClick={reset}>

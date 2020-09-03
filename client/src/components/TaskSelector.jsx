@@ -16,7 +16,7 @@ const TaskSelector = ({ setTaskId }) => {
       .get('/api/tasks', { withCredentials: true })
       .then((response) => {
         setTasks(response.data);
-        // console.log(response.data);
+        console.log(response.data);
       })
       .catch((error) => console.log(error));
   }, []);

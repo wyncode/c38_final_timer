@@ -1,18 +1,21 @@
 import React from 'react';
+import TaskList from '../components/TaskList';
 import PieChart from '../components/PieChart';
 import UsersNav from '../components/UsersNav';
 import { MDBContainer, MDBView, MDBRow, MDBCol } from 'mdbreact';
 
-const Stats = () => {
+const TaskStats = () => {
   return (
     <div>
       <MDBView>
         <UsersNav />
-        <MDBContainer
-          style={{ height: '100%', width: '85%' }}
-          className="d-flex justify-content-center black-text align-items-center"
-        >
-          <MDBRow style={{ width: '85%' }}>
+        <MDBContainer className="d-flex justify-content-center align-items-center">
+          <MDBRow style={{ marginTop: '100px' }}>
+            <MDBCol md="5">
+              <MDBRow>
+                <p>Your tasks will render here in a grid</p>
+              </MDBRow>
+            </MDBCol>
             <MDBCol>
               <PieChart />
             </MDBCol>
@@ -23,4 +26,4 @@ const Stats = () => {
   );
 };
 
-export default Stats;
+export default TaskStats;

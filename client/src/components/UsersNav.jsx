@@ -8,33 +8,31 @@ import {
   MDBDropdownItem,
   MDBDropdownMenu,
   MDBDropdownToggle,
-  MDBIcon
+  MDBIcon,
+  MDBNavbarBrand,
+  MDBNavbar
 } from 'mdbreact';
 
 const UsersNav = () => {
   return (
     <MDBNav
       color="blue-gradient"
-      className="expand-lg fixed-top justify-content-end"
+      className="fixed-top justify-content-end align-items-center"
+      style={{ height: '50px' }}
     >
+      <MDBNavbarBrand>
+        <MDBNavLink className="white-text " to="/">
+          <strong className="white-text h3">WynIt</strong>
+        </MDBNavLink>
+      </MDBNavbarBrand>
       <MDBNavItem>
-        <MDBNavLink className="white-text" to="/">
-          Home
+        <MDBNavLink className="white-text font-weight-bold" to="/scheduler">
+          Scheduler
         </MDBNavLink>
       </MDBNavItem>
       <MDBNavItem>
-        <MDBNavLink className="white-text font-weight-bold" to="/tasks">
+        <MDBNavLink className="white-text " to="/tasks">
           My Tasks
-        </MDBNavLink>
-      </MDBNavItem>
-      <MDBNavItem>
-        <MDBNavLink className="white-text" to="/stats">
-          Stats
-        </MDBNavLink>
-      </MDBNavItem>
-      <MDBNavItem>
-        <MDBNavLink className="white-text" to="/calendar">
-          Calendar
         </MDBNavLink>
       </MDBNavItem>
       <MDBNavItem>
@@ -44,8 +42,7 @@ const UsersNav = () => {
           </MDBDropdownToggle>
           <MDBDropdownMenu className="dropdown-default">
             <MDBDropdownItem href="#!">My Profile</MDBDropdownItem>
-            <MDBDropdownItem href="/logout"> logout</MDBDropdownItem>
-            <MDBDropdownItem href="/login"> login</MDBDropdownItem>
+            <MDBDropdownItem href="/signup"> logout</MDBDropdownItem>
           </MDBDropdownMenu>
         </MDBDropdown>
       </MDBNavItem>
