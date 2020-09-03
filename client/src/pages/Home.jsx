@@ -2,6 +2,7 @@ import React from 'react';
 import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
 import UsersNav from '../components/UsersNav';
 import TimerClock from '../components/TimerClock';
+
 const Home = () => {
   return (
     <div>

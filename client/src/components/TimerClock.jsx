@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './timer.css';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import {
   MDBInput,
   MDBBtn,
@@ -9,25 +8,30 @@ import {
   MDBAnimation
 } from 'mdbreact';
 
-const TimerClock = () => {
+const TimerClock2 = () => {
   const [formData, setFormData] = useState(null);
-  const [counter, setCounter] = useState(25);
-  const [breaktime, setBreakTime] = useState(5);
-  const [worktime, setWorkTime] = useState(25);
-  const [isActive, setIsActive] = useState(true);
-  const [key, setKey] = useState(0);
-  //const [currentSession, setCurrentSession] = React.useState('New Task')
+  const [counter, setCounter] = useState(25 * 60);
+  const [breaktime, setBreakTime] = useState(0);
+  const [worktime, setWorkTime] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+
+  const timeInMinutes = Math.floor(counter / 60);
+  const timeInSeconds = Math.floor(counter % 60);
+
+  //adding that 0 on for the seconds
+  const makeMeTwoDigits = (n) => {
+    return (n < 10 ? '0' : '') + n;
+  };
 
   //sets the session to active
   const toggle = () => {
     setIsActive(!isActive);
   };
 
-  //resets count to 0
+  //resets count to 25
   const reset = () => {
-    setCounter(0);
+    setCounter(25 * 60);
     setIsActive(false);
-    setKey((prevKey) => prevKey + 1);
   };
 
   //records data from inputs
@@ -38,35 +42,19 @@ const TimerClock = () => {
   //sets breaktime
   const handleBreakTime = (event) => {
     event.preventDefault();
-    setBreakTime(event.target.break.value);
-    setCounter(breaktime);
-    setKey((prevKey) => prevKey + 1);
+    setCounter(event.target.break.value * 60);
+    setIsActive(true);
   };
 
   //sets worktime
   const handleWorkTime = (event) => {
     event.preventDefault();
-    setWorkTime(event.target.work.value);
-    setCounter(worktime);
-    setKey((prevKey) => prevKey + 1);
-  };
-
-  // make this into a new component
-  const renderTime = ({ remainingTime }) => {
-    if ({ remainingTime } === 0) {
-      return <div className="timer">Time's Up!...</div>;
-    }
-
-    return (
-      <div className="timer">
-        <div className="text">Time</div>
-        <div className="value">{counter}</div>
-        <div className="text">seconds</div>
-      </div>
-    );
+    setCounter(event.target.work.value * 60);
+    setIsActive(true);
   };
 
   useEffect(() => {
+    console.log(counter, isActive);
     if (isActive) {
       const timer =
         counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -79,22 +67,12 @@ const TimerClock = () => {
   return (
     <div className="App">
       <div id="pomodoro-timer" style={{ marginBottom: '20px' }}>
-        {' '}
-        <CountdownCircleTimer
-          key={key}
-          isPlaying={isActive}
-          duration={counter}
-          strokeWidth="22"
-          size="350"
-          colors={[
-            ['#8FC93A', 0.33],
-            ['#FFC914', 0.2],
-            ['#CC5803', 0.2],
-            ['#D62828', 0.2]
-          ]}
-        >
-          {renderTime}
-        </CountdownCircleTimer>
+        <div className="timer-div">
+          {' '}
+          <h1 className="timer">
+            {timeInMinutes}:{makeMeTwoDigits(timeInSeconds)}
+          </h1>
+        </div>
       </div>
       <MDBAnimation type="pulse" count={7} duration="300ms">
         <MDBBtn outline color="blue" size="md" onClick={toggle}>
@@ -102,7 +80,7 @@ const TimerClock = () => {
           <span></span>
           <MDBIcon icon="pause" />
         </MDBBtn>
-        <MDBBtn outline color="orange" size="md" onclick={reset}>
+        <MDBBtn outline color="orange" size="md" onClick={reset}>
           <MDBIcon icon="stop" />
         </MDBBtn>
       </MDBAnimation>
@@ -117,6 +95,8 @@ const TimerClock = () => {
             outline
           ></MDBInput>
           <MDBBtn
+            className="btn-btn-primary"
+            type="submit"
             gradient="blue"
             size="sm"
             waves-effect
@@ -136,6 +116,8 @@ const TimerClock = () => {
             outline
           ></MDBInput>
           <MDBBtn
+            className="btn-btn-primary"
+            type="submit"
             gradient="blue"
             size="sm"
             waves-effect
@@ -161,4 +143,4 @@ const TimerClock = () => {
   );
 };
 
-export default TimerClock;
+export default TimerClock2;
