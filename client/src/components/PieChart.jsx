@@ -36,16 +36,14 @@ const Chart = () => {
         {
           data: duration,
           backgroundColor: [
-            'red',
-            'blue',
-            'green',
-            'yellow',
-            'pink',
-            'orange',
-            'tan',
-            'tomato',
-            'teal',
-            'lime'
+            '#FF5400',
+            '#228CDB',
+            '#5BC0EB',
+            '#FFC914',
+            '#FF4A1C',
+            '#0A1045',
+            '#390099',
+            '#00916E'
           ]
         }
       ],
