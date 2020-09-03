@@ -1,5 +1,5 @@
 import React from 'react';
-import LineChart from '../components/LineChart';
+import PieChart from '../components/PieChart';
 import UsersNav from '../components/UsersNav';
 import { MDBContainer, MDBView, MDBRow, MDBCol } from 'mdbreact';
 
@@ -14,7 +14,7 @@ const Stats = () => {
         >
           <MDBRow style={{ width: '85%' }}>
             <MDBCol>
-              <LineChart />
+              <PieChart />
             </MDBCol>
           </MDBRow>
         </MDBContainer>

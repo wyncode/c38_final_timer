@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Line } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import axios from 'axios';
 import moment from 'moment';
 import { MDBContainer, MDBRow, MDBCol, MDBTypography, MDBBox } from 'mdbreact';
@@ -8,8 +8,9 @@ import { AppContext } from '../context/AppContext';
 const LineChart = () => {
   const [lineChart, setLineChart] = useState({});
   const [end, setEnd] = useState([]);
-  const [duration, setDuration] = useState([]);
+  const [duration, setDuration] = useState(false);
   const { sessions, setSessions } = useContext(AppContext);
+
   const processSessions = (sessions) => {
     let filteredSessions = sessions.filter(
       (session) => session.end.length !== 0
@@ -19,7 +20,6 @@ const LineChart = () => {
         start = moment(session.start[0]);
       return end.diff(start, 'h');
     });
-    console.log(diffHours);
     setSessions(diffHours);
   };
 
@@ -34,7 +34,7 @@ const LineChart = () => {
         processSessions(response.data);
         response.data.forEach((item) => {
           dateTempArray.push(moment(item.end[0]).format('MMM Do YY'));
-          durationTempArray.push(item.durationSpent);
+          durationTempArray.push(item.duration);
         });
         setEnd(dateTempArray);
         setDuration(durationTempArray);
@@ -42,33 +42,34 @@ const LineChart = () => {
       .catch(function (error) {
         console.log(error);
       });
-    console.log(dateTempArray);
+  }, []);
+
+  useEffect(() => {
     setLineChart({
-      labels: dateTempArray,
+      labels: end,
       datasets: [
         {
-          label: 'Task1 Name',
-          fill: true,
-          lineTension: 0.4,
-          borderColor: '#0A1045',
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: '#CC5803',
-          pointBackgroundColor: '#CC5803',
-          pointBorderWidth: 10,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: 'rgb(0, 0, 0)',
-          pointHoverBorderColor: 'rgba(220, 220, 220,1)',
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          data: durationTempArray
+          label: 'Task',
+          data: duration,
+          backgroundColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 205, 86, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(135, 102, 255, 1)'
+          ]
         }
-      ]
+      ],
+      title: {
+        display: true,
+        text: 'Doughnut Chart'
+      },
+      animation: {
+        animateRotate: true,
+        animateScale: true
+      }
     });
-  }, [sessions]);
+  }, [duration]);
 
   return (
     <MDBContainer
@@ -92,11 +93,12 @@ const LineChart = () => {
               and map your progress!
             </p>
           </MDBTypography>
-          <Line
+          <Doughnut
             data={lineChart}
-            option={{
-              responsive: true
-            }}
+            width={100}
+            height={50}
+            options={{ maintainAspectRatio: true }}
+            style={{ border: '1px solid black' }}
           />
         </MDBCol>
       </MDBRow>
