@@ -5,7 +5,6 @@ import Nav from '../components/Nav';
 const FAQs = () => {
   return (
     <MDBContainer fluid className="fixed-bottom ">
-      <Nav />
       <section className="my-1">
         <h2
           className="h1-responsive font-weight-bold text-center my-2 blue-text"

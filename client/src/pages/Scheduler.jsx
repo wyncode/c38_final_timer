@@ -9,7 +9,6 @@ const Scheduler = () => {
   return (
     <div>
       <MDBView>
-        <UsersNav />
         <MDBContainer style={{ marginTop: '5%' }} fluid>
           <MDBRow className="d-flex justify-content-center">
             <MDBCol md="3" style={{ marginTop: '10%' }}>
