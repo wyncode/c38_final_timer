@@ -5,7 +5,7 @@ import TaskForm from '../components/TaskForm';
 import Calendar from '../components/Calendar';
 import PlannedSessionAdder from '../components/PlannedSessionAdd';
 
-const Tasks = () => {
+const Scheduler = () => {
   return (
     <div>
       <MDBView>
@@ -33,4 +33,4 @@ const Tasks = () => {
   );
 };
 
-export default Tasks;
+export default Scheduler;

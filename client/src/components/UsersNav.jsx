@@ -26,7 +26,7 @@ const UsersNav = () => {
         </MDBNavLink>
       </MDBNavbarBrand>
       <MDBNavItem>
-        <MDBNavLink className="white-text font-weight-bold" to="/calendar">
+        <MDBNavLink className="white-text font-weight-bold" to="/scheduler">
           Scheduler
         </MDBNavLink>
       </MDBNavItem>
@@ -42,10 +42,7 @@ const UsersNav = () => {
           </MDBDropdownToggle>
           <MDBDropdownMenu className="dropdown-default">
             <MDBDropdownItem href="#!">My Profile</MDBDropdownItem>
-            <MDBDropdownItem href="/logout">
-              {' '}
-              <Link to="/login">Logout</Link>
-            </MDBDropdownItem>
+            <MDBDropdownItem href="/signup"> logout</MDBDropdownItem>
           </MDBDropdownMenu>
         </MDBDropdown>
       </MDBNavItem>

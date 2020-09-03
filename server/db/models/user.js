@@ -68,6 +68,12 @@ userSchema.virtual('tasks', {
   foreignField: 'owner'
 });
 
+userSchema.virtual('sessions', {
+  ref: 'Session',
+  localField: '_id',
+  foreignField: 'ownerId'
+});
+
 // By naming this method toJSON we don't need to call it for it to run because of our express res.send methods calls it for us.
 userSchema.methods.toJSON = function () {
   const user = this;

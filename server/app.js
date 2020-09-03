@@ -8,11 +8,12 @@ const express = require('express'),
   userRouter = require('./routes/secure/users'),
   taskRouter = require('./routes/secure/tasks'),
   sessionRouter = require('./routes/secure/sessions'),
+  cors = require('cors'),
   app = express();
 
 // Parse incoming JSON into objects
 app.use(express.json());
-
+app.use(cors());
 // Unauthenticated routes
 app.use(openRoutes);
 

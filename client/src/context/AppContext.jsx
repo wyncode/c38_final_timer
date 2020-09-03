@@ -12,7 +12,6 @@ const AppContextProvider = ({ children }) => {
   const user = sessionStorage.getItem('user');
 
   useEffect(() => {
-    // incase user refreshes local session is cleared.
     if (user && !currentUser) {
       axios
         .get('/api/users/me', {

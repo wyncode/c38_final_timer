@@ -1,12 +1,10 @@
 import React from 'react';
-import ChartPage from '../components/ChartPage';
 import TaskList from '../components/TaskList';
-
+import PieChart from '../components/PieChart';
 import UsersNav from '../components/UsersNav';
 import { MDBContainer, MDBView, MDBRow, MDBCol } from 'mdbreact';
-// import { fetchTask } from '../api';
 
-const Stats = () => {
+const TaskStats = () => {
   return (
     <div>
       <MDBView>
@@ -18,8 +16,8 @@ const Stats = () => {
                 <p>Your tasks will render here in a grid</p>
               </MDBRow>
             </MDBCol>
-            <MDBCol style={{ marginRight: '-300px' }}>
-              <ChartPage />
+            <MDBCol>
+              <PieChart />
             </MDBCol>
           </MDBRow>
         </MDBContainer>
@@ -28,4 +26,4 @@ const Stats = () => {
   );
 };
 
-export default Stats;
+export default TaskStats;

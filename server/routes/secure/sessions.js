@@ -3,11 +3,16 @@ const router = require('express').Router(),
   Session = require('../../db/models/session'),
   Task = require('../../db/models/task');
 
-// Get all sessions
+// Get all sessions for a specific Owner
 router.get('/api/sessions', async (req, res) => {
   try {
-    const sessions = await Session.find();
-    res.json(sessions);
+    await req.user
+      .populate({
+        path: 'sessions'
+      })
+      .execPopulate();
+    res.json(req.user.sessions);
+    // res.json(session);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }
@@ -43,7 +48,8 @@ router.get('/api/session/:id', async (req, res) => {
 router.post('/api/session/', async (req, res) => {
   const session = await new Session({
     ...req.body,
-    taskId: req.body.taskId
+    taskId: req.body.taskId,
+    ownerId: req.user._id
   });
   try {
     const task = await Task.findById(req.body.taskId);
