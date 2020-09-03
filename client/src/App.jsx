@@ -7,12 +7,11 @@ import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Tasks from './pages/Tasks';
-import Stats from './pages/Stats';
+import Scheduler from './pages/Scheduler';
+import TaskStats from './pages/MyTasks';
 import FAQs from './pages/FAQs';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
-import Calendar from './components/Calendar';
 
 function App() {
   return (
@@ -26,9 +25,8 @@ function App() {
             <Route exact path="/faqs" component={FAQs} />
             <Route exact path="/forgotpassword" component={ForgotPassword} />
             <Route exact path="/updatepassword" component={UpdatePassword} />
-            <PrivateRoute exact path="/tasks" component={Tasks} />
-            <PrivateRoute exact path="/stats" component={Stats} />
-            <PrivateRoute exact path="/calendar" component={Calendar} />
+            <PrivateRoute exact path="/tasks" component={TaskStats} />
+            <PrivateRoute exact path="/scheduler" component={Scheduler} />
           </Switch>
         </BrowserRouter>
       </MDBContainer>

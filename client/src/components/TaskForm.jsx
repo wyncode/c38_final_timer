@@ -30,8 +30,8 @@ const TaskFormV2 = () => {
     <MDBContainer>
       <MDBRow>
         <MDBCol>
-          <form onSubmit={handleTaskSubmission} style={{ width: '50%' }}>
-            <p className="h4 text-center mb-4">New Task</p>
+          <form onSubmit={handleTaskSubmission} style={{ width: '80%' }}>
+            <p className="h4 text-center mb-4">1. Add a New Task</p>
             <label htmlFor="description" className="grey-text">
               Description
             </label>
@@ -54,7 +54,7 @@ const TaskFormV2 = () => {
               onChange={handleChange}
             />
             <div className="text-center mt-4">
-              <MDBBtn color="blue" type="submit">
+              <MDBBtn color="blue" type="submit" size="md">
                 Add Task!
               </MDBBtn>
             </div>

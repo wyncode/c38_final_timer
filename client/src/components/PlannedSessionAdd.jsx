@@ -6,7 +6,9 @@ import {
   MDBModalBody,
   MDBModalHeader,
   MDBModalFooter,
-  MDBInput
+  MDBInput,
+  MDBCol,
+  MDBRow
 } from 'mdbreact';
 import axios from 'axios';
 import TaskSelector from './TaskSelector';
@@ -57,8 +59,15 @@ const PlannedSessionAdder = () => {
   };
 
   return (
-    <MDBContainer className="container d-flex flex-column align-items-center justify-content-center">
-      <MDBBtn onClick={modalToggle}>Add Productivity Session</MDBBtn>
+    <MDBContainer>
+      <MDBCol>
+        <MDBRow className="d-flex justify-content-center">
+          <p className="h4 ">2. Schedule a Work Session</p>
+          <MDBBtn onClick={modalToggle} size="md" color="info">
+            Add Work Session
+          </MDBBtn>
+        </MDBRow>
+      </MDBCol>
       <MDBModal isOpen={modal === true} toggle={modalToggle} centered>
         <MDBModalHeader toggle={modalToggle}>
           Add a Productivity Session
@@ -89,7 +98,7 @@ const PlannedSessionAdder = () => {
                 onChange={handleChange}
               />
             </div>
-            <MDBBtn color="primary" type="submit">
+            <MDBBtn color="blue" type="submit">
               Create
             </MDBBtn>
           </form>

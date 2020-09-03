@@ -8,6 +8,7 @@
     "bootstrap-css-only": "^4.4.1",
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
+    "react-chartjs-2": "^2.10.0",
     "react-countdown-circle-timer": "^2.3.7",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
