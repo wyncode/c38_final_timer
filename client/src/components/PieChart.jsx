@@ -36,16 +36,14 @@ const Chart = () => {
         {
           data: duration,
           backgroundColor: [
-            'red',
-            'blue',
-            'green',
-            'yellow',
-            'pink',
-            'orange',
-            'tan',
-            'tomato',
-            'teal',
-            'lime'
+            '#FF5400',
+            '#228CDB',
+            '#5BC0EB',
+            '#FFC914',
+            '#FF4A1C',
+            '#0A1045',
+            '#390099',
+            '#00916E'
           ]
         }
       ],
@@ -67,28 +65,32 @@ const Chart = () => {
     >
       <MDBRow
         className="text-center text-md-center"
-        style={{ height: '100%', width: '100%' }}
+        style={{ marginTop: '10%' }}
       >
         <MDBCol
           className="text-center text-md-center"
           style={{ paddingBottom: '20px', paddingTop: '40px' }}
         >
-          <MDBTypography blockquote bqColor="primary">
-            <MDBBox size="sm" tag="p" mb={0} className="bq-title">
-              You've been Productive lately!
-            </MDBBox>
-            <p>
-              Play around with your preferences, explore your different tasks
-              and map your progress!
-            </p>
-          </MDBTypography>
-          <Doughnut
-            data={pieChart}
-            width={100}
-            height={50}
-            options={{ maintainAspectRatio: true }}
-            style={{ border: '1px solid black' }}
-          />
+          <MDBRow>
+            <MDBTypography blockquote bqColor="primary">
+              <MDBRow style={{ marginLeft: '10%' }}>
+                <MDBBox size="sm" tag="p" className="bq-title">
+                  You've been productive lately!
+                  <p className="grey-text">
+                    Play around with your preferences, explore your different
+                    tasks and map your progress!
+                  </p>
+                </MDBBox>
+                <Doughnut
+                  data={pieChart}
+                  width={200}
+                  height={100}
+                  options={{ maintainAspectRatio: true }}
+                  style={{ border: '1px solid black' }}
+                />
+              </MDBRow>
+            </MDBTypography>
+          </MDBRow>
         </MDBCol>
       </MDBRow>
     </MDBContainer>
