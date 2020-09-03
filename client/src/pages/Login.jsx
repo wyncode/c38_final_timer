@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import Nav from '../components/Nav';
+import swal from 'sweetalert';
 
 import {
   MDBContainer,
@@ -32,11 +33,12 @@ const Login = ({ history }) => {
         setCurrentUser(res.data);
         history.push('/');
       })
-      .catch((error) => console.log(error));
+      .catch(() =>
+        swal('Make sure your email and password are correct!', 'Try again')
+      );
   };
   return (
     <MDBContainer className="d-flex justify-content-center">
-      <Nav />
       <MDBCol md="5">
         <MDBRow className="py-4 mt-5"></MDBRow>
         <MDBAnimation type="bounceInUp" duration="700ms">

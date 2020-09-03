@@ -8,7 +8,6 @@ const TaskStats = () => {
   return (
     <div>
       <MDBView>
-        <UsersNav />
         <MDBContainer className="d-flex justify-content-center align-items-center">
           <MDBRow style={{ marginTop: '100px' }}>
             <MDBCol md="5">
