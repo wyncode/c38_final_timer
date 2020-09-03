@@ -1,28 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import axios from 'axios';
 import moment from 'moment';
 import { MDBContainer, MDBRow, MDBCol, MDBTypography, MDBBox } from 'mdbreact';
-import { AppContext } from '../context/AppContext';
-import { render } from 'react-dom';
 
-const PieChart = () => {
-  const [lineChart, setLineChart] = useState({});
+const Chart = () => {
+  const [pieChart, setPieChart] = useState({});
   const [end, setEnd] = useState([]);
   const [duration, setDuration] = useState(false);
-  const { sessions, setSessions } = useContext(AppContext);
-
-  const processSessions = (sessions) => {
-    let filteredSessions = sessions.filter(
-      (session) => session.end.length !== 0
-    );
-    let diffHours = filteredSessions.map((session) => {
-      let end = moment(session.end[0]),
-        start = moment(session.start[0]);
-      return end.diff(start, 'h');
-    });
-    setSessions(diffHours);
-  };
 
   useEffect(() => {
     let dateTempArray = [];
@@ -32,7 +17,6 @@ const PieChart = () => {
       .get('/api/sessions', { withCredentials: true })
       .then((response) => {
         console.log(response.data);
-        processSessions(response.data);
         response.data.forEach((item) => {
           dateTempArray.push(moment(item.end[0]).format('MMM Do YY'));
           durationTempArray.push(item.duration);
@@ -46,18 +30,22 @@ const PieChart = () => {
   }, []);
 
   useEffect(() => {
-    setLineChart({
+    setPieChart({
       labels: end,
       datasets: [
         {
-          label: 'Task',
           data: duration,
           backgroundColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(255, 205, 86, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 159, 64, 1)',
-            'rgba(135, 102, 255, 1)'
+            'red',
+            'blue',
+            'green',
+            'yellow',
+            'pink',
+            'orange',
+            'tan',
+            'tomato',
+            'teal',
+            'lime'
           ]
         }
       ],
@@ -95,7 +83,7 @@ const PieChart = () => {
             </p>
           </MDBTypography>
           <Doughnut
-            data={lineChart}
+            data={pieChart}
             width={100}
             height={50}
             options={{ maintainAspectRatio: true }}
@@ -107,4 +95,4 @@ const PieChart = () => {
   );
 };
 
-export default PieChart;
+export default Chart;
