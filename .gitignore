@@ -8,6 +8,8 @@ client/.pnp
 .pnp.js
 .vscode
 client/.pnp.js
+yarn.lock
+package.json
 
 # testing
 client/coverage

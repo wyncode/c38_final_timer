@@ -9,7 +9,12 @@ const AppContextProvider = ({ children }) => {
   const [taskName, setTaskName] = useState([]);
   const [sessions, setSessions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [adder, setAdder] = useState(null);
+  const [timeStampEnd, setTimeStampEnd] = useState(null);
+  const [timerDuration, setTimerDuration] = useState(0);
+  const [modal, setModal] = useState(false);
   const user = sessionStorage.getItem('user');
+  const [timeStampStart, setTimeStampStart] = useState('');
 
   useEffect(() => {
     if (user && !currentUser) {
@@ -36,7 +41,17 @@ const AppContextProvider = ({ children }) => {
         taskName,
         setTaskName,
         sessions,
-        setSessions
+        setSessions,
+        adder,
+        setAdder,
+        timeStampEnd,
+        setTimeStampEnd,
+        timerDuration,
+        setTimerDuration,
+        modal,
+        setModal,
+        timeStampStart,
+        setTimeStampStart
       }}
     >
       {children}
