@@ -7,7 +7,6 @@ const AppContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [tasks, setTasks] = useState([]);
   const [taskName, setTaskName] = useState([]);
-  const [sessions, setSessions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [adder, setAdder] = useState(null);
   const [timeStampEnd, setTimeStampEnd] = useState(null);
@@ -40,8 +39,6 @@ const AppContextProvider = ({ children }) => {
         setTasks,
         taskName,
         setTaskName,
-        sessions,
-        setSessions,
         adder,
         setAdder,
         timeStampEnd,
