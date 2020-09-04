@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import FullCalendar from '@fullcalendar/react';
+import FullCalendar, { formatDate } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -34,11 +34,14 @@ const Calendar = () => {
   useEffect(() => {
     const initArray = [];
     tasks.map((task) => {
+      let date = Date.parse(task.dueDate);
+      let datePlus1 = date + 172800000;
+      let formattedDate = new Date(datePlus1).toISOString();
       console.log(task);
       initArray.push({
         title: `DUE: ${task.name}`,
         id: task._id,
-        start: task.dueDate,
+        start: formattedDate,
         allDay: true,
         color: 'purple'
       });
