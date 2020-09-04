@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import FullCalendar from '@fullcalendar/react';
+import FullCalendar, { formatDate } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -9,9 +9,10 @@ import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 
 const Calendar = () => {
-  const { loading, sessions, setSessions } = useContext(AppContext);
+  const { loading } = useContext(AppContext);
   const [sessionArray, setSessionArray] = useState([]);
-
+  const [sessions, setSessions] = useState([]);
+  const [tasks, setTasks] = useState([]);
   useEffect(() => {
     axios
       .get('/api/sessions', { withCredentials: true })
@@ -21,9 +22,30 @@ const Calendar = () => {
       .catch((error) => console.log(error.toString()));
   }, [loading]);
 
+  useEffect(() => {
+    axios
+      .get('/api/tasks', { withCredentials: true })
+      .then((response) => {
+        setTasks(response.data);
+      })
+      .catch((error) => console.log(error.toString()));
+  }, [loading]);
   //populates calendar with sessions
   useEffect(() => {
     const initArray = [];
+    tasks.map((task) => {
+      let date = Date.parse(task.dueDate);
+      let datePlus1 = date + 172800000;
+      let formattedDate = new Date(datePlus1).toISOString();
+      console.log(task);
+      initArray.push({
+        title: `DUE: ${task.name}`,
+        id: task._id,
+        start: formattedDate,
+        allDay: true,
+        color: 'purple'
+      });
+    });
     sessions.map((session) => {
       if (session.sessionType === 'planned') {
         initArray.push({
@@ -41,12 +63,12 @@ const Calendar = () => {
           start: session.start[0],
           end: session.end[0],
           allDay: session.allDay,
-          color: 'green'
+          color: 'blue'
         });
       }
     });
     setSessionArray(initArray);
-  }, [sessions]);
+  }, [sessions, tasks]);
 
   //deletes sessions on Calendar by interaction (interpolated value is the ID)
   const handleEventClick = (clickInfo) => {

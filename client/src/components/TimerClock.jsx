@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './timer.css';
 import {
   MDBInput,
@@ -7,17 +7,26 @@ import {
   MDBIcon,
   MDBAnimation
 } from 'mdbreact';
+import { AppContext } from '../context/AppContext';
+import TimerPostModal from './TimerPostModal';
 
 const TimerClock2 = () => {
-  const [formData, setFormData] = useState(null);
+  const {
+    currentUser,
+    adder,
+    setAdder,
+    setTimeStampEnd,
+    setTimerDuration,
+    modal,
+    setModal,
+    setTimeStampStart
+  } = useContext(AppContext);
   const [counter, setCounter] = useState(25 * 60);
-  const [breaktime, setBreakTime] = useState(0);
-  const [worktime, setWorkTime] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [timestamp, setTimestamp] = useState(false);
 
   const timeInMinutes = Math.floor(counter / 60);
   const timeInSeconds = Math.floor(counter % 60);
-
   //adding that 0 on for the seconds
   const makeMeTwoDigits = (n) => {
     return (n < 10 ? '0' : '') + n;
@@ -25,6 +34,12 @@ const TimerClock2 = () => {
 
   //sets the session to active
   const toggle = () => {
+    if (timestamp === false) {
+      setTimestamp(true);
+      let time = new Date().getTime();
+      setTimeStampStart(time);
+      setAdder(time);
+    }
     setIsActive(!isActive);
   };
 
@@ -32,29 +47,38 @@ const TimerClock2 = () => {
   const reset = () => {
     setCounter(25 * 60);
     setIsActive(false);
+    let time2 = Date.now();
+    setTimeStampEnd(time2);
+    let durationInMins = Math.abs(time2 - adder) / 60000;
+    setTimerDuration(durationInMins);
+    setTimestamp(false);
+    if (currentUser) {
+      setModal(!modal);
+    }
   };
 
-  //records data from inputs
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
+  // useEffect(() => {
+  //   console.log(startTimestamp);
+  //   console.log(timeStampEnd);
+  //   console.log(timerDuration);
+  // }, [startTimestamp, timeStampEnd, timerDuration]);
 
   //sets breaktime
   const handleBreakTime = (event) => {
     event.preventDefault();
     setCounter(event.target.break.value * 60);
-    setIsActive(true);
+    setIsActive(false);
   };
 
   //sets worktime
   const handleWorkTime = (event) => {
     event.preventDefault();
     setCounter(event.target.work.value * 60);
-    setIsActive(true);
+    setIsActive(false);
   };
 
   useEffect(() => {
-    console.log(counter, isActive);
+    // console.log(counter, isActive);
     if (isActive) {
       const timer =
         counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -90,7 +114,6 @@ const TimerClock2 = () => {
           <MDBInput
             label="Break Time"
             type="text"
-            onChange={handleChange}
             name="break"
             outline
           ></MDBInput>
@@ -100,7 +123,6 @@ const TimerClock2 = () => {
             gradient="blue"
             size="sm"
             waves-effect
-            valueDefault={breaktime}
           >
             Break
           </MDBBtn>
@@ -112,7 +134,6 @@ const TimerClock2 = () => {
             label="Work Time"
             type="text"
             name="work"
-            onChange={handleChange}
             outline
           ></MDBInput>
           <MDBBtn
@@ -121,7 +142,6 @@ const TimerClock2 = () => {
             gradient="blue"
             size="sm"
             waves-effect
-            valueDefault={worktime}
           >
             POMODORO
           </MDBBtn>
@@ -129,15 +149,7 @@ const TimerClock2 = () => {
       </MDBContainer>
 
       <div>
-        <MDBInput
-          label="Session Name"
-          onChange={handleChange}
-          type="text"
-          id="pomodoro-clock-task"
-          name="sessionName"
-          placeholder="Enter your task..."
-          outline
-        />
+        <TimerPostModal />
       </div>
     </div>
   );
