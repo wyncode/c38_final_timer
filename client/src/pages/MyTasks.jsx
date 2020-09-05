@@ -9,9 +9,7 @@ const TaskStats = () => {
       <MDBView>
         <MDBContainer className="d-flex justify-content-center align-items-center">
           <MDBCol md="4">
-            <MDBRow>
-              <p>Your tasks will render here in a grid</p>
-            </MDBRow>
+            <MDBRow>{/* <TaskList /> */}</MDBRow>
           </MDBCol>
           <MDBCol>
             <PieChart />
