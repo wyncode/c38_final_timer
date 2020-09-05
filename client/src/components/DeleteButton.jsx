@@ -31,7 +31,7 @@ const DeleteButton = ({ id }) => {
   };
 
   return (
-    <MDBBtn gradient="peach" onClick={handleDelete}>
+    <MDBBtn gradient="peach" size="sm" onClick={handleDelete}>
       <strong>Delete</strong>
     </MDBBtn>
   );

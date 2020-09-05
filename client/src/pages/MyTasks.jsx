@@ -7,10 +7,13 @@ const TaskStats = () => {
   return (
     <div>
       <MDBView>
-        <MDBContainer className="d-flex justify-content-center align-items-center">
+        <MDBContainer
+          fluid
+          className="d-flex justify-content-center align-items-center"
+        >
           <MDBCol md="4">
-            <MDBRow>
-              <p>Your tasks will render here in a grid</p>
+            <MDBRow style={{ marginTop: '25%' }}>
+              <TaskList />
             </MDBRow>
           </MDBCol>
           <MDBCol>
