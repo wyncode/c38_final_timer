@@ -16,7 +16,11 @@ const FAQs = () => {
           Our super streamlined interface, coupled with easy-to-use
           functionality makes it the most effective productivity timer out
           there. Don't waste time trying to figure it out, <br></br> just press{' '}
-          <strong>start</strong>.
+          <a href="/">
+            {' '}
+            <strong>start</strong>
+          </a>
+          .
         </p>
 
         <MDBRow>
