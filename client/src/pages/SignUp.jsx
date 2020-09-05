@@ -11,7 +11,7 @@ import {
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-import Nav from '../components/Nav';
+import swal from 'sweetalert';
 
 const SignUp = ({ history }) => {
   const { setCurrentUser } = useContext(AppContext);
@@ -31,7 +31,7 @@ const SignUp = ({ history }) => {
       setCurrentUser(response.data.user);
       history.push('/');
     } catch (error) {
-      console.log('SignUp Error: ', error);
+      swal('SignUp Error', error);
     }
   };
 

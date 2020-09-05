@@ -5,8 +5,6 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBIcon,
-  MDBBtn,
   MDBTypography
 } from 'mdbreact';
 import ana from '../Assets/ana.JPG';

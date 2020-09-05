@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   MDBNav,
   MDBNavItem,
@@ -9,8 +8,7 @@ import {
   MDBDropdownMenu,
   MDBDropdownToggle,
   MDBIcon,
-  MDBNavbarBrand,
-  MDBNavbar
+  MDBNavbarBrand
 } from 'mdbreact';
 import Logout from '../components/Logout';
 

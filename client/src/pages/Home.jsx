@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../context/AppContext';
+import React from 'react';
 import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
 import TimerClock from '../components/TimerClock';
 import logo from '../Assets/logo.png';
@@ -7,7 +6,6 @@ import Copyright from '../components/Copyright';
 import '../index.css';
 
 const Home = () => {
-  const currentUser = useContext(AppContext);
   return (
     <div style={{ background: '#0A1045' }}>
       <MDBView>

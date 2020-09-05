@@ -5,7 +5,6 @@ import {
   MDBModal,
   MDBModalBody,
   MDBModalHeader,
-  MDBModalFooter,
   MDBInput,
   MDBCol,
   MDBRow

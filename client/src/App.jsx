@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { MDBContainer } from 'mdbreact';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { AppContextProvider } from './context/AppContext';
 import { AppContext } from './context/AppContext';
 import PrivateRoute from './components/PrivateRoute';
 import UsersNav from './components/UsersNav';

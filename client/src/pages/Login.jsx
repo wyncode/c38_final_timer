@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-import Nav from '../components/Nav';
 import swal from 'sweetalert';
 
 import {

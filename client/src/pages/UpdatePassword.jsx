@@ -10,6 +10,7 @@ import {
   MDBAnimation
 } from 'mdbreact';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 const UpdatePassword = ({ history }) => {
   const [password, setPassword] = useState(null);
@@ -31,10 +32,10 @@ const UpdatePassword = ({ history }) => {
         { withCredentials: true }
       )
       .then((response) => {
-        alert('Password successfully changed!');
+        swal('Password successfully changed!');
         history.push('/login');
       })
-      .catch((error) => console.log(error));
+      .catch((error) => swal('Could not update password!'));
   };
   return (
     <MDBContainer className="d-flex justify-content-center">

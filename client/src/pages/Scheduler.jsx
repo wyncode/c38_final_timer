@@ -1,6 +1,5 @@
 import React from 'react';
 import { MDBContainer, MDBView, MDBRow, MDBCol } from 'mdbreact';
-import UsersNav from '../components/UsersNav';
 import TaskForm from '../components/TaskForm';
 import Calendar from '../components/Calendar';
 import PlannedSessionAdder from '../components/PlannedSessionAdd';
