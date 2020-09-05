@@ -27,6 +27,9 @@ const Chart = () => {
       .catch(function (error) {
         console.log(error);
       });
+  }, []);
+
+  useEffect(() => {
     setPieChart({
       labels: end,
       datasets: [
