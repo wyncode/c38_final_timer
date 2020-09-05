@@ -59,10 +59,10 @@ const PlannedSessionAdder = () => {
   };
 
   return (
-    <MDBContainer>
+    <MDBContainer style={{ marginTop: '5%', marginRight: '20%' }}>
       <MDBCol>
-        <MDBRow className="d-flex justify-content-center">
-          <p className="h4 ">2. Schedule a Work Session</p>
+        <MDBRow className="d-flex justify-content-center align-items-center">
+          <p className="h4 ">2. Add a Work Session</p>
           <MDBBtn onClick={modalToggle} size="md" color="info">
             Add Work Session
           </MDBBtn>

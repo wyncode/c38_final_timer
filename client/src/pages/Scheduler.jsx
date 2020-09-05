@@ -15,7 +15,7 @@ const Scheduler = () => {
               <MDBRow>
                 <TaskForm />
               </MDBRow>
-              <MDBRow style={{ marginTop: '10%' }}>
+              <MDBRow>
                 <PlannedSessionAdder />
               </MDBRow>
             </MDBCol>

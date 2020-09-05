@@ -11,12 +11,16 @@
 }
 
 .timer-div {
-  border: 1px solid white;
+  border: 5px solid white;
   padding: 10px;
+  border-radius: 50%;
+  height: 40%;
+  width: 40%;
 }
 
 .timer {
   color: white;
+  padding: 20%;
 }
 
 form {

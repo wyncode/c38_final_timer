@@ -1,10 +1,10 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn } from 'mdbreact';
-import Nav from '../components/Nav';
+import logo from '../Assets/logo.png';
 
 const FAQs = () => {
   return (
-    <MDBContainer fluid className="fixed-bottom ">
+    <MDBContainer fluid style={{ marginTop: '5%' }}>
       <section className="my-1">
         <h2
           className="h1-responsive font-weight-bold text-center my-2 blue-text"
@@ -21,11 +21,7 @@ const FAQs = () => {
 
         <MDBRow>
           <MDBCol lg="5" className="text-center text-lg-left">
-            <img
-              className="img-fluid"
-              src="https://mdbootstrap.com/img/Photos/Others/screens-section.jpg"
-              alt=""
-            />
+            <img className="img-fluid" src={logo} alt="WynIt." />
           </MDBCol>
           <MDBCol lg="7">
             <MDBRow className="mb-3">
