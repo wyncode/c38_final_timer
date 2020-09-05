@@ -25,11 +25,11 @@ const CompleteButton = ({ task }) => {
     <MDBBtn
       className="mr-2"
       gradient="dusty-grass"
+      size="sm"
       onClick={toggleComplete}
       variant={task.completed ? 'success' : 'secondary'}
-      style={{ width: 150 }}
     >
-      <strong>{task.completed ? 'Mark Incomplete' : 'Mark Complete'}</strong>
+      <strong>{task.completed ? 'Incomplete' : 'Complete'}</strong>
     </MDBBtn>
   );
 };

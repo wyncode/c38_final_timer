@@ -21,10 +21,11 @@ const TaskList = () => {
     <MDBContainer>
       <Search />
       <MDBTable>
-        <MDBTableHead>
+        <MDBTableHead color="primary-color" textWhite>
           <tr>
             <th>Desciption</th>
             <th>Due</th>
+            <th></th>
             <th></th>
           </tr>
         </MDBTableHead>

@@ -4,7 +4,6 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { MDBContainer, MDBView } from 'mdbreact';
-import UsersNav from './UsersNav';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 

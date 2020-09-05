@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   MDBNav,
   MDBNavItem,
@@ -9,8 +8,7 @@ import {
   MDBDropdownMenu,
   MDBDropdownToggle,
   MDBIcon,
-  MDBNavbarBrand,
-  MDBNavbar
+  MDBNavbarBrand
 } from 'mdbreact';
 import Logout from '../components/Logout';
 
@@ -43,6 +41,7 @@ const UsersNav = () => {
           </MDBDropdownToggle>
           <MDBDropdownMenu className="dropdown-default">
             <MDBDropdownItem href="#!">My Profile</MDBDropdownItem>
+            <MDBDropdownItem href="/faqs">FAQs</MDBDropdownItem>
             <Logout />
           </MDBDropdownMenu>
         </MDBDropdown>

@@ -1,27 +1,22 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../context/AppContext';
+import React from 'react';
 import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
-import UsersNav from '../components/UsersNav';
-import Nav from '../components/Nav';
 import TimerClock from '../components/TimerClock';
+import logo from '../Assets/logo.png';
+import Copyright from '../components/Copyright';
+import '../index.css';
 
 const Home = () => {
-  const currentUser = useContext(AppContext);
   return (
     <div style={{ background: '#0A1045' }}>
       <MDBView>
         <MDBContainer
           fluid
-          style={{ background: '#0A1045', height: '100%', width: '100%' }}
           className="d-flex justify-content-center align-items-center"
         >
-          <MDBRow style={{ width: '100%' }}>
-            <MDBCol
-              style={{ paddingBottom: '20px', paddingTop: '60px' }}
-              className="text-center text-md-center"
-            >
+          <MDBRow style={{ width: '80%' }}>
+            <MDBCol style={{ paddingBottom: '20px', paddingTop: '60px' }}>
               <MDBTypography
-                className="font-weight-bold mt-sm-5 text-center blue-text"
+                className="font-weight-bold mt-sm-5 blue-text"
                 tag="h3"
                 variant="display-3"
               >
@@ -29,36 +24,16 @@ const Home = () => {
               </MDBTypography>
             </MDBCol>
             <MDBRow style={{ paddingBottom: '20px', paddingTop: '10px' }}>
-              <MDBCol>
-                <img
-                  src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png"
-                  alt=""
-                  className="img-fluid"
-                />
+              <MDBCol md="7">
+                <img src={logo} alt="logo" className="img-fluid" style={{}} />
               </MDBCol>
               <MDBCol>
                 <TimerClock />
               </MDBCol>
-              <MDBCol>
-                <img
-                  src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png"
-                  alt=""
-                  className="img-fluid"
-                />
-              </MDBCol>
             </MDBRow>
-            <MDBContainer style={{ width: '50%' }}>
-              <MDBRow className="py-5">
-                <MDBCol md="12" className="white-text text-center">
-                  <MDBContainer fluid>
-                    &copy; {new Date().getFullYear()} Copyright:{' '}
-                    <a href="https://www.Wynit.com"> WynIt.com </a>
-                  </MDBContainer>
-                </MDBCol>
-              </MDBRow>
-            </MDBContainer>
           </MDBRow>
         </MDBContainer>
+        <Copyright />
       </MDBView>
     </div>
   );

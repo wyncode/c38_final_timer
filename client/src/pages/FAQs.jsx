@@ -1,10 +1,15 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn } from 'mdbreact';
-import Nav from '../components/Nav';
+import logoOrange from '../Assets/logoOrange.png';
 
 const FAQs = () => {
+  const history = useHistory();
+  const handleNavigate = () => {
+    history.push('/team');
+  };
   return (
-    <MDBContainer fluid className="fixed-bottom ">
+    <MDBContainer fluid style={{ marginTop: '5%' }}>
       <section className="my-1">
         <h2
           className="h1-responsive font-weight-bold text-center my-2 blue-text"
@@ -16,18 +21,23 @@ const FAQs = () => {
           Our super streamlined interface, coupled with easy-to-use
           functionality makes it the most effective productivity timer out
           there. Don't waste time trying to figure it out, <br></br> just press{' '}
-          <strong>start</strong>.
+          <a href="/">
+            {' '}
+            <strong>start</strong>
+          </a>
+          .
         </p>
 
         <MDBRow>
           <MDBCol lg="5" className="text-center text-lg-left">
             <img
+              style={{ height: '85%', width: '85%', marginLeft: '15%' }}
               className="img-fluid"
-              src="https://mdbootstrap.com/img/Photos/Others/screens-section.jpg"
-              alt=""
+              src={logoOrange}
+              alt="WynIt."
             />
           </MDBCol>
-          <MDBCol lg="7">
+          <MDBCol style={{ marginTop: '2.5%' }} lg="7">
             <MDBRow className="mb-3">
               <MDBCol size="1">
                 <MDBIcon icon="clock" size="lg" className="blue-text" />
@@ -63,7 +73,7 @@ const FAQs = () => {
                   The WynIt team does just that. Each member brings a unique set
                   of skills, the combination of which gave you this app!
                 </p>
-                <MDBBtn color="light-blue" size="sm">
+                <MDBBtn color="light-blue" size="sm" onClick={handleNavigate}>
                   Learn More
                 </MDBBtn>
               </MDBCol>

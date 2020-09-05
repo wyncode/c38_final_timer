@@ -98,7 +98,12 @@ const TimerClock2 = () => {
           </h1>
         </div>
       </div>
-      <MDBAnimation type="pulse" count={7} duration="300ms">
+      <MDBAnimation
+        style={{ marginTop: '-10px' }}
+        type="pulse"
+        count={7}
+        duration="300ms"
+      >
         <MDBBtn outline color="blue" size="md" onClick={toggle}>
           <MDBIcon icon="play" />
           <span>{'  '}</span>
@@ -109,7 +114,7 @@ const TimerClock2 = () => {
         </MDBBtn>
       </MDBAnimation>
 
-      <MDBContainer style={{ width: '40%' }}>
+      <MDBContainer style={{ marginTop: '-10px' }}>
         <form onSubmit={handleBreakTime}>
           <MDBInput
             label="Break Time"
@@ -118,17 +123,18 @@ const TimerClock2 = () => {
             outline
           ></MDBInput>
           <MDBBtn
-            className="btn-btn-primary"
+            className="rounded btn-btn-primary"
             type="submit"
             gradient="blue"
-            size="sm"
+            size="md"
             waves-effect
+            style={{ marginTop: '-5%' }}
           >
             Break
           </MDBBtn>
         </form>
       </MDBContainer>
-      <MDBContainer style={{ width: '40%' }}>
+      <MDBContainer style={{ marginTop: '-10px' }}>
         <form onSubmit={handleWorkTime}>
           <MDBInput
             label="Work Time"
@@ -137,11 +143,12 @@ const TimerClock2 = () => {
             outline
           ></MDBInput>
           <MDBBtn
-            className="btn-btn-primary"
+            className="rounded btn-btn-primary"
             type="submit"
-            gradient="blue"
-            size="sm"
+            gradient="peach"
+            size="md"
             waves-effect
+            style={{ marginTop: '-5%' }}
           >
             POMODORO
           </MDBBtn>
