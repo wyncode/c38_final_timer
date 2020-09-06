@@ -3,7 +3,6 @@ const router = require('express').Router(),
   Session = require('../../db/models/session'),
   Task = require('../../db/models/task');
 
-// Get all sessions for a specific Owner
 router.get('/api/sessions', async (req, res) => {
   try {
     await req.user
@@ -18,7 +17,6 @@ router.get('/api/sessions', async (req, res) => {
   }
 });
 
-// Get all sessions associated with a Task
 router.get('/api/sessions/:taskName', async (req, res) => {
   try {
     const session = await Session.find({ taskName: req.params.taskName });
@@ -28,7 +26,6 @@ router.get('/api/sessions/:taskName', async (req, res) => {
   }
 });
 
-// Get a specific session
 router.get('/api/session/:id', async (req, res) => {
   const _id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(_id))
@@ -44,7 +41,6 @@ router.get('/api/session/:id', async (req, res) => {
   }
 });
 
-// Create a session
 router.post('/api/session/', async (req, res) => {
   const session = await new Session({
     ...req.body,
@@ -63,7 +59,6 @@ router.post('/api/session/', async (req, res) => {
   }
 });
 
-// Delete a session
 router.delete('/api/session/:id', async (req, res) => {
   try {
     const session = await Session.findOneAndDelete({

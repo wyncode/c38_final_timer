@@ -2,10 +2,7 @@ const express = require('express'),
   router = new express.Router(),
   { sendCancellationEmail } = require('../../emails/index');
 
-// Login Check
 router.post('/api/loginCheck', async (req, res) => res.sendStatus(200));
-
-// Logout a user
 
 router.post('/api/users/logout', async (req, res) => {
   try {
@@ -20,8 +17,6 @@ router.post('/api/users/logout', async (req, res) => {
   }
 });
 
-// Logout all devices
-
 router.post('/api/users/logoutAll', async (req, res) => {
   try {
     req.user.tokens = [];
@@ -32,13 +27,11 @@ router.post('/api/users/logoutAll', async (req, res) => {
     res.status(500).json({ error: e.toString() });
   }
 });
-// Get current user
 
 router.get('/api/users/me', async (req, res) => {
   res.json(req.user);
 });
 
-// Update a user
 router.patch('/api/users/me', async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ['name', 'email', 'password', 'avatar'];
@@ -56,7 +49,6 @@ router.patch('/api/users/me', async (req, res) => {
   }
 });
 
-// Delete a user
 router.delete('/api/users/me', async (req, res) => {
   try {
     await req.user.remove();
@@ -68,7 +60,6 @@ router.delete('/api/users/me', async (req, res) => {
   }
 });
 
-//update a password- AKA resets the password
 router.put('/api/password', async (req, res) => {
   try {
     req.user.password = req.body.password;
