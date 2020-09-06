@@ -16,7 +16,6 @@ const Chart = () => {
     axios
       .get('/api/sessions', { withCredentials: true })
       .then((response) => {
-        console.log(response.data);
         response.data.forEach((item) => {
           dateTempArray.push(moment(item.end[0]).format('MMM Do YY'));
           durationTempArray.push(item.duration);
@@ -56,7 +55,7 @@ const Chart = () => {
         animateScale: true
       }
     });
-  }, [duration]);
+  }, [end, duration]);
 
   return (
     <MDBContainer
@@ -74,12 +73,12 @@ const Chart = () => {
           <MDBRow>
             <MDBTypography blockquote bqColor="primary">
               <MDBRow style={{ marginLeft: '10%' }}>
-                <MDBBox size="sm" tag="p" className="bq-title">
+                <MDBBox size="sm" tag="span" className="bq-title">
                   You've been productive lately!
-                  <p className="grey-text">
+                  <span className="grey-text">
                     Play around with your preferences, explore your different
                     tasks and map your progress!
-                  </p>
+                  </span>
                 </MDBBox>
                 <Doughnut
                   data={pieChart}

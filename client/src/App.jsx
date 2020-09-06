@@ -18,8 +18,7 @@ import UpdatePassword from './pages/UpdatePassword';
 
 function App() {
   const { currentUser } = useContext(AppContext);
-  const user = sessionStorage.getItem('user');
-  console.log(user);
+
   return (
     <MDBContainer fluid>
       <BrowserRouter>
