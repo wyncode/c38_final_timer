@@ -10,7 +10,6 @@ import {
 import { AppContext } from '../context/AppContext';
 import TimerPostModal from './TimerPostModal';
 import { motion } from 'framer-motion';
-import Inspire from './Inspire';
 
 const TimerClock2 = () => {
   const {
@@ -128,7 +127,6 @@ const TimerClock2 = () => {
     <div className="App">
       <div id="pomodoro-timer" style={{ marginBottom: '20px' }}>
         <div>
-          {/* <Inspire />{' '} */}
           <motion.svg
             width="400"
             height="400"
@@ -142,7 +140,7 @@ const TimerClock2 = () => {
                 animationDirection: 'normal',
                 animationTimingFunction: 'linear',
                 animationDuration: `${timeDuration}s`,
-                webkitAnimationPlayState: `${animationState}`
+                WebkitAnimationPlayState: `${animationState}`
               }}
               key={key}
               transform="rotate(90 200 200)"
@@ -163,7 +161,7 @@ const TimerClock2 = () => {
         a 90,90 0 1,0 -180,0
         "
             />
-            <text x="135" y="220" fill="white" font-size="50px">
+            <text x="135" y="220" fill="white" fontSize="50px">
               {' '}
               {makeMeTwoDigits(timeInMinutes)}:{makeMeTwoDigits(timeInSeconds)}
             </text>
@@ -171,7 +169,7 @@ const TimerClock2 = () => {
         </div>
       </div>
       <MDBAnimation
-        style={{ marginTop: '-10px' }}
+        // style={{ marginTop: '-10px' }}
         type="pulse"
         count={7}
         duration="300ms"
@@ -195,11 +193,10 @@ const TimerClock2 = () => {
             outline
           ></MDBInput>
           <MDBBtn
-            className="rounded btn-btn-primary"
+            className="rounded btn-btn-primary waves-effect"
             type="submit"
             gradient="blue"
             size="md"
-            waves-effect
             style={{ marginTop: '-5%' }}
           >
             SET BREAK
@@ -215,11 +212,10 @@ const TimerClock2 = () => {
             outline
           ></MDBInput>
           <MDBBtn
-            className="rounded btn-btn-primary"
+            className="rounded btn-btn-primary waves-effect"
             type="submit"
             gradient="peach"
             size="md"
-            waves-effect
             style={{ marginTop: '-5%' }}
           >
             SET WORK

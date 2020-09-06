@@ -9,7 +9,6 @@ client/.pnp
 .vscode
 client/.pnp.js
 yarn.lock
-package.json
 
 # testing
 client/coverage
