@@ -12,6 +12,7 @@ import {
   MDBNavbarBrand,
   MDBNavbar
 } from 'mdbreact';
+import Logout from '../components/Logout';
 
 const UsersNav = () => {
   return (
@@ -42,7 +43,7 @@ const UsersNav = () => {
           </MDBDropdownToggle>
           <MDBDropdownMenu className="dropdown-default">
             <MDBDropdownItem href="#!">My Profile</MDBDropdownItem>
-            <MDBDropdownItem href="/signup"> logout</MDBDropdownItem>
+            <Logout />
           </MDBDropdownMenu>
         </MDBDropdown>
       </MDBNavItem>

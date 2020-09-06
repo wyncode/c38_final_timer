@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": ">= 14.0.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free": "^5.14.0",
@@ -11,7 +14,6 @@
     "@fullcalendar/react": "5.3.0",
     "@fullcalendar/timegrid": "^5.3.0",
     "@sendgrid/mail": "^7.2.4",
-    "axios": "^0.20.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bootstrap": "4.5.2",
@@ -21,6 +23,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^5.1.0",
+    "framer-motion": "^2.6.6",
     "jsonwebtoken": "^8.5.1",
     "mdbreact": "^4.27.0",
     "moment": "^2.27.0",

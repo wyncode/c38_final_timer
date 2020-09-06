@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
 import UsersNav from '../components/UsersNav';
+import Nav from '../components/Nav';
 import TimerClock from '../components/TimerClock';
 
 const Home = () => {
+  const currentUser = useContext(AppContext);
   return (
     <div style={{ background: '#0A1045' }}>
       <MDBView>
-        <UsersNav />
         <MDBContainer
           fluid
           style={{ background: '#0A1045', height: '100%', width: '100%' }}
