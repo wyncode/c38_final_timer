@@ -43,8 +43,6 @@ const SignUp = ({ history }) => {
         loop
         muted
         style={{
-          // position: 'fixed',
-          // objectFit: 'fill'
           objectFit: 'cover',
           width: '100vw',
           height: '100vh',

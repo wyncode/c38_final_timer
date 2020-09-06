@@ -33,6 +33,7 @@ const forgotPasswordEmail = (email, token) => {
     from: `${process.env.FROM_EMAIL}`,
     subject: 'WynIt - Password Reset.',
     text: `Hi ${name}! Please click the link below to reset your password.`,
+
     html: exampleHTMLEmail
   });
 };
