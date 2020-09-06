@@ -11,7 +11,8 @@ import {
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-import Nav from '../components/Nav';
+import swal from 'sweetalert';
+import Time from '../Assets/BlueClock.mp4';
 
 const SignUp = ({ history }) => {
   const { setCurrentUser } = useContext(AppContext);
@@ -31,12 +32,29 @@ const SignUp = ({ history }) => {
       setCurrentUser(response.data.user);
       history.push('/');
     } catch (error) {
-      console.log('SignUp Error: ', error);
+      swal('SignUp Error', error);
     }
   };
 
   return (
     <MDBContainer className="justify-content-center" fluid>
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          // position: 'fixed',
+          // objectFit: 'fill'
+          objectFit: 'cover',
+          width: '100vw',
+          height: '100vh',
+          position: 'fixed',
+          top: 0,
+          left: 0
+        }}
+      >
+        <source src={Time} type="video/mp4" />
+      </video>
       <MDBRow className="py-4 mt-5"></MDBRow>
       <MDBRow className="no-gutters">
         <MDBCol></MDBCol>

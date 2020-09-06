@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { MDBContainer } from 'mdbreact';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { AppContextProvider } from './context/AppContext';
 import { AppContext } from './context/AppContext';
 import PrivateRoute from './components/PrivateRoute';
 import UsersNav from './components/UsersNav';
@@ -13,6 +12,7 @@ import SignUp from './pages/SignUp';
 import Scheduler from './pages/Scheduler';
 import TaskStats from './pages/MyTasks';
 import FAQs from './pages/FAQs';
+import Team from './pages/Team';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 
@@ -29,6 +29,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/faqs" component={FAQs} />
+          <Route exact path="/team" component={Team} />
           <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/updatepassword" component={UpdatePassword} />
           <PrivateRoute exact path="/tasks" component={TaskStats} />
