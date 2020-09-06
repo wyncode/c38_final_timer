@@ -7,7 +7,17 @@ import '../index.css';
 
 const Home = () => {
   return (
-    <div style={{ background: '#0A1045' }}>
+    <div
+      style={{
+        background: '#0A1045',
+        objectFit: 'cover',
+        width: '100vw',
+        height: '100vh',
+        position: 'fixed',
+        top: 0,
+        left: 0
+      }}
+    >
       <MDBView>
         <MDBContainer
           fluid
