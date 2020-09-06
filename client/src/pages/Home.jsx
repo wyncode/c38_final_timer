@@ -21,9 +21,9 @@ const Home = () => {
           fluid
           className="d-flex justify-content-center align-items-center"
         >
-          <MDBRow style={{ marginTop: '8%' }}>
+          <MDBRow style={{ marginTop: '5%' }}>
             <MDBCol md="12" style={{ marginLeft: '59%' }}>
-              <MDBRow style={{ marginBottom: '-8%' }}>
+              <MDBRow>
                 <Inspire />
               </MDBRow>
               <TimerClock2 />
