@@ -28,3 +28,50 @@ form {
   align-items: center;
   flex-direction: column;
 }
+
+path {
+  stroke-width: 30;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation-name: dash;
+  animation-direction: linear;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+  10% {
+    stroke: blue;
+  }
+  25% {
+    stroke: purple;
+  }
+  45% {
+    stroke: orange;
+  }
+  50% {
+    stroke: red;
+  }
+  100% {
+    stroke: red;
+  }
+}
+
+.circle2 {
+  stroke: gray;
+  fill: #1575e3;
+}
+
+.timeup {
+  transition: opacity 2s ease-in;
+  fill: red;
+  stroke: red;
+  stroke-width: 30;
+}
+
+.qotd {
+  color: white;
+}

@@ -9,6 +9,7 @@ import {
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import TimerPostModal from './TimerPostModal';
+import { motion } from 'framer-motion';
 
 const TimerClock2 = () => {
   const {
@@ -21,15 +22,24 @@ const TimerClock2 = () => {
     setModal,
     setTimeStampStart
   } = useContext(AppContext);
-  const [counter, setCounter] = useState(25 * 60);
-  const [isActive, setIsActive] = useState(false);
-  const [timestamp, setTimestamp] = useState(false);
+  const [counter, setCounter] = useState(25 * 60); // timmer
+  const [isActive, setIsActive] = useState(false); // is the timer running?
+  const [timestamp, setTimestamp] = useState(false); // has a timestamp been recorded?
+  const [breakTime, setBreakTime] = useState(false); // is it break time?
+  const [animationState, setAnimationState] = useState('paused'); // sets the animation state 'paused' | 'active'
+  const [timeDuration, setTimeDuration] = useState(''); //sets the time duration of the animation
+  const [key, setKey] = useState(''); //passed as a prop to reset the svg animation
 
   const timeInMinutes = Math.floor(counter / 60);
   const timeInSeconds = Math.floor(counter % 60);
-  //adding that 0 on for the seconds
-  const makeMeTwoDigits = (n) => {
-    return (n < 10 ? '0' : '') + n;
+
+  //rotate timer on load
+  const svgVariants = {
+    hidden: { rotate: -180 },
+    visible: {
+      rotate: 0,
+      transition: { duration: 1 }
+    }
   };
 
   //sets the session to active
@@ -37,13 +47,27 @@ const TimerClock2 = () => {
     if (timestamp === false) {
       setTimestamp(true);
       let time = new Date().getTime();
+
+      console.log(timeDuration);
       setTimeStampStart(time);
       setAdder(time);
     }
     setIsActive(!isActive);
+    setTimeDuration(counter * 1.799);
+    animation();
   };
 
-  //resets count to 25
+  const animation = () => {
+    if (isActive === false) {
+      setAnimationState('running');
+      console.log('animation is running');
+    } else {
+      setAnimationState('paused');
+      console.log('animation has been paused');
+    }
+  };
+
+  //resets count to 25 minutes, triggers modal to record session, calculate timestamps
   const reset = () => {
     setCounter(25 * 60);
     setIsActive(false);
@@ -52,33 +76,44 @@ const TimerClock2 = () => {
     let durationInMins = Math.abs(time2 - adder) / 60000;
     setTimerDuration(durationInMins);
     setTimestamp(false);
-    if (currentUser) {
+    setAnimationState('paused');
+    setKey((preKey) => preKey + 1);
+    if (currentUser && breakTime === false) {
       setModal(!modal);
     }
   };
 
-  // useEffect(() => {
-  //   console.log(startTimestamp);
-  //   console.log(timeStampEnd);
-  //   console.log(timerDuration);
-  // }, [startTimestamp, timeStampEnd, timerDuration]);
-
-  //sets breaktime
+  //sets break time values
   const handleBreakTime = (event) => {
     event.preventDefault();
     setCounter(event.target.break.value * 60);
-    setIsActive(false);
+    setBreakTime(true);
+    setTimerValues();
   };
 
-  //sets worktime
+  //sets work time values
   const handleWorkTime = (event) => {
     event.preventDefault();
     setCounter(event.target.work.value * 60);
+    setBreakTime(false);
+    setTimerValues();
+  };
+
+  const setTimerValues = () => {
+    console.log("it's break time!");
+    setTimeDuration(counter * 1.799);
+    console.log('timer duration:' + timeDuration);
     setIsActive(false);
+    setAnimationState('paused');
+    setKey((preKey) => preKey + 1);
+  };
+
+  //adding extra 0's
+  const makeMeTwoDigits = (n) => {
+    return (n < 10 ? '0' : '') + n;
   };
 
   useEffect(() => {
-    // console.log(counter, isActive);
     if (isActive) {
       const timer =
         counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -91,15 +126,50 @@ const TimerClock2 = () => {
   return (
     <div className="App">
       <div id="pomodoro-timer" style={{ marginBottom: '20px' }}>
-        <div className="timer-div">
-          {' '}
-          <h1 className="timer">
-            {timeInMinutes}:{makeMeTwoDigits(timeInSeconds)}
-          </h1>
+        <div>
+          <motion.svg
+            width="400"
+            height="400"
+            variants={svgVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <path
+              style={{
+                animationName: 'dash',
+                animationDirection: 'normal',
+                animationTimingFunction: 'linear',
+                animationDuration: `${timeDuration}s`,
+                WebkitAnimationPlayState: `${animationState}`
+              }}
+              key={key}
+              transform="rotate(90 200 200)"
+              fill="none"
+              d="
+        M 200, 200
+        m -90, 0
+        a 90,90 0 1,0 180,0
+        a 90,90 0 1,0 -180,0
+        "
+            />
+            <path
+              className={counter > 0 ? 'circle2' : 'timeup'}
+              d="
+        M 200, 200
+        m -90, 0
+        a 90,90 0 1,0 180,0
+        a 90,90 0 1,0 -180,0
+        "
+            />
+            <text x="135" y="220" fill="white" fontSize="50px">
+              {' '}
+              {makeMeTwoDigits(timeInMinutes)}:{makeMeTwoDigits(timeInSeconds)}
+            </text>
+          </motion.svg>
         </div>
       </div>
       <MDBAnimation
-        style={{ marginTop: '-10px' }}
+        // style={{ marginTop: '-10px' }}
         type="pulse"
         count={7}
         duration="300ms"
@@ -123,14 +193,13 @@ const TimerClock2 = () => {
             outline
           ></MDBInput>
           <MDBBtn
-            className="rounded btn-btn-primary"
+            className="rounded btn-btn-primary waves-effect"
             type="submit"
             gradient="blue"
             size="md"
-            waves-effect
             style={{ marginTop: '-5%' }}
           >
-            Break
+            SET BREAK
           </MDBBtn>
         </form>
       </MDBContainer>
@@ -143,14 +212,13 @@ const TimerClock2 = () => {
             outline
           ></MDBInput>
           <MDBBtn
-            className="rounded btn-btn-primary"
+            className="rounded btn-btn-primary waves-effect"
             type="submit"
             gradient="peach"
             size="md"
-            waves-effect
             style={{ marginTop: '-5%' }}
           >
-            POMODORO
+            SET WORK
           </MDBBtn>
         </form>
       </MDBContainer>

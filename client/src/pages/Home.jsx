@@ -5,6 +5,7 @@ import logo from '../Assets/logo.png';
 import Wyntank_background from '../Assets/WynBackground.jpg';
 import Copyright from '../components/Copyright';
 import '../index.css';
+import Inspire from '../components/Inspire';
 
 const Home = () => {
   return (
@@ -41,6 +42,7 @@ const Home = () => {
                 {/* <img src={logo} alt="logo" className="img-fluid" style={{}} /> */}
               </MDBCol>
               <MDBCol md="8" style={{ marginTop: '30%' }}>
+                <Inspire />
                 <TimerClock />
               </MDBCol>
             </MDBRow>
