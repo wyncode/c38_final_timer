@@ -1,7 +1,6 @@
 import React from 'react';
 import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
-import TimerClock from '../components/TimerClock';
-import logo from '../Assets/logo.png';
+import TimerClock2 from '../components/TimerClock';
 import Wyntank_background from '../Assets/WynBackground.jpg';
 import Copyright from '../components/Copyright';
 import '../index.css';
@@ -13,7 +12,8 @@ const Home = () => {
       style={{
         backgroundImage: `url(${Wyntank_background})`,
         backgroundSize: 'cover',
-        height: '100vh'
+        height: '100vh',
+        width: '100vw'
       }}
     >
       <MDBView>
@@ -21,34 +21,16 @@ const Home = () => {
           fluid
           className="d-flex justify-content-center align-items-center"
         >
-          <MDBRow style={{ width: '80%' }}>
-            <MDBCol style={{ paddingBottom: '20px', paddingTop: '60px' }}>
-              {/* <MDBTypography
-                className="font-weight-bold mt-sm-5 white-text"
-                tag="h3"
-                variant="display-3"
-              >
-                WynIt.
-              </MDBTypography> */}
-            </MDBCol>
-            <MDBRow
-              style={{
-                paddingBottom: '20px',
-                paddingTop: '10px',
-                marginTop: '12%'
-              }}
-            >
-              <MDBCol md="7">
-                {/* <img src={logo} alt="logo" className="img-fluid" style={{}} /> */}
-              </MDBCol>
-              <MDBCol md="8" style={{ marginTop: '30%' }}>
+          <MDBRow style={{ marginTop: '8%' }}>
+            <MDBCol md="12" style={{ marginLeft: '59%' }}>
+              <MDBRow style={{ marginBottom: '-8%' }}>
                 <Inspire />
-                <TimerClock />
-              </MDBCol>
-            </MDBRow>
+              </MDBRow>
+              <TimerClock2 />
+            </MDBCol>
+            <Copyright />
           </MDBRow>
         </MDBContainer>
-        <Copyright />
       </MDBView>
     </div>
   );
