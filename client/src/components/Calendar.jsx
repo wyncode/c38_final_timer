@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import FullCalendar, { formatDate } from '@fullcalendar/react';
+import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -29,14 +29,13 @@ const Calendar = () => {
       })
       .catch((error) => console.log(error.toString()));
   }, [loading]);
-  //populates calendar with sessions
+
   useEffect(() => {
     const initArray = [];
-    tasks.map((task) => {
+    tasks.forEach((task) => {
       let date = Date.parse(task.dueDate);
       let datePlus1 = date + 172800000;
       let formattedDate = new Date(datePlus1).toISOString();
-      console.log(task);
       initArray.push({
         title: `DUE: ${task.name}`,
         id: task._id,
@@ -45,7 +44,7 @@ const Calendar = () => {
         color: 'purple'
       });
     });
-    sessions.map((session) => {
+    sessions.forEach((session) => {
       if (session.sessionType === 'planned') {
         initArray.push({
           title: `Planned:${session.description}-${session.taskName}`,
@@ -69,7 +68,6 @@ const Calendar = () => {
     setSessionArray(initArray);
   }, [sessions, tasks]);
 
-  //deletes sessions on Calendar by interaction (interpolated value is the ID)
   const handleEventClick = (clickInfo) => {
     if (
       window.confirm(

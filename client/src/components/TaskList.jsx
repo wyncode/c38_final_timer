@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from 'react';
 import { MDBContainer, MDBTable, MDBTableHead } from 'mdbreact';
 import Task from './Task';
 import axios from 'axios';
-import Search from './TaskSearch';
 import { AppContext } from '../context/AppContext';
 
 const TaskList = () => {
@@ -19,7 +18,6 @@ const TaskList = () => {
 
   return (
     <MDBContainer>
-      <Search />
       <MDBTable>
         <MDBTableHead color="primary-color" textWhite>
           <tr>

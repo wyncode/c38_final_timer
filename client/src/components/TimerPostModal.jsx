@@ -12,8 +12,6 @@ import {
 import axios from 'axios';
 import TaskSelector from './TaskSelector';
 import { AppContext } from '../context/AppContext';
-import { Modal } from 'react-bootstrap';
-import { session } from 'passport';
 
 const TimerPostModal = () => {
   const [newSession, setNewSession] = useState(null);
@@ -29,7 +27,6 @@ const TimerPostModal = () => {
     timeStampStart
   } = useContext(AppContext);
 
-  console.log('test', timeStampStart);
   const modalToggle = () => {
     setModal(!modal);
     setTaskName(null);

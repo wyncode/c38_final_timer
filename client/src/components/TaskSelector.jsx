@@ -19,7 +19,7 @@ const TaskSelector = ({ setTaskId }) => {
         console.log(response.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [setTasks]);
 
   return (
     <MDBDropdown dropright className="mb-5">
@@ -42,7 +42,6 @@ const TaskSelector = ({ setTaskId }) => {
       {<label>{taskName}</label>}
     </MDBDropdown>
   );
-  console.log(taskName);
 };
 
 export default TaskSelector;

@@ -11,15 +11,12 @@ const Inspire = () => {
       .then((response) => {
         const randomNumber = Math.floor(Math.random() * response.data.length);
         const randomQuote = response.data[randomNumber];
-        console.log(response.data[0].text);
         setInspire(randomQuote);
       })
       .catch((e) => {
         console.log(e.toString());
       });
   }, []);
-
-  console.log(inspire);
 
   if (!inspire) {
     return null;

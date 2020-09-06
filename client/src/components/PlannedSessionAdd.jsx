@@ -12,8 +12,6 @@ import {
 import axios from 'axios';
 import TaskSelector from './TaskSelector';
 import { AppContext } from '../context/AppContext';
-import { Modal } from 'react-bootstrap';
-import { session } from 'passport';
 
 const PlannedSessionAdder = () => {
   const [modal, setModal] = useState(false);
