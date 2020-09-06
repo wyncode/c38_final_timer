@@ -2,12 +2,19 @@ import React from 'react';
 import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
 import TimerClock from '../components/TimerClock';
 import logo from '../Assets/logo.png';
+import Wyntank_background from '../Assets/WynBackground.jpg';
 import Copyright from '../components/Copyright';
 import '../index.css';
 
 const Home = () => {
   return (
-    <div style={{ background: '#0A1045' }}>
+    <div
+      style={{
+        backgroundImage: `url(${Wyntank_background})`,
+        backgroundSize: 'cover',
+        height: '100vh'
+      }}
+    >
       <MDBView>
         <MDBContainer
           fluid
@@ -15,19 +22,25 @@ const Home = () => {
         >
           <MDBRow style={{ width: '80%' }}>
             <MDBCol style={{ paddingBottom: '20px', paddingTop: '60px' }}>
-              <MDBTypography
-                className="font-weight-bold mt-sm-5 blue-text"
+              {/* <MDBTypography
+                className="font-weight-bold mt-sm-5 white-text"
                 tag="h3"
                 variant="display-3"
               >
                 WynIt.
-              </MDBTypography>
+              </MDBTypography> */}
             </MDBCol>
-            <MDBRow style={{ paddingBottom: '20px', paddingTop: '10px' }}>
+            <MDBRow
+              style={{
+                paddingBottom: '20px',
+                paddingTop: '10px',
+                marginTop: '12%'
+              }}
+            >
               <MDBCol md="7">
-                <img src={logo} alt="logo" className="img-fluid" style={{}} />
+                {/* <img src={logo} alt="logo" className="img-fluid" style={{}} /> */}
               </MDBCol>
-              <MDBCol>
+              <MDBCol md="8" style={{ marginTop: '30%' }}>
                 <TimerClock />
               </MDBCol>
             </MDBRow>
