@@ -61,7 +61,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// creates relatonship between user and task
 userSchema.virtual('tasks', {
   ref: 'Task',
   localField: '_id',
@@ -74,7 +73,6 @@ userSchema.virtual('sessions', {
   foreignField: 'ownerId'
 });
 
-// By naming this method toJSON we don't need to call it for it to run because of our express res.send methods calls it for us.
 userSchema.methods.toJSON = function () {
   const user = this;
   const userObject = user.toObject();
@@ -95,7 +93,6 @@ userSchema.methods.generateAuthToken = async function () {
   return token;
 };
 
-// find user by email and password
 userSchema.statics.findByCredentials = async (email, password) => {
   const user = await User.findOne({ email });
   if (!user) throw new Error("user doesn't exist");
@@ -103,8 +100,6 @@ userSchema.statics.findByCredentials = async (email, password) => {
   if (!isMatch) throw new Error('invalid credentials');
   return user;
 };
-
-// This mongoose middleware will hash our user's passwords whenever a user is created or a user password is updated.
 
 userSchema.pre('save', async function (next) {
   const user = this;
@@ -114,7 +109,6 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-// Delete user tasks when a user is removed.
 userSchema.pre('remove', async function (next) {
   const user = this;
   await Task.deleteMany({

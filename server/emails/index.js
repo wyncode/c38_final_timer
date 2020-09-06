@@ -29,7 +29,6 @@ const sendUpdateEmail = (email, name) => {
     from: `${process.env.FROM_EMAIL}`,
     subject: `${name}, here is your weekly update`,
     text: `Weekly update follows`
-    //will send data
   });
 };
 
@@ -43,7 +42,6 @@ const forgotPasswordEmail = (email, token) => {
     to: email,
     from: `${process.env.FROM_EMAIL}`,
     subject: 'Password Reset.',
-    // text: `Hi ${name}! Please click the link below to reset your password.`
     html: exampleHTMLEmail
   });
 };

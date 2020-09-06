@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBContainer, MDBView, MDBRow, MDBCol, MDBTypography } from 'mdbreact';
+import { MDBContainer, MDBView, MDBRow, MDBCol } from 'mdbreact';
 import TimerClock2 from '../components/TimerClock';
 import Wyntank_background from '../Assets/WynBackground.jpg';
 import Copyright from '../components/Copyright';

@@ -2,7 +2,6 @@ const router = require('express').Router(),
   mongoose = require('mongoose'),
   Task = require('../../db/models/task');
 
-// Get all tasks
 router.get('/api/tasks', async (req, res) => {
   const match = {},
     sort = {};
@@ -32,7 +31,6 @@ router.get('/api/tasks', async (req, res) => {
   }
 });
 
-// Get a specific task
 router.get('/api/tasks/:id', async (req, res) => {
   const _id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(_id))
@@ -48,7 +46,6 @@ router.get('/api/tasks/:id', async (req, res) => {
   }
 });
 
-// Create a task
 router.post('/api/tasks', async (req, res) => {
   const task = await new Task({
     ...req.body,
@@ -62,7 +59,6 @@ router.post('/api/tasks', async (req, res) => {
   }
 });
 
-// Update a task
 router.patch('/api/tasks/:id', async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ['numOfSessions', 'completed'];
@@ -86,7 +82,6 @@ router.patch('/api/tasks/:id', async (req, res) => {
   }
 });
 
-// Delete a task
 router.delete('/api/tasks/:id', async (req, res) => {
   try {
     const task = await Task.findOneAndDelete({

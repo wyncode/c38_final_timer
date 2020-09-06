@@ -11,17 +11,14 @@ const express = require('express'),
   cors = require('cors'),
   app = express();
 
-// Parse incoming JSON into objects
 app.use(express.json());
 app.use(cors());
-// Unauthenticated routes
+
 app.use(openRoutes);
 
 app.use(cookieParser());
 
-//
 if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
@@ -31,13 +28,11 @@ app.use(
   })
 );
 
-//  Authenticated  Routes
 app.use(userRouter);
 app.use(taskRouter);
 app.use(sessionRouter);
 
 if (process.env.NODE_ENV === 'production') {
-  // Handle React routing, return all requests to React app
   app.get('*', (request, response) => {
     response.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });

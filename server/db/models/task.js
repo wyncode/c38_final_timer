@@ -32,14 +32,7 @@ const taskSchema = new mongoose.Schema(
     timestamps: true
   }
 );
-// // creates relatonship between task and session
-// taskSchema.virtual('sessions', {
-//   ref: 'Session',
-//   localField: 'name',
-//   foreignField: 'taskId'
-// });
 
-// Converts dates to readable format
 taskSchema.methods.toJSON = function () {
   const task = this;
   const taskObject = task.toObject();
@@ -49,7 +42,6 @@ taskSchema.methods.toJSON = function () {
   return taskObject;
 };
 
-// Delete user sessions when a task is removed.
 taskSchema.pre('remove', async function (next) {
   const task = this;
   await Session.deleteMany({
