@@ -128,7 +128,7 @@ const TimerClock2 = () => {
     <div className="App">
       <div id="pomodoro-timer" style={{ marginBottom: '20px' }}>
         <div>
-          {/* <Inspire /> */}{' '}
+          {/* <Inspire />{' '} */}
           <motion.svg
             width="400"
             height="400"

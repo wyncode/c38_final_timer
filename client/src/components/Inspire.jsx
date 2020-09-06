@@ -2,29 +2,26 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Inspire = () => {
-  const [inspire, setInspire] = useState([]);
+  const [inspire, setInspire] = useState(null);
 
   useEffect(() => {
     axios
       .get('https://type.fit/api/quotes')
       .then((response) => {
-        let newArray = Array.from(response.data);
-        setInspire(newArray);
-        console.log(inspire);
+        console.log(response.data[0].text);
+        setInspire(response.data);
       })
       .catch((e) => {
         console.log(e.toString());
       });
   }, []);
 
+  console.log(inspire);
+
   return (
     <>
-      {inspire.map((quotes, i) => (
-        <p key={i} className="qotd">
-          {' '}
-          {quotes.text}
-        </p>
-      ))}
+      {inspire &&
+        inspire.map((quotes) => <p className="qotd"> {quotes.text}</p>)}
     </>
   );
 };
