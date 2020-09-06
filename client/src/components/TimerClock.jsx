@@ -126,7 +126,7 @@ const TimerClock = () => {
   return (
     <div className="App">
       <div id="pomodoro-timer">
-        <div style={{ marginBottom: '-30%' }}>
+        <div style={{ marginBottom: '-34%' }}>
           <motion.svg
             width="400"
             height="400"
