@@ -5,11 +5,13 @@ import {
   MDBBtn,
   MDBContainer,
   MDBIcon,
-  MDBAnimation
+  MDBAnimation,
+  MDBRow
 } from 'mdbreact';
 import { AppContext } from '../context/AppContext';
 import TimerPostModal from './TimerPostModal';
 import { motion } from 'framer-motion';
+import Solemn from '../Assets/solemn.mp3';
 
 const TimerClock = () => {
   const {
@@ -41,6 +43,11 @@ const TimerClock = () => {
       transition: { duration: 1 }
     }
   };
+
+  const audio = new Audio(Solemn);
+  if (isActive && counter === 0) {
+    audio.play();
+  }
 
   //sets the session to active
   const toggle = () => {
@@ -125,8 +132,8 @@ const TimerClock = () => {
 
   return (
     <div className="App">
-      <div id="pomodoro-timer">
-        <div style={{ marginBottom: '-30%' }}>
+      <div id="clock-timer">
+        <div style={{ marginBottom: '-20%' }}>
           <motion.svg
             width="400"
             height="400"
@@ -174,8 +181,9 @@ const TimerClock = () => {
           </motion.svg>
         </div>
       </div>
+
       <MDBAnimation
-        style={{ marginTop: '18%' }}
+        // style={{ marginTop: '18%' }}
         type="pulse"
         count={7}
         duration="300ms"
@@ -186,47 +194,52 @@ const TimerClock = () => {
           <MDBIcon icon="pause" />
         </MDBBtn>
         <MDBBtn outline color="orange" size="md" onClick={reset}>
-          <MDBIcon icon="stop" />
+          <MDBIcon icon="check-square" />
         </MDBBtn>
       </MDBAnimation>
 
-      <MDBContainer>
-        <form onSubmit={handleBreakTime}>
-          <MDBInput
-            label="Break Time"
-            type="text"
-            name="break"
-            outline
-          ></MDBInput>
-          <MDBBtn
-            className="rounded btn-btn-primary waves-effect"
-            type="submit"
-            gradient="blue"
-            size="md"
-          >
-            SET BREAK
-          </MDBBtn>
-        </form>
+      <MDBContainer className=" flex-d-col">
+        <div className="form">
+          <form onSubmit={handleBreakTime}>
+            <MDBRow className="d-flex align-items-center">
+              <MDBInput
+                label="Break Time"
+                type="number"
+                name="break"
+                outline
+              ></MDBInput>
+              <MDBBtn
+                className="rounded btn-btn-primary waves-effect"
+                type="submit"
+                gradient="blue"
+                style={{ height: '40px', marginBottom: '15px' }}
+              >
+                SET BREAK
+              </MDBBtn>
+            </MDBRow>
+          </form>
+        </div>
+        <div className="forms">
+          <MDBRow className="d-flex align-items-center ">
+            <form onSubmit={handleWorkTime}>
+              <MDBInput
+                label="Work Time"
+                type="number"
+                name="work"
+                outline
+              ></MDBInput>
+              <MDBBtn
+                className="rounded btn-btn-primary waves-effect mt-100"
+                type="submit"
+                gradient="peach"
+                style={{ height: '40px', marginBottom: '15px' }}
+              >
+                SET WORK
+              </MDBBtn>
+            </form>
+          </MDBRow>
+        </div>
       </MDBContainer>
-      <MDBContainer>
-        <form onSubmit={handleWorkTime}>
-          <MDBInput
-            label="Work Time"
-            type="text"
-            name="work"
-            outline
-          ></MDBInput>
-          <MDBBtn
-            className="rounded btn-btn-primary waves-effect"
-            type="submit"
-            gradient="peach"
-            size="md"
-          >
-            SET WORK
-          </MDBBtn>
-        </form>
-      </MDBContainer>
-
       <div>
         <TimerPostModal />
       </div>

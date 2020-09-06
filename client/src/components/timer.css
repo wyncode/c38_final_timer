@@ -3,27 +3,32 @@
   text-align: center;
 }
 
-#pomodoro-timer {
+#clock-timer {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.timer-div {
-  border: 5px solid white;
-  padding: 10px;
-  border-radius: 50%;
+  margin-bottom: 50px;
 }
 
 .timer {
   color: white;
-  padding: 20%;
+  padding: 50%;
 }
 
 form {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
+}
+.forms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-form input[type='number']:focus {
+  color: white !important;
 }
 
 path {
@@ -58,12 +63,10 @@ path {
 }
 
 .circle2 {
-  stroke: gray;
   fill: #1575e3;
 }
 
 .timeup {
-  transition: opacity 2s ease-in;
   fill: red;
   stroke: red;
   stroke-width: 30;
