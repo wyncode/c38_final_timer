@@ -10,26 +10,15 @@ const sendWelcomeEmail = (email, name) => {
     color: blue;
   }
   </style>
-  <h1 class="sampleh1" >Welcome our Productivity App</h1>
-  <div>We hope you find our app useful </div>
-  <div>etc etc blah blah blah </div>
+  <h1 class="sampleh1" >Welcome to WynIt!</h1>
+  <div>We hope you find our app useful to increase your productivity!</div>
   `;
   sgMail.send({
     to: email,
     from: `${process.env.FROM_EMAIL}`,
-    subject: 'Thanks for signing up!',
-    text: `Hi ${name}! Welcome to your Productivity Timer.`,
+    subject: 'WynIt - Thanks for signing up!',
+    text: `Hi ${name}! Welcome to WynIt! We hope you are prepared to become more productive every day!`,
     html: htmlEmail
-  });
-};
-
-const sendUpdateEmail = (email, name) => {
-  sgMail.send({
-    to: email,
-    from: `${process.env.FROM_EMAIL}`,
-    subject: `${name}, here is your weekly update`,
-    text: `Weekly update follows`
-    //will send data
   });
 };
 
@@ -42,14 +31,13 @@ const forgotPasswordEmail = (email, token) => {
   sgMail.send({
     to: email,
     from: `${process.env.FROM_EMAIL}`,
-    subject: 'Password Reset.',
-    // text: `Hi ${name}! Please click the link below to reset your password.`
+    subject: 'WynIt - Password Reset.',
+    text: `Hi ${name}! Please click the link below to reset your password.`,
     html: exampleHTMLEmail
   });
 };
 
 module.exports = {
   sendWelcomeEmail,
-  sendUpdateEmail,
   forgotPasswordEmail
 };
