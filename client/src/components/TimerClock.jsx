@@ -11,7 +11,7 @@ import { AppContext } from '../context/AppContext';
 import TimerPostModal from './TimerPostModal';
 import { motion } from 'framer-motion';
 
-const TimerClock2 = () => {
+const TimerClock = () => {
   const {
     currentUser,
     adder,
@@ -125,8 +125,8 @@ const TimerClock2 = () => {
 
   return (
     <div className="App">
-      <div id="pomodoro-timer" style={{ marginBottom: '20px' }}>
-        <div>
+      <div id="pomodoro-timer">
+        <div style={{ marginBottom: '-30%' }}>
           <motion.svg
             width="400"
             height="400"
@@ -161,7 +161,13 @@ const TimerClock2 = () => {
         a 90,90 0 1,0 -180,0
         "
             />
-            <text x="135" y="220" fill="white" fontSize="50px">
+            <text
+              x="135"
+              y="220"
+              fill="white"
+              fontSize="40pt"
+              fontWeight="bold"
+            >
               {' '}
               {makeMeTwoDigits(timeInMinutes)}:{makeMeTwoDigits(timeInSeconds)}
             </text>
@@ -169,7 +175,7 @@ const TimerClock2 = () => {
         </div>
       </div>
       <MDBAnimation
-        // style={{ marginTop: '-10px' }}
+        style={{ marginTop: '18%' }}
         type="pulse"
         count={7}
         duration="300ms"
@@ -184,7 +190,7 @@ const TimerClock2 = () => {
         </MDBBtn>
       </MDBAnimation>
 
-      <MDBContainer style={{ marginTop: '-10px' }}>
+      <MDBContainer>
         <form onSubmit={handleBreakTime}>
           <MDBInput
             label="Break Time"
@@ -197,13 +203,12 @@ const TimerClock2 = () => {
             type="submit"
             gradient="blue"
             size="md"
-            style={{ marginTop: '-5%' }}
           >
             SET BREAK
           </MDBBtn>
         </form>
       </MDBContainer>
-      <MDBContainer style={{ marginTop: '-10px' }}>
+      <MDBContainer>
         <form onSubmit={handleWorkTime}>
           <MDBInput
             label="Work Time"
@@ -216,7 +221,6 @@ const TimerClock2 = () => {
             type="submit"
             gradient="peach"
             size="md"
-            style={{ marginTop: '-5%' }}
           >
             SET WORK
           </MDBBtn>
@@ -230,4 +234,4 @@ const TimerClock2 = () => {
   );
 };
 
-export default TimerClock2;
+export default TimerClock;

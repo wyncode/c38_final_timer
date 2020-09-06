@@ -13,7 +13,7 @@ import axios from 'axios';
 import TaskSelector from './TaskSelector';
 import { AppContext } from '../context/AppContext';
 
-const PlannedSessionAdder = () => {
+const TimerPostModal = () => {
   const [newSession, setNewSession] = useState(null);
   const [taskId, setTaskId] = useState(null);
   const {
@@ -96,4 +96,4 @@ const PlannedSessionAdder = () => {
   );
 };
 
-export default PlannedSessionAdder;
+export default TimerPostModal;
