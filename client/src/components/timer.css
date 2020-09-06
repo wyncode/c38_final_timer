@@ -7,15 +7,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 25px;
 }
 
 .timer-div {
   border: 5px solid white;
   padding: 10px;
   border-radius: 50%;
-  height: 40%;
-  width: 40%;
 }
 
 .timer {
@@ -47,7 +44,7 @@ path {
     stroke: blue;
   }
   25% {
-    stroke: purple;
+    stroke: green;
   }
   45% {
     stroke: orange;
