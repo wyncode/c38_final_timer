@@ -2,7 +2,7 @@ const router = require('express').Router(),
   { sendWelcomeEmail, forgotPasswordEmail } = require('../../emails/'),
   User = require('../../db/models/user'),
   jwt = require('jsonwebtoken');
-
+// Login a user
 router.post('/api/users/login', async (req, res) => {
   try {
     const user = await User.findByCredentials(
@@ -20,7 +20,7 @@ router.post('/api/users/login', async (req, res) => {
     res.status(400).json({ error: e.toString() });
   }
 });
-
+// Create a user
 router.post('/api/users', async (req, res) => {
   const user = new User(req.body);
   console.log(req.body);
@@ -38,7 +38,7 @@ router.post('/api/users', async (req, res) => {
     res.status(201).status(400).json({ error: e.toString() });
   }
 });
-
+// Reset Password- This sends you the reset password email
 router.get('/api/password', async (req, res) => {
   try {
     const { email } = req.query,
@@ -57,7 +57,7 @@ router.get('/api/password', async (req, res) => {
     res.status(400).json({ error: e.toString() });
   }
 });
-
+//Redirect to password reset page
 router.get('/api/password/:token', (req, res) => {
   const { token } = req.params;
   try {
@@ -74,5 +74,4 @@ router.get('/api/password/:token', (req, res) => {
     res.json({ error: e.toString() });
   }
 });
-
 module.exports = router;

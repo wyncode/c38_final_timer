@@ -2,7 +2,7 @@ const router = require('express').Router(),
   mongoose = require('mongoose'),
   Session = require('../../db/models/session'),
   Task = require('../../db/models/task');
-
+// Get all sessions for a specific Owner
 router.get('/api/sessions', async (req, res) => {
   try {
     await req.user
@@ -16,7 +16,7 @@ router.get('/api/sessions', async (req, res) => {
     res.status(500).json({ error: e.toString() });
   }
 });
-
+// Get all sessions associated with a Task
 router.get('/api/sessions/:taskName', async (req, res) => {
   try {
     const session = await Session.find({ taskName: req.params.taskName });
@@ -25,22 +25,20 @@ router.get('/api/sessions/:taskName', async (req, res) => {
     res.status(500).json({ error: e.toString() });
   }
 });
-
+// Get a specific session
 router.get('/api/session/:id', async (req, res) => {
   const _id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(400).send('Not a valid session id');
-
   try {
     const session = await Session.find({ _id });
     if (!session) return res.status(404).send();
-
     res.json(session);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }
 });
-
+// Create a session
 router.post('/api/session/', async (req, res) => {
   const session = await new Session({
     ...req.body,
@@ -58,7 +56,7 @@ router.post('/api/session/', async (req, res) => {
     res.status(400).json({ error: e.toString() });
   }
 });
-
+// Delete a session
 router.delete('/api/session/:id', async (req, res) => {
   try {
     const session = await Session.findOneAndDelete({
@@ -70,5 +68,4 @@ router.delete('/api/session/:id', async (req, res) => {
     res.status(500).json({ error: e.toString() });
   }
 });
-
 module.exports = router;
