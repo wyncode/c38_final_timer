@@ -55,7 +55,6 @@ Documenation for:
 - `yarn add react`
 - `yarn add react-bootstrap`
 - `yarn add react-chartjs-2`
-- `yarn add react-circle-countdown-timer`
 - `yarn add react-dom`
 - `yarn add react-router-dom`
 - `yarn add react-scripts`
