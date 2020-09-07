@@ -3,10 +3,11 @@ import { MDBContainer, MDBView, MDBRow, MDBCol } from 'mdbreact';
 import TaskForm from '../components/TaskForm';
 import Calendar from '../components/Calendar';
 import PlannedSessionAdder from '../components/PlannedSessionAdd';
+import './scheduler.css';
 
 const Scheduler = () => {
   return (
-    <div>
+    <div id="tasks">
       <MDBView>
         <MDBContainer style={{ marginTop: '5%' }} fluid>
           <MDBRow className="d-flex justify-content-center">

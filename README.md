@@ -119,6 +119,7 @@ Sara Salazar- https://github.com/saritasalazar
 
 ## To deploy
 
+
 NOTE: Heroku specifically runs npm start, so don't remove that from your package.json file.
 
 - heroku create your-app-name
@@ -132,4 +133,4 @@ NOTE: Heroku specifically runs npm start, so don't remove that from your package
 
 - git push heroku master
 
-current Deployment of the website can be found here: https://secret-retreat-95639.herokuapp.com/
+
