@@ -119,7 +119,6 @@ Sara Salazar- https://github.com/saritasalazar
 
 ## To deploy
 
-
 NOTE: Heroku specifically runs npm start, so don't remove that from your package.json file.
 
 - heroku create your-app-name
@@ -132,5 +131,3 @@ NOTE: Heroku specifically runs npm start, so don't remove that from your package
   - set APP and APP_URL= url of your deployed website or both
 
 - git push heroku master
-
-
