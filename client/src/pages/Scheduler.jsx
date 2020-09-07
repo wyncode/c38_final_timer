@@ -11,7 +11,7 @@ const Scheduler = () => {
       <MDBView>
         <MDBContainer style={{ marginTop: '5%' }} fluid>
           <MDBRow className="d-flex justify-content-center">
-            <MDBCol md="3" style={{ marginTop: '10%' }}>
+            <MDBCol md="3" style={{ marginTop: '12%' }}>
               <MDBRow>
                 <TaskForm />
               </MDBRow>
@@ -19,10 +19,7 @@ const Scheduler = () => {
                 <PlannedSessionAdder />
               </MDBRow>
             </MDBCol>
-            <MDBCol
-              md="6"
-              style={{ marginBottom: '100px', marginRight: '100px' }}
-            >
+            <MDBCol md="7" style={{ marginBottom: '100px' }}>
               <Calendar />
             </MDBCol>
           </MDBRow>
