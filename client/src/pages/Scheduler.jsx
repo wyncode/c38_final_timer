@@ -19,7 +19,7 @@ const Scheduler = () => {
                 <PlannedSessionAdder />
               </MDBRow>
             </MDBCol>
-            <MDBCol md="7" style={{ marginBottom: '100px' }}>
+            <MDBCol md="7" style={{ marginBottom: '10%' }}>
               <Calendar />
             </MDBCol>
           </MDBRow>
