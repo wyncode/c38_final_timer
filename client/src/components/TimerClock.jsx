@@ -12,6 +12,7 @@ import { AppContext } from '../context/AppContext';
 import TimerPostModal from './TimerPostModal';
 import { motion } from 'framer-motion';
 import Solemn from '../Assets/solemn.mp3';
+import GetStarted from '../components/GetStarted';
 
 const TimerClock = () => {
   const {
@@ -175,7 +176,6 @@ const TimerClock = () => {
           </motion.svg>
         </div>
       </div>
-
       <MDBAnimation type="pulse" count={7} duration="300ms">
         <MDBBtn outline color="blue" size="md" onClick={toggle}>
           <MDBIcon icon="play" />
@@ -189,27 +189,6 @@ const TimerClock = () => {
 
       <MDBContainer className=" flex-d-col">
         <div className="form">
-          <form onSubmit={handleBreakTime}>
-            <MDBRow className="d-flex align-items-center">
-              <MDBInput
-                label="Break Time"
-                type="number"
-                name="break"
-                outline
-              ></MDBInput>
-              <MDBBtn
-                className="rounded btn-btn-primary waves-effect"
-                type="submit"
-                gradient="blue"
-                style={{ height: '40px', marginBottom: '15px' }}
-              >
-                SET BREAK
-              </MDBBtn>
-            </MDBRow>
-          </form>
-        </div>
-
-        <div className="forms">
           <form onSubmit={handleWorkTime}>
             <MDBRow className="d-flex align-items-center ">
               <MDBInput
@@ -229,6 +208,28 @@ const TimerClock = () => {
             </MDBRow>
           </form>
         </div>
+
+        <div className="forms">
+          <form onSubmit={handleBreakTime}>
+            <MDBRow className="d-flex align-items-center">
+              <MDBInput
+                label="Break Time"
+                type="number"
+                name="break"
+                outline
+              ></MDBInput>
+              <MDBBtn
+                className="rounded btn-btn-primary waves-effect"
+                type="submit"
+                gradient="blue"
+                style={{ height: '40px', marginBottom: '15px' }}
+              >
+                SET BREAK
+              </MDBBtn>
+            </MDBRow>
+          </form>
+        </div>
+        <GetStarted />
       </MDBContainer>
       <div>
         <TimerPostModal />
