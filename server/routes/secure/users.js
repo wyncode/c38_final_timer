@@ -1,12 +1,8 @@
 const express = require('express'),
-  router = new express.Router(),
-  { sendCancellationEmail } = require('../../emails/index');
-
+  router = new express.Router();
 // Login Check
 router.post('/api/loginCheck', async (req, res) => res.sendStatus(200));
-
 // Logout a user
-
 router.post('/api/users/logout', async (req, res) => {
   try {
     req.user.tokens = req.user.tokens.filter((token) => {
@@ -19,9 +15,7 @@ router.post('/api/users/logout', async (req, res) => {
     res.status(500).json({ error: e.toString() });
   }
 });
-
 // Logout all devices
-
 router.post('/api/users/logoutAll', async (req, res) => {
   try {
     req.user.tokens = [];
@@ -33,11 +27,9 @@ router.post('/api/users/logoutAll', async (req, res) => {
   }
 });
 // Get current user
-
 router.get('/api/users/me', async (req, res) => {
   res.json(req.user);
 });
-
 // Update a user
 router.patch('/api/users/me', async (req, res) => {
   const updates = Object.keys(req.body);
@@ -55,19 +47,16 @@ router.patch('/api/users/me', async (req, res) => {
     res.status(400).json({ error: e.toString() });
   }
 });
-
 // Delete a user
 router.delete('/api/users/me', async (req, res) => {
   try {
     await req.user.remove();
-    sendCancellationEmail(req.user.email, req.user.name);
     res.clearCookie('jwt');
     res.json(req.user);
   } catch (e) {
     res.sendStatus(500).json({ error: e.toString() });
   }
 });
-
 //update a password- AKA resets the password
 router.put('/api/password', async (req, res) => {
   try {
@@ -79,5 +68,4 @@ router.put('/api/password', async (req, res) => {
     res.json({ error: e.toString() });
   }
 });
-
 module.exports = router;

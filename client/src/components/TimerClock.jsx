@@ -24,18 +24,17 @@ const TimerClock = () => {
     setModal,
     setTimeStampStart
   } = useContext(AppContext);
-  const [counter, setCounter] = useState(25 * 60); // timmer
-  const [isActive, setIsActive] = useState(false); // is the timer running?
-  const [timestamp, setTimestamp] = useState(false); // has a timestamp been recorded?
-  const [breakTime, setBreakTime] = useState(false); // is it break time?
-  const [animationState, setAnimationState] = useState('paused'); // sets the animation state 'paused' | 'active'
-  const [timeDuration, setTimeDuration] = useState(''); //sets the time duration of the animation
-  const [key, setKey] = useState(''); //passed as a prop to reset the svg animation
+  const [counter, setCounter] = useState(25 * 60);
+  const [isActive, setIsActive] = useState(false);
+  const [timestamp, setTimestamp] = useState(false);
+  const [breakTime, setBreakTime] = useState(false);
+  const [animationState, setAnimationState] = useState('paused');
+  const [timeDuration, setTimeDuration] = useState('');
+  const [key, setKey] = useState('');
 
   const timeInMinutes = Math.floor(counter / 60);
   const timeInSeconds = Math.floor(counter % 60);
 
-  //rotate timer on load
   const svgVariants = {
     hidden: { rotate: -180 },
     visible: {
@@ -49,7 +48,6 @@ const TimerClock = () => {
     audio.play();
   }
 
-  //sets the session to active
   const toggle = () => {
     if (timestamp === false) {
       setTimestamp(true);
@@ -74,7 +72,6 @@ const TimerClock = () => {
     }
   };
 
-  //resets count to 25 minutes, triggers modal to record session, calculate timestamps
   const reset = () => {
     setCounter(25 * 60);
     setIsActive(false);
@@ -90,7 +87,6 @@ const TimerClock = () => {
     }
   };
 
-  //sets break time values
   const handleBreakTime = (event) => {
     event.preventDefault();
     setCounter(event.target.break.value * 60);
@@ -98,7 +94,6 @@ const TimerClock = () => {
     setTimerValues();
   };
 
-  //sets work time values
   const handleWorkTime = (event) => {
     event.preventDefault();
     setCounter(event.target.work.value * 60);
@@ -115,7 +110,6 @@ const TimerClock = () => {
     setKey((preKey) => preKey + 1);
   };
 
-  //adding extra 0's
   const makeMeTwoDigits = (n) => {
     return (n < 10 ? '0' : '') + n;
   };
@@ -133,10 +127,10 @@ const TimerClock = () => {
   return (
     <div className="App">
       <div id="clock-timer">
-        <div style={{ marginBottom: '-20%' }}>
+        <div style={{ marginBottom: '-5%' }}>
           <motion.svg
             width="400"
-            height="400"
+            height="300"
             variants={svgVariants}
             initial="hidden"
             animate="visible"
@@ -182,12 +176,7 @@ const TimerClock = () => {
         </div>
       </div>
 
-      <MDBAnimation
-        // style={{ marginTop: '18%' }}
-        type="pulse"
-        count={7}
-        duration="300ms"
-      >
+      <MDBAnimation type="pulse" count={7} duration="300ms">
         <MDBBtn outline color="blue" size="md" onClick={toggle}>
           <MDBIcon icon="play" />
           <span>{'  '}</span>
@@ -219,9 +208,10 @@ const TimerClock = () => {
             </MDBRow>
           </form>
         </div>
+
         <div className="forms">
-          <MDBRow className="d-flex align-items-center ">
-            <form onSubmit={handleWorkTime}>
+          <form onSubmit={handleWorkTime}>
+            <MDBRow className="d-flex align-items-center ">
               <MDBInput
                 label="Work Time"
                 type="number"
@@ -229,15 +219,15 @@ const TimerClock = () => {
                 outline
               ></MDBInput>
               <MDBBtn
-                className="rounded btn-btn-primary waves-effect mt-100"
+                className="rounded btn-btn-primary waves-effect"
                 type="submit"
                 gradient="peach"
                 style={{ height: '40px', marginBottom: '15px' }}
               >
                 SET WORK
               </MDBBtn>
-            </form>
-          </MDBRow>
+            </MDBRow>
+          </form>
         </div>
       </MDBContainer>
       <div>

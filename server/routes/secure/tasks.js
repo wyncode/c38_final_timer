@@ -1,12 +1,10 @@
 const router = require('express').Router(),
   mongoose = require('mongoose'),
   Task = require('../../db/models/task');
-
 // Get all tasks
 router.get('/api/tasks', async (req, res) => {
   const match = {},
     sort = {};
-
   if (req.query.completed) {
     match.completed = req.query.completed === 'true';
   }
@@ -31,23 +29,19 @@ router.get('/api/tasks', async (req, res) => {
     res.status(500).json({ error: e.toString() });
   }
 });
-
 // Get a specific task
 router.get('/api/tasks/:id', async (req, res) => {
   const _id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(400).send('Not a valid task id');
-
   try {
     const task = await Task.findOne({ _id, owner: req.user._id });
     if (!task) return res.status(404).send();
-
     res.json(task);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }
 });
-
 // Create a task
 router.post('/api/tasks', async (req, res) => {
   const task = await new Task({
@@ -61,7 +55,6 @@ router.post('/api/tasks', async (req, res) => {
     res.status(400).json({ error: e.toString() });
   }
 });
-
 // Update a task
 router.patch('/api/tasks/:id', async (req, res) => {
   const updates = Object.keys(req.body);
@@ -71,7 +64,6 @@ router.patch('/api/tasks/:id', async (req, res) => {
   );
   if (!isValidOperation)
     return res.status(400).send({ error: 'Invalid updates!' });
-
   try {
     const task = await Task.findOne({
       _id: req.params.id,
@@ -85,7 +77,6 @@ router.patch('/api/tasks/:id', async (req, res) => {
     res.status(400).json({ error: e.toString() });
   }
 });
-
 // Delete a task
 router.delete('/api/tasks/:id', async (req, res) => {
   try {
@@ -99,5 +90,4 @@ router.delete('/api/tasks/:id', async (req, res) => {
     res.status(500).json({ error: e.toString() });
   }
 });
-
 module.exports = router;

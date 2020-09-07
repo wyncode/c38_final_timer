@@ -70,24 +70,22 @@ const Chart = () => {
           className="text-center text-md-center"
           style={{ paddingBottom: '20px', paddingTop: '40px' }}
         >
-          <MDBRow>
-            <MDBTypography blockquote bqColor="primary">
-              <MDBRow style={{ marginLeft: '10%' }}>
-                <MDBBox size="sm" tag="span" className="bq-title">
-                  You've been productive lately!
-                  <span className="grey-text">
-                    Play around with your preferences, explore your different
-                    tasks and map your progress!
-                  </span>
-                </MDBBox>
-                <Doughnut
-                  data={pieChart}
-                  width={200}
-                  height={100}
-                  options={{ maintainAspectRatio: true }}
-                  style={{ border: '1px solid black' }}
-                />
-              </MDBRow>
+          <MDBRow className="justify-content-center align-items-center">
+            <MDBTypography blockquote bqColor="primary" className="text-center">
+              <MDBBox size="sm" tag="span" className="bq-title ">
+                <strong>You've been productive lately!</strong>
+              </MDBBox>
+              <p className="grey-text">
+                Play around with your preferences, explore your different tasks
+                and map your progress!
+              </p>
+              <Doughnut
+                data={pieChart}
+                width={200}
+                height={100}
+                options={{ maintainAspectRatio: true }}
+                style={{ border: '1px solid black' }}
+              />
             </MDBTypography>
           </MDBRow>
         </MDBCol>
