@@ -68,11 +68,11 @@ const Chart = () => {
           <MDBRow className="justify-content-center">
             <MDBBox className="text-center bq-title " size="sm" tag="span">
               <strong>You've been productive lately!</strong>
+              <p className="grey-text">
+                Play around with your preferences, explore your different tasks
+                and map your progress!
+              </p>
             </MDBBox>
-            <p className="grey-text">
-              Play around with your preferences, explore your different tasks
-              and map your progress!
-            </p>
             <Doughnut
               data={pieChart}
               width={200}
