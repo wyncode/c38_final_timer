@@ -31,7 +31,11 @@ const FAQs = () => {
         <MDBRow>
           <MDBCol lg="5" className="text-center text-lg-left">
             <img
-              style={{ height: '85%', width: '90%', marginLeft: '10%' }}
+              style={{
+                height: '85%',
+                width: '95%',
+                marginLeft: '10%'
+              }}
               className="img-fluid"
               src={logoOrange}
               alt="WynIt."

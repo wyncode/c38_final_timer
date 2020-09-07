@@ -25,7 +25,7 @@ const Inspire = () => {
   return (
     <MDBContainer
       className="text-center"
-      style={{ height: '10vh', width: '30vw' }}
+      style={{ height: '5vh', width: '30vw' }}
     >
       <p className="font-weight-bold white-text" style={{ fontSize: '16pt' }}>
         {inspire.text}
