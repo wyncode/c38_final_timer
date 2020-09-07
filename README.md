@@ -99,7 +99,7 @@ Feature:
 - `moment`
 - `mongoose`
 - `multer`
-- `ypassport`
+- `passport`
 - `passport-jwt`
 - `sendgrid`
 - `validator`
