@@ -13,8 +13,8 @@ const Home = () => {
         className="d-flex justify-content-center align-items-center"
         id="background"
       >
-        <MDBRow style={{ marginTop: '7%' }}>
-          <MDBCol md="12" style={{ marginLeft: '40%' }}>
+        <MDBRow style={{ marginTop: '8%' }}>
+          <MDBCol md="12" style={{ marginLeft: '40%', marginBottom: '10%' }}>
             <Inspire />
             <TimerClock />
           </MDBCol>

@@ -59,36 +59,34 @@ const Chart = () => {
 
   return (
     <MDBContainer
-      className=" mt-5 d-flex justify-content-center black-text align-items-center
+      className="d-flex justify-content-center black-text align-items-center
       "
+      style={{ marginTop: '20%' }}
     >
-      <MDBRow
-        className="text-center text-md-center"
-        style={{ marginTop: '10%' }}
-      >
-        <MDBCol
-          className="text-center text-md-center"
-          style={{ paddingBottom: '20px', paddingTop: '40px' }}
-        >
-          <MDBRow className="justify-content-center align-items-center">
-            <MDBTypography blockquote bqColor="primary" className="text-center">
-              <MDBBox size="sm" tag="span" className="bq-title ">
-                <strong>You've been productive lately!</strong>
-              </MDBBox>
-              <p className="grey-text">
-                Play around with your preferences, explore your different tasks
-                and map your progress!
-              </p>
-              <Doughnut
-                data={pieChart}
-                width={200}
-                height={100}
-                options={{ maintainAspectRatio: true }}
-                style={{ border: '1px solid black' }}
-              />
-            </MDBTypography>
+      <MDBRow className="justify-content-center align-items-center">
+        <MDBTypography blockquote bqColor="primary" className="text-center">
+          <MDBRow className="justify-content-center">
+            <MDBBox
+              className="text-center"
+              size="sm"
+              tag="span"
+              className="bq-title "
+            >
+              <strong>You've been productive lately!</strong>
+            </MDBBox>
+            <p className="grey-text">
+              Play around with your preferences, explore your different tasks
+              and map your progress!
+            </p>
+            <Doughnut
+              data={pieChart}
+              width={200}
+              height={100}
+              options={{ maintainAspectRatio: true }}
+              style={{ border: '1px solid black' }}
+            />
           </MDBRow>
-        </MDBCol>
+        </MDBTypography>
       </MDBRow>
     </MDBContainer>
   );

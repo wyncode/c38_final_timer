@@ -3,19 +3,17 @@
 ## Introduction
 
 Welcome to WynIt!
-A productivity timer with the intention of increasing producitivty towards completing tasks.
-The App functions as a Timer and a scheduler to help users stay on task and efficiently accomplish goals
-they set out to accomplish.
+A timer with the intention of increasing producitivty towards completing tasks. The App functions as a Timer and a Scheduler to help users stay on task and accomplish goals.
 
-Feature:
+## Features:
 
 - Record Productivity sessions using the timer, and log them into the database for record
-- Plan future productivity sessions to schedule your time more effectively
-- Review productivity using the scheduler and graphical representations to see how you've spent your time
+- Plan future Productivity sessions to schedule your time more effectively
+- Review Productivity using the scheduler and graphical representations to see how you've spent your time
 
 ## Building Blocks
 
-- The stack we used for this project it MERN.
+- The stack we used for this project it MERN:
 
   - MongoDB as the database to store data
   - Express for the servers
@@ -25,8 +23,8 @@ Feature:
 - Within our Database we had 3 models
 
   - Users: the account of the User of the application
-  - Tasks: goals set to accomplish by spending productive time towards them
-  - Sessions: components of each Task that result in the completion of their owning Task (hopefully)
+  - Tasks: owned by a user, Tasks are goals set to accomplish by spending productive time towards them
+  - Sessions: owned by Tasks, sessions are components of each Task that result in the completion of their owning Task (hopefully)
 
 - We utilized the following Frameworks:
 
@@ -42,7 +40,8 @@ Feature:
   - MDBreact as the building blocks of the front-end
     Docs: https://mdbootstrap.com/docs/react/
 
-- Back-end Routes allow for users to create accounts, to store data from study sessions, and to track Task progression. Please refer to the routes folder inside the server directory to review the utilized open and closed routes.
+- Back-end Routes allow for users to create accounts, to store data from study sessions, and to track Task progression. Please refer to the routes folder inside the server directory to review the utilized
+  open and closed routes.
 
 ## Installation for local computer
 
@@ -123,7 +122,12 @@ Sara Salazar- https://github.com/saritasalazar
 NOTE: Heroku specifically runs npm start, so don't remove that from your package.json file.
 
 - heroku create your-app-name
-- heroku config:set MONGODB_URL=<insertYourAtlasDbUri>
-- git push heroku master
+- heroku config
 
-current Deployment of the website can be found here: https://secret-retreat-95639.herokuapp.com/
+  - set MONGODB_URL=<insertYourAtlasDbUri>
+  - set SENDGRID_API-KEY= refer to documentation for guide
+  - set JWT_SECRET= can be anything
+  - set FROM_EMAIL= whatever email you want to send from
+  - set APP and APP_URL= url of your deployed website or both
+
+- git push heroku master

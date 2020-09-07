@@ -11,7 +11,7 @@ const TaskStats = () => {
           fluid
           className="d-flex justify-content-center align-items-center"
         >
-          <MDBCol md="4">
+          <MDBCol md="4" style={{ marginRight: '6%' }}>
             <MDBRow style={{ marginTop: '25%' }}>
               <TaskList />
             </MDBRow>
