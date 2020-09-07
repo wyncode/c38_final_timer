@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import axios from 'axios';
 import moment from 'moment';
-import { MDBContainer, MDBRow, MDBCol, MDBTypography, MDBBox } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBTypography, MDBBox } from 'mdbreact';
 
 const Chart = () => {
   const [pieChart, setPieChart] = useState({});
@@ -66,12 +66,7 @@ const Chart = () => {
       <MDBRow className="justify-content-center align-items-center">
         <MDBTypography blockquote bqColor="primary" className="text-center">
           <MDBRow className="justify-content-center">
-            <MDBBox
-              className="text-center"
-              size="sm"
-              tag="span"
-              className="bq-title "
-            >
+            <MDBBox className="text-center bq-title " size="sm" tag="span">
               <strong>You've been productive lately!</strong>
             </MDBBox>
             <p className="grey-text">
